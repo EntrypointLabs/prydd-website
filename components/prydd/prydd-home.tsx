@@ -70,7 +70,7 @@ function SendCard() {
 function HeroSequence({ onHeroChange }: { onHeroChange: (visible: boolean) => void }) {
   const section = useRef<HTMLElement>(null)
   const stage = useRef<HTMLDivElement>(null)
-  const destinationScene = useRef<HTMLDivElement>(null)
+  const balanceCard = useRef<HTMLDivElement>(null)
   const productHeading = useRef<HTMLDivElement>(null)
   useHeroHandoff(section, stage)
   const globeDestination = useMotionValue({ x: 0, y: 50, scale: 0.62 })
@@ -101,7 +101,7 @@ function HeroSequence({ onHeroChange }: { onHeroChange: (visible: boolean) => vo
 
   useEffect(() => {
     const host = stage.current
-    const card = destinationScene.current
+    const card = balanceCard.current
     if (!host || !card) return
     const update = () => {
       // Layout offsets exclude Motion's transforms, keeping the settled sphere
@@ -157,7 +157,7 @@ function HeroSequence({ onHeroChange }: { onHeroChange: (visible: boolean) => vo
           </motion.div>
           <div className={styles.panelRow}>
             <motion.div className={styles.fundingCard} style={{ transform: leftTransform, opacity: companionsOpacity }}><FundingCard /></motion.div>
-            <motion.div ref={destinationScene} className={styles.centerCard} style={{ transform: centerTransform, opacity: productsOpacity }}><BalanceCard /></motion.div>
+            <motion.div ref={balanceCard} className={styles.centerCard} style={{ transform: centerTransform, opacity: productsOpacity }}><BalanceCard /></motion.div>
             <motion.div className={styles.smallSendCard} style={{ transform: rightTransform, opacity: companionsOpacity }}><SendCard /></motion.div>
           </div>
           <motion.p className={styles.illustrative} style={{ opacity: companionsOpacity }}>An illustrative look inside PRYDD.</motion.p>

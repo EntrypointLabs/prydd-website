@@ -47,7 +47,8 @@
 :global(html):has(.page) { position: relative; }
 
 @media (prefers-color-scheme: dark) {
-  :global(html):has(.page) { color-scheme: dark; background: #0b0c0e; }
+  :global(html):has(.page) { color-scheme: dark; --prydd-canvas: #0b0c0e; background: var(--prydd-canvas); }
+  :global(html):has(.page) :global(body) { background: var(--prydd-canvas); }
 
   .page {
     --prydd-bg: #0b0c0e;
@@ -78,7 +79,6 @@
     --prydd-float-shadow: 0 1px 2px #00000080;
     --hero-bg: #17191d;
     --hero-ink: #fafaf7;
-    --hero-action: #3f6dff;
   }
 }
 
