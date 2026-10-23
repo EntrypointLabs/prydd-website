@@ -1,7 +1,22 @@
 import type React from "react";
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+
+const pryddDisplay = localFont({
+  src: "../public/prydd/montserrat-variable.ttf",
+  variable: "--font-prydd",
+  weight: "100 900",
+  display: "swap",
+});
+
+const pryddBody = localFont({
+  src: "../public/prydd/inter-variable.ttf",
+  variable: "--font-prydd-body",
+  weight: "100 900",
+  display: "swap",
+});
 
 const SITE_URL = "https://xend.global";
 const OG_IMAGE = `${SITE_URL}/images/og-image.png`;
@@ -10,7 +25,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#ffffff",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#17191d" },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -192,7 +210,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${pryddDisplay.variable} ${pryddBody.variable}`}>
       <head>
         <script
           type="application/ld+json"

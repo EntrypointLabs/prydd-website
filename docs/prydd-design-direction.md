@@ -1,5 +1,17 @@
 # PRYDD design direction
 
+## Adopted direction
+
+The comparison is closed. The PRYDD design is now the site's homepage at `/`, and the reversible comparison route `/design/prydd` has been removed along with the one-payment destination and the palette switcher.
+
+- **Destination:** three product panels. The one-sending-money sequence is no longer built; its implementation remains in git history.
+- **Palette:** the white/black palette is the light-mode design and the dark palette is the dark-mode design. Both are selected by `prefers-color-scheme`, not by a control. The full-blue palette is dropped.
+- **Theming:** every surface, rule, shadow and scene in the hero and the body reads from `--prydd-*` custom properties declared on the page root in `components/prydd/prydd-home.module.css`. The dark values live in a single `@media (prefers-color-scheme: dark)` block there. The landscape scenes keep their photographs and are darkened by a `--prydd-scene-veil` layer rather than by separate assets.
+- **Open:** site metadata, JSON-LD and the OG image still describe Xend while the page reads PRYDD. Renaming the brand across SEO is a separate decision. There is no theme toggle; dark mode follows the operating system.
+
+Sections below record the discovery that produced this direction. Where they describe the comparison controls, both destinations or three palettes, they are history.
+
+
 Working brief from the design discussion on 14 October 2026. A reversible local comparison at `/design/prydd` implements the user's explicit reference mapping for review. Both motion destinations and the three hero palettes remain available by request; selecting one is a later design decision.
 
 ## Governing reference mapping

@@ -1,16 +1,34 @@
-:global(html):has(.preview) { position: relative; }
-
-.preview {
+.page {
   --prydd-header-height: 88px;
   --prydd-bg: #fff;
   --prydd-ink: #000;
-  --prydd-muted: #707070;
+  --prydd-muted: #727272;
   --prydd-card: #fff;
   --prydd-soft: #f4f5f6;
   --prydd-line: #0000000f;
+  --prydd-hairline: #eee;
+  --prydd-field-line: #e6e6e6;
+  --prydd-chip: #f4f4f4;
+  --prydd-chip-hover: #ebebeb;
+  --prydd-chip-soft: #f5f5f5;
   --prydd-accent: #000;
   --prydd-accent-ink: #fff;
   --prydd-received: #208550;
+  --prydd-eyebrow: #a0dcff;
+  --prydd-scene-bg: #e5ebed;
+  --prydd-scene-ink: #17242b;
+  --prydd-scene-veil: #0000;
+  --prydd-legend-bg: #f7f8f8;
+  --prydd-success-ink: #27a644;
+  --prydd-success-bg: #ebf8ed;
+  --prydd-invitation-bg: #dfe5ea;
+  --prydd-surface-dark: #050505;
+  --prydd-surface-dark-ink: #fff;
+  --prydd-footer-bg: #000;
+  --prydd-footer-ink: #fff;
+  --prydd-panel-shadow: 0 0 0 1px #0000000a, 0 8px 16px -4px #0000000d, 0 3px 6px -1.5px #0000000a;
+  --prydd-card-shadow: 0 8px 30px #0000000f;
+  --prydd-float-shadow: 0 1px 2px #00000012;
   --hero-bg: #fff;
   --hero-ink: #000;
   --hero-action: #2457f5;
@@ -26,16 +44,42 @@
   min-height: 100vh;
 }
 
-.preview[data-palette="blue"] {
-  --hero-bg: #2457f5;
-  --hero-ink: #fff;
-  --hero-action: #fff;
-  --hero-action-ink: #2457f5;
-}
+:global(html):has(.page) { position: relative; }
 
-.preview[data-palette="dark"] {
-  --hero-bg: #17191d;
-  --hero-ink: #fafaf7;
+@media (prefers-color-scheme: dark) {
+  :global(html):has(.page) { color-scheme: dark; background: #0b0c0e; }
+
+  .page {
+    --prydd-bg: #0b0c0e;
+    --prydd-ink: #f4f4f2;
+    --prydd-muted: #9b9ea3;
+    --prydd-card: #16181c;
+    --prydd-soft: #22252b;
+    --prydd-line: #ffffff1f;
+    --prydd-hairline: #ffffff14;
+    --prydd-field-line: #ffffff26;
+    --prydd-chip: #22252b;
+    --prydd-chip-hover: #2c3037;
+    --prydd-chip-soft: #22252b;
+    --prydd-accent: #f4f4f2;
+    --prydd-accent-ink: #0b0c0e;
+    --prydd-received: #5fd396;
+    --prydd-scene-bg: #14171b;
+    --prydd-scene-ink: #cfd4d8;
+    --prydd-scene-veil: #0b0c0ea8;
+    --prydd-legend-bg: #1a1d22e6;
+    --prydd-success-ink: #5fd396;
+    --prydd-success-bg: #14281d;
+    --prydd-invitation-bg: #14161a;
+    --prydd-surface-dark: #181b20;
+    --prydd-footer-bg: #000;
+    --prydd-panel-shadow: 0 0 0 1px #ffffff14, 0 8px 16px -4px #00000080, 0 3px 6px -1.5px #00000066;
+    --prydd-card-shadow: 0 8px 30px #00000080;
+    --prydd-float-shadow: 0 1px 2px #00000080;
+    --hero-bg: #17191d;
+    --hero-ink: #fafaf7;
+    --hero-action: #3f6dff;
+  }
 }
 
 .skip {
@@ -45,13 +89,13 @@
   left: 12px;
   padding: 12px 18px;
   border-radius: 8px;
-  background: #fff;
-  color: #17191d;
+  background: var(--prydd-card);
+  color: var(--prydd-ink);
   transform: translateY(-150%);
 }
 
 .skip:focus { transform: none; }
-.preview a:focus-visible, .preview button:focus-visible { outline: 3px solid var(--prydd-accent); outline-offset: 5px; }
+.page a:focus-visible, .page button:focus-visible { outline: 3px solid var(--prydd-accent); outline-offset: 5px; }
 .header[data-on-hero="true"] a:focus-visible, .heroCopy a:focus-visible { outline-color: var(--hero-ink); }
 .header { position: fixed; inset: 0 0 auto; z-index: 30; color: var(--prydd-ink); background: var(--prydd-bg); border-bottom: 1px solid var(--prydd-line); }
 .header[data-on-hero="true"] { color: var(--hero-ink); background: transparent; border-bottom-color: transparent; }
@@ -84,7 +128,7 @@
 .productHeading > span { display: block; font-size: 14px; color: var(--prydd-muted); margin-bottom: 24px; }
 .productHeading h2 { font-size: 40px; font-weight: 400; letter-spacing: -.02em; line-height: .95; margin: 0; }
 .panelRow { display: grid; grid-template-columns: 1fr 1.18fr 1fr; align-items: center; gap: 22px; max-width: 1030px; width: 100%; margin: 0 auto; }
-.fundingCard, .centerCard, .smallSendCard { position: relative; min-width: 0; background: var(--prydd-card); border: 1px solid var(--prydd-line); border-radius: 16px; box-shadow: 0 8px 30px rgb(0 0 0 / .06); padding: 31px 27px; }
+.fundingCard, .centerCard, .smallSendCard { position: relative; min-width: 0; background: var(--prydd-card); border: 1px solid var(--prydd-line); border-radius: 16px; box-shadow: var(--prydd-card-shadow); padding: 31px 27px; }
 .fundingCard, .smallSendCard { min-height: 270px; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .centerCard { min-height: 324px; z-index: 2; }
 .cardEyebrow { font-size: 14px; font-weight: 500; letter-spacing: -.02em; display: block; margin-bottom: 26px; }
@@ -101,51 +145,17 @@
 .avatar { display: inline-block; flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%; background-image: url("/prydd/photos-atlas.png"); background-size: 400% 400%; }
 .fundingIcons { display: flex; align-items: center; gap: 17px; margin: 20px 0 25px; }
 .fundingIcons > span { width: 58px; height: 58px; border-radius: 18px; display: grid; place-items: center; background: var(--prydd-soft); }
-.fundingIcons > span.dollar { background: var(--prydd-accent); color: #fff; font-size: 31px; font-weight: 500; border-radius: 50%; }
+.fundingIcons > span.dollar { background: var(--prydd-accent); color: var(--prydd-accent-ink); font-size: 31px; font-weight: 500; border-radius: 50%; }
 .fundingCard > p { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: -.025em; }
 .smallSendCard > .avatar { width: 65px; height: 65px; margin: 0 0 10px; }
 .username { font-size: 14px; font-weight: 600; letter-spacing: -.02em; }
 .smallAmount { display: flex; align-items: center; justify-content: space-between; gap: 20px; background: var(--prydd-soft); border-radius: 99px; padding: 6px 7px 6px 16px; margin-top: 18px; width: 100%; max-width: 175px; font-size: 16px; letter-spacing: -.045em; }
-.smallAmount > span + span { background: var(--prydd-accent); color: #fff; width: 35px; height: 35px; display: grid; place-items: center; border-radius: 50%; }
+.smallAmount > span + span { background: var(--prydd-accent); color: var(--prydd-accent-ink); width: 35px; height: 35px; display: grid; place-items: center; border-radius: 50%; }
 .illustrative { font-size: 9px; color: var(--prydd-muted); text-align: center; letter-spacing: .035em; margin-top: 40px; }
-.sendScene { max-width: 860px; width: 100%; margin: 0 auto; }
-.sendCard { position: relative; min-height: 305px; background: var(--prydd-card); border: 1px solid var(--prydd-line); border-radius: 16px; box-shadow: 0 8px 30px rgb(0 0 0 / .06); }
-.compose { position: absolute; inset: 0; padding: 46px 48px 35px; }
-.compose > .cardEyebrow { font-size: 24px; font-weight: 500; }
-.recipientLine { display: flex; align-items: center; gap: 17px; padding: 18px; border: 1px solid var(--prydd-line); border-radius: 20px; }
-.recipientLine > .avatar { width: 59px; height: 59px; }
-.recipientLine > span:not(.avatar):not(.sendAction) { font-size: 20px; font-weight: 500; letter-spacing: -.02em; }
-.recipientLine > strong { margin-left: auto; font-size: 30px; font-weight: 500; letter-spacing: -.04em; }
-.sendAction { display: inline-flex; align-items: center; gap: 9px; padding: 17px 22px; background: var(--prydd-accent); color: #fff; border-radius: 99px; font-size: 13px; }
-.compose > p { color: var(--prydd-muted); font-size: 11px; margin-top: 22px; text-align: center; }
-.sent { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 26px; }
-.sentTick { width: 57px; height: 57px; border-radius: 50%; color: #fff; background: var(--prydd-accent); display: grid; place-items: center; margin-bottom: 14px; }
-.sent > strong { font-size: 25px; font-weight: 500; letter-spacing: -.02em; }
-.sentAmount { font-size: 26px; font-weight: 500; letter-spacing: -.06em; margin-top: 3px; }
-.sentActivity { display: flex; align-items: center; gap: 11px; margin-top: 19px; border-top: 1px solid var(--prydd-line); padding-top: 16px; width: 70%; font-size: 11px; }
-.sentActivity > span:not(.avatar) { flex: 1; }
-.sentActivity small { display: block; color: var(--prydd-muted); font-size: 10px; margin-top: 4px; }
 .storyAnchor { scroll-margin-top: var(--prydd-header-height); }
 .reducedHero { position: relative; min-height: 100svh; overflow: hidden; background: var(--hero-bg); }
 .reducedGlobe { position: absolute; inset: 0; }
 .reducedProducts { padding: 95px 5vw 70px; }
-.staticSent { max-width: 800px; margin: 0 auto; background: var(--prydd-card); border: 1px solid var(--prydd-line); border-radius: 16px; padding: 44px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-.staticSent h3 { font-size: 28px; font-weight: 400; letter-spacing: -.02em; }
-.staticSent p { font-size: 35px; margin: 8px 0 22px; letter-spacing: -.06em; }
-.staticSent > span:last-child { color: var(--prydd-muted); font-size: 12px; }
-.comparison { position: fixed; bottom: max(20px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); z-index: 80; padding: 8px 10px 8px 16px; border: 1px solid #dce0e8; border-radius: 99px; display: flex; align-items: center; gap: 15px; color: #17191d; background: rgb(255 255 255 / .96); box-shadow: 0 8px 32px rgb(0 0 0 / .11); }
-.compareLabel { font-size: 9px; text-transform: uppercase; letter-spacing: .12em; color: #666b72; }
-.destinations { display: flex; gap: 3px; padding: 3px; border-radius: 99px; background: #f0f2f5; }
-.destinations button { padding: 9px 12px; border-radius: 99px; white-space: nowrap; font-size: 10px; letter-spacing: -.02em; }
-.destinations button[aria-pressed="true"] { background: #17191d; color: #fff; }
-.palettes { display: flex; align-items: center; gap: 8px; }
-.swatch { width: 21px; height: 21px; border-radius: 50%; border: 1px solid #c9ced8; outline-offset: 3px; }
-.swatch[data-colour="white"] { background: #fafaf7; }
-.swatch[data-colour="blue"] { background: #2457f5; border-color: #2457f5; }
-.swatch[data-colour="dark"] { background: #17191d; border-color: #17191d; }
-.swatch[aria-pressed="true"] { outline: 2px solid #939aa8; }
-.reset { display: grid; place-items: center; width: 28px; height: 28px; color: #666b72; border-left: 1px solid #e0e3e8; padding-left: 7px; }
-.comparison button { cursor: pointer; }
 
 @media (hover: hover) and (pointer: fine) {
   .heroCta:hover, .navCta:hover { transform: translateY(-2px); opacity: .9; }
@@ -153,13 +163,13 @@
 }
 
 @media (max-width: 991px) {
-  .preview { --prydd-header-height: 122px; }
+  .page { --prydd-header-height: 122px; }
   .header[data-on-hero="false"] nav { height: 122px; grid-template-rows: 76px 46px; row-gap: 0; }
   .chapterNav { grid-column: 1 / -1; grid-row: 2; }
 }
 
 @media (max-width: 760px) {
-  .preview { --prydd-header-height: 113px; }
+  .page { --prydd-header-height: 113px; }
   .header nav { height: 73px; padding: 0 24px; }
   .header[data-on-hero="false"] nav { height: 113px; grid-template-rows: 73px 40px; }
   .chapterNav { font-size: 10px; gap: 19px; }
@@ -204,28 +214,6 @@
   .smallAmount > span + span { width: 23px; height: 23px; }
   .smallAmount > span + span svg { width: 15px; }
   .illustrative { margin-top: 35px; font-size: 8px; }
-  .sendScene { max-width: 300px; }
-  .sendCard { min-height: 280px; border-radius: 16px; }
-  .compose { padding: 29px 20px 25px; }
-  .compose > .cardEyebrow { font-size: 20px; margin-bottom: 24px; }
-  .recipientLine { padding: 17px; display: grid; grid-template-columns: 45px 1fr; gap: 10px; border-radius: 17px; }
-  .recipientLine > .avatar { width: 43px; height: 43px; }
-  .recipientLine > span:not(.avatar):not(.sendAction) { font-size: 19px; }
-  .recipientLine > strong { margin-left: 0; font-size: 25px; }
-  .sendAction { justify-self: end; padding: 11px 16px; font-size: 11px; }
-  .compose > p { font-size: 9px; margin-top: 20px; }
-  .sent { padding: 24px 21px; }
-  .sent > strong { font-size: 24px; }
-  .sentAmount { font-size: 26px; }
-  .sentActivity { width: 100%; font-size: 9px; gap: 8px; }
-  .sentActivity > .avatar { width: 32px; height: 32px; }
-  .sentActivity small { font-size: 8px; }
-  .comparison { bottom: max(16px, env(safe-area-inset-bottom)); padding: 7px 9px; gap: 11px; max-width: calc(100vw - 24px); }
-  .compareLabel { display: none; }
-  .destinations button { padding: 9px 11px; font-size: 9px; }
-  .palettes { gap: 7px; }
-  .swatch { width: 18px; height: 18px; }
-  .reset { width: 24px; padding-left: 4px; }
   .reducedProducts { padding: 65px 20px; }
 }
 
@@ -234,26 +222,11 @@
   .chapterNav { font-size: 9px; gap: 13px; }
   .brand { font-size: 21px; }
   .mark { width: 28px; height: 29px; }
-  .sendScene { max-width: 240px; }
-  .sendCard { min-height: 250px; }
-  .compose { padding: 24px 16px 20px; }
-  .compose > .cardEyebrow { margin-bottom: 18px; }
-  .recipientLine { padding: 13px; gap: 8px; }
-  .sendAction { padding: 10px 11px; gap: 6px; }
-  .compose > p { margin-top: 14px; }
-  .sent { padding: 18px 16px; }
-  .sentTick { width: 46px; height: 46px; margin-bottom: 10px; }
-  .sentTick > svg { width: 30px; }
-  .sent > strong { font-size: 21px; }
-  .sentActivity { margin-top: 14px; padding-top: 12px; }
-  .comparison { gap: 7px; }
-  .destinations button { padding: 9px 8px; }
-  .palettes { gap: 5px; }
   .activity b { font-size: 7px; }
 }
 
 @media (max-height: 600px) {
-  .preview { --prydd-header-height: 104px; }
+  .page { --prydd-header-height: 104px; }
   .header nav { height: 64px; }
   .header[data-on-hero="false"] nav { height: 104px; grid-template-rows: 64px 40px; }
   .reducedHero { height: 100svh; min-height: 0; }
@@ -262,7 +235,6 @@
   .reducedHero .heroCopy h1 { font-size: clamp(22px, 5svh, 30px); }
   .reducedHero .heroCopy p { font-size: 11px; line-height: 1.35; max-width: 240px; margin: 12px 0; }
   .reducedHero .heroCta { min-height: 42px; padding: 11px 18px; font-size: 12px; }
-  .comparison { bottom: max(12px, env(safe-area-inset-bottom)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
