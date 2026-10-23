@@ -17,7 +17,7 @@ export default function Page() {
         This Privacy Policy explains how Entrypoint Labs, Inc. (
         <LegalLead>&quot;we,&quot;</LegalLead> <LegalLead>&quot;us,&quot;</LegalLead> or{" "}
         <LegalLead>&quot;our&quot;</LegalLead>), the team building PRYDD, handles information in
-        connection with PRYDD — the website at xend.global, the PRYDD mobile
+        connection with PRYDD — the website at prydd.co, the PRYDD mobile
         application, and related services (together, the{" "}
         <LegalLead>&quot;Service&quot;</LegalLead>).
       </LegalSection>
@@ -79,7 +79,7 @@ export default function Page() {
       </LegalSection>
 
       <LegalSection>
-        <LegalLead>Waitlist information.</LegalLead> The xend.global website
+        <LegalLead>Waitlist information.</LegalLead> The prydd.co website
         also lets visitors who don&apos;t yet have the app join a waitlist
         for early access. If you join the waitlist, we collect the email
         address you submit and use it to send you a confirmation email and
@@ -182,10 +182,10 @@ export default function Page() {
         <LegalLead>10. Contact.</LegalLead> Questions about this Policy, or
         requests related to your information, can be sent to us by email at{" "}
         <a
-          href="mailto:support@xend.global"
+          href="mailto:support@prydd.co"
           className="font-semibold text-foreground underline"
         >
-          support@xend.global
+          support@prydd.co
         </a>{" "}
         or on X at{" "}
         <a

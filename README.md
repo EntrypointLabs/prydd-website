@@ -1,12 +1,12 @@
-# Xend
+# PRYDD
 
-The marketing and waitlist site for [Xend](https://xend.global) — a dollar account for everyday life. Hold dollars on your phone, send to anyone by username in seconds for cents, and fund from local currency.
+The marketing and waitlist site for [PRYDD](https://prydd.co) — a dollar account for everyday life. Hold dollars on your phone, send to anyone by username in seconds for cents, and fund from local currency.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://xend.global)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://prydd.co)
 
 ## Overview
 
-This is a [Next.js](https://nextjs.org) app (App Router) that serves the public Xend site: the landing page, the waitlist form, and legal pages (Terms of Service, Privacy Policy). Waitlist signups are stored in Postgres via Prisma and confirmed by email via [Resend](https://resend.com).
+This is a [Next.js](https://nextjs.org) app (App Router) that serves the public PRYDD site: the landing page, the waitlist form, and legal pages (Terms of Service, Privacy Policy). Waitlist signups are stored in Postgres via Prisma and confirmed by email via [Resend](https://resend.com).
 
 ## Tech stack
 
@@ -39,7 +39,7 @@ RESEND_API_KEY="re_your_resend_api_key"
 - `DIRECT_URL` — direct (non-pooled) Postgres connection string, used for migrations
 - `RESEND_API_KEY` — API key from your [Resend dashboard](https://resend.com/api-keys)
 
-For local testing without a verified domain, Resend's default `onboarding@resend.dev` sender works out of the box. For production, verify your sending domain in Resend and update the `from` address in `lib/emails/send-email.ts`.
+For local testing without a verified domain, Resend's default `onboarding@resend.dev` sender works out of the box. For production, `prydd.co` must be verified as a sending domain in Resend — `lib/emails/send-email.ts` sends from `onboarding@prydd.co`, and waitlist confirmations fail until that domain is verified.
 
 ### 3. Run database migrations
 
@@ -61,13 +61,16 @@ The app runs at [http://localhost:4030](http://localhost:4030).
 
 ```
 app/
-  page.tsx              Home page
+  page.tsx              Home page (renders components/prydd)
+  opengraph-image.tsx   Open Graph card, generated at build time
   waitlist/             Waitlist signup flow
   legal/                Terms of Service & Privacy Policy
   api/waitlist/         Waitlist server action
-components/             Site sections (hero, pricing, footer, navbar, ...)
+components/prydd/       The homepage: globe hero, scroll handoff, story sections
+components/             Shared chrome (navbar, footer, wordmark, legal shell)
 components/ui/          shadcn/ui primitives
 lib/emails/             Transactional email templates and sending
+lib/og-fonts/           Static font instances for the Open Graph card
 prisma/                 Database schema and migrations
 ```
 
@@ -82,6 +85,14 @@ prisma/                 Database schema and migrations
 
 ## Links
 
-- Site: [xend.global](https://xend.global)
-- Litepaper: [xend.global/litepaper.pdf](https://xend.global/litepaper.pdf)
-- X: [@xend_global](https://x.com/xend_global)
+- Site: [prydd.co](https://prydd.co)
+- Litepaper: [prydd.co/litepaper.pdf](https://prydd.co/litepaper.pdf)
+- X: [@xend_global](https://x.com/xend_global) (handle not yet renamed)
+
+## Brand
+
+The site is PRYDD. A few identifiers deliberately still read `xend`, because they are bound to things outside this repo and renaming them breaks those things:
+
+- `com.giftedborg.xend` in `public/.well-known/assetlinks.json` and `apple-app-site-association` is the mobile app's bundle ID. Renaming it breaks Android deep links and passkey sign-in. Note that the apps' associated-domains entitlements must now list `prydd.co` for these files to be read at all.
+- `@xend_global` on X is a live account; there is no PRYDD handle to point at yet.
+- `Entrypoint Labs, Inc.` is the legal entity behind the product, not the brand, and stays as-is in the Terms and Privacy Policy.

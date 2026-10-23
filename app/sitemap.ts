@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next"
 
-const BASE_URL = "https://xend.global"
+const BASE_URL = "https://prydd.co"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
