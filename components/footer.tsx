@@ -1,5 +1,7 @@
 "use client"
 
+import { PryddWordmark } from "@/components/prydd-wordmark"
+
 const links = [
   { label: "Litepaper", href: "/litepaper.pdf", external: true },
   { label: "X / Twitter", href: "https://x.com/xend_global", external: true },
@@ -12,7 +14,7 @@ export function Footer() {
     <footer className="border-t border-border bg-background">
       <div className="max-w-6xl mx-auto px-5 md:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <img src="/logos/xend-lockup-black.svg" alt="Xend" className="w-fit h-7" />
+          <PryddWordmark size="sm" />
           <span className="text-xs text-muted-foreground ml-3">
             &copy; {new Date().getFullYear()} Entrypoint Labs, Inc.
           </span>
@@ -40,11 +42,11 @@ export function Footer() {
         <ol className="list-decimal list-outside pl-4 space-y-2 text-xs text-muted-foreground leading-relaxed">
           <li>
             Entrypoint Labs, Inc. is a financial technology company, not a
-            bank. Xend is a product built and operated by Entrypoint
+            bank. PRYDD is a product built and operated by Entrypoint
             Labs, Inc.
           </li>
           <li>
-            Your Xend Balance is not a deposit account at a bank chartered
+            Your PRYDD Balance is not a deposit account at a bank chartered
             by any government and is not insured by the FDIC or any other
             deposit insurance scheme unless expressly stated otherwise in
             the app.

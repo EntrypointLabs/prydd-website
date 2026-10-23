@@ -2,8 +2,6 @@ import type { ReactNode } from "react"
 import { ArrowDown, ArrowDownLeft, ArrowRight, ArrowUpRight, Check, ChevronDown, Plus } from "lucide-react"
 import styles from "./story-sections.module.css"
 
-type StorySectionsProps = { variant: "panels" | "send" }
-
 function Photo({ tile, className = "" }: { tile: number; className?: string }) {
   const cellWidth = 1448 / 4
   const cellHeight = 1086 / 4
@@ -52,12 +50,11 @@ function AccountScene() {
   )
 }
 
-function PeopleScene({ variant }: StorySectionsProps) {
-  const received = variant === "send"
+function PeopleScene() {
   return (
-    <figure className={styles.visualStage + " " + styles.peopleScene} aria-label={received ? "Illustrative recipient view showing maya receiving 25 dollars" : "Illustrative payment of 25 dollars to maya identified by username"}>
+    <figure className={styles.visualStage + " " + styles.peopleScene} aria-label="Illustrative payment of 25 dollars to maya identified by username">
       <Photo tile={2} className={styles.floatingPortrait1} /><Photo tile={8} className={styles.floatingPortrait2} />
-      <div className={styles.recipientPanel}><div className={styles.recipientHeader}><span>{received ? "Payment received" : "Send by username"}</span><span className={styles.tinyCheck} aria-hidden="true"><Check size={15} /></span></div><div className={styles.recipientIdentity}><Photo tile={0} className={styles.mayaPortrait} /><div><span className={styles.uiLabel}>{received ? "@maya’s account" : "Recipient"}</span><strong>@maya</strong></div></div><div className={styles.recipientAmount}><span className={styles.uiLabel}>{received ? "Received" : "Amount sent"}</span><strong>{received ? "+" : ""}$25<span>.00</span></strong></div><div className={styles.recipientResult}><span className={styles.resultCheck} aria-hidden="true"><Check size={15} /></span><span>{received ? "Received from @you" : "Sent to @maya"}<small>Today</small></span></div></div>
+      <div className={styles.recipientPanel}><div className={styles.recipientHeader}><span>Send by username</span><span className={styles.tinyCheck} aria-hidden="true"><Check size={15} /></span></div><div className={styles.recipientIdentity}><Photo tile={0} className={styles.mayaPortrait} /><div><span className={styles.uiLabel}>Recipient</span><strong>@maya</strong></div></div><div className={styles.recipientAmount}><span className={styles.uiLabel}>Amount sent</span><strong>$25<span>.00</span></strong></div><div className={styles.recipientResult}><span className={styles.resultCheck} aria-hidden="true"><Check size={15} /></span><span>Sent to @maya<small>Today</small></span></div></div>
       <span className={styles.usernamePill}>@maya</span>
     </figure>
   )
@@ -99,13 +96,13 @@ function QuestionsChapter() {
   )
 }
 
-export function StorySections({ variant }: StorySectionsProps) {
+export function StorySections() {
   return (
     <div className={styles.storySections}>
       <div className={styles.featureRows}>
         <FeatureChapter id="prydd-funding" eyebrow="Local funding" title="Add money in local currency. Keep it in dollars." description="Bring money into PRYDD and see it as a dollar balance." bullets={["Add money from local currency.", "Hold your balance in US dollars.", "See added money in your account activity."]} action={{ href: "#prydd-account", label: "Explore your account" }} note="Illustrative product views and amounts throughout this page."><FundingScene /></FeatureChapter>
         <FeatureChapter id="prydd-account" eyebrow="Dollar account" title="Your balance and payments, in one place." description="A clear dollar balance above a readable view of the money coming in and going out." bullets={["Hold a USD balance in your account.", "See the payments you receive and send.", "Understand each payment by its activity entry."]} action={{ href: "#prydd-people", label: "Explore username payments" }} flip><AccountScene /></FeatureChapter>
-        <FeatureChapter id="prydd-people" eyebrow="Payments by username" title="A username connects a payment to a person." description={variant === "send" ? "See the other side of the payment: @maya receives $25.00." : "Move dollars to another PRYDD user with their username."} bullets={["Send dollars to another PRYDD user.", "Identify the recipient by username.", "See the payment in readable activity."]} action={{ href: "#prydd-activity", label: "Follow the payment" }}><PeopleScene variant={variant} /></FeatureChapter>
+        <FeatureChapter id="prydd-people" eyebrow="Payments by username" title="A username connects a payment to a person." description="Move dollars to another PRYDD user with their username." bullets={["Send dollars to another PRYDD user.", "Identify the recipient by username.", "See the payment in readable activity."]} action={{ href: "#prydd-activity", label: "Follow the payment" }}><PeopleScene /></FeatureChapter>
         <FeatureChapter id="prydd-activity" eyebrow="Account activity" title="The payment and your balance tell the same story." description="In this example, a $25 payment leaves $225 in the account." bullets={["Money added: $250.", "Sent to @maya: $25.", "Remaining balance: $225."]} action={{ href: "#prydd-faq", label: "Find answers" }} flip><ResultScene /></FeatureChapter>
       </div>
       <HumanContext /><PracticalOverview /><QuestionsChapter />

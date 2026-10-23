@@ -4,7 +4,7 @@ import { LegalLead, LegalPage, LegalSection } from "@/components/legal-page"
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms of service for the Xend app and website.",
+  description: "Terms of service for the PRYDD app and website.",
   alternates: {
     canonical: "/legal/terms-of-service",
   },
@@ -15,8 +15,8 @@ export default function Page() {
     <LegalPage title="Terms of Service" lastUpdated="28th July 2026">
       <LegalSection>
         This Terms of Service agreement (the <LegalLead>&quot;Agreement&quot;</LegalLead>) governs
-        your access to and use of Xend, a dollar account product made up of
-        the website located at xend.global, the Xend mobile application, and
+        your access to and use of PRYDD, a dollar account product made up of
+        the website located at xend.global, the PRYDD mobile application, and
         related services (together, the <LegalLead>&quot;Service&quot;</LegalLead>), operated by
         Entrypoint Labs, Inc. (<LegalLead>&quot;Entrypoint Labs,&quot;</LegalLead>{" "}
         <LegalLead>&quot;we,&quot;</LegalLead> <LegalLead>&quot;us,&quot;</LegalLead> or{" "}
@@ -44,11 +44,11 @@ export default function Page() {
       </LegalSection>
 
       <LegalSection>
-        <LegalLead>2. The Service.</LegalLead> Xend lets you hold a balance
+        <LegalLead>2. The Service.</LegalLead> PRYDD lets you hold a balance
         denominated in U.S. dollars (your <LegalLead>&quot;Balance&quot;</LegalLead>), fund that
         Balance from a linked local bank account or payment method, and send
-        or receive dollars to or from other Xend users by username. Transfers
-        between Xend users settle using the Solana blockchain. Nothing in
+        or receive dollars to or from other PRYDD users by username. Transfers
+        between PRYDD users settle using the Solana blockchain. Nothing in
         this Agreement or elsewhere on the Service constitutes financial,
         investment, legal, or tax advice, and any figures, timelines, or
         forward-looking statements — including anything in our litepaper —
@@ -56,7 +56,7 @@ export default function Page() {
       </LegalSection>
 
       <LegalSection>
-        <LegalLead>3. Your Account.</LegalLead> You sign in to Xend using a
+        <LegalLead>3. Your Account.</LegalLead> You sign in to PRYDD using a
         passkey tied to your device rather than a password or seed phrase.
         You are responsible for keeping your device and passkey secure and
         for all activity that occurs through your account. Notify us
@@ -67,7 +67,7 @@ export default function Page() {
       </LegalSection>
 
       <LegalSection>
-        <LegalLead>4. Identity Verification.</LegalLead> Xend does not
+        <LegalLead>4. Identity Verification.</LegalLead> PRYDD does not
         currently require identity verification to create an account or
         hold a Balance. We reserve the right to require you to verify your
         identity — for example, by providing your legal name, date of
@@ -80,7 +80,7 @@ export default function Page() {
       <LegalSection>
         <LegalLead>5. Funding and Transfers.</LegalLead> You can add funds to
         your Balance from a linked bank account or supported local payment
-        method. Transfers to other Xend users are generally intended to
+        method. Transfers to other PRYDD users are generally intended to
         settle quickly, but we do not guarantee a specific settlement time,
         and we may delay, limit, or decline a transaction to comply with
         law, prevent fraud, or protect the Service. Because transfers settle
@@ -93,7 +93,7 @@ export default function Page() {
       <LegalSection>
         <LegalLead>6. Fees.</LegalLead> Entrypoint Labs does not currently
         charge a fee to hold a Balance, fund your account, or send money to
-        another Xend user. Sending or funding a transfer may still incur a
+        another PRYDD user. Sending or funding a transfer may still incur a
         minimal network fee — typically a fraction of a cent — charged by
         the Solana network itself to process the transaction, not by us. We
         may introduce our own fees in the future; if we do, we will disclose
@@ -142,7 +142,7 @@ export default function Page() {
       </LegalSection>
 
       <LegalSection>
-        <LegalLead>10. Transaction Monitoring.</LegalLead> Although Xend does
+        <LegalLead>10. Transaction Monitoring.</LegalLead> Although PRYDD does
         not currently verify your identity as described in Section 4, we use
         blockchain analytics tools to screen the on-chain transactions
         associated with your account for exposure to sanctioned parties,
@@ -183,7 +183,7 @@ export default function Page() {
         part of the Service, including text, graphics, logos, marks, icons,
         and the underlying code and design, is owned by Entrypoint Labs or
         its licensors and is protected by copyright, trademark, and other
-        intellectual property laws. <LegalLead>&quot;Xend&quot;</LegalLead> and associated
+        intellectual property laws. <LegalLead>&quot;PRYDD&quot;</LegalLead> and associated
         logos and marks are the property of Entrypoint Labs, Inc. Except as
         necessary to use the Service as intended, you may not copy,
         reproduce, modify, distribute, or create derivative works from any

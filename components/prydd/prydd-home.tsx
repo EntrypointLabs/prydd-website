@@ -1,16 +1,13 @@
 "use client"
 
 import { useCallback, useEffect, useRef, useState, type RefObject } from "react"
-import { motion, useMotionValue, useMotionValueEvent, useScroll, useTransform, type MotionValue } from "framer-motion"
-import { ArrowDown, ArrowRight, ArrowUpRight, Check, Plus, RotateCcw } from "lucide-react"
+import { motion, useMotionValue, useMotionValueEvent, useScroll, useTransform } from "framer-motion"
+import { ArrowDown, ArrowRight, ArrowUpRight, Check, Plus } from "lucide-react"
 import { PhotoGlobe, globeProjectionDiameter } from "./photo-globe"
 import { photoPosition } from "./photo-atlas"
 import { StorySections, ClosingInvitation } from "./story-sections"
 import { useHeroHandoff } from "./use-hero-handoff"
-import styles from "./prydd-preview.module.css"
-
-export type Palette = "white" | "blue" | "dark"
-export type Destination = "panels" | "send"
+import styles from "./prydd-home.module.css"
 
 const clamp = (value: number) => Math.max(0, Math.min(1, value))
 const portion = (value: number, start: number, end: number) => clamp((value - start) / (end - start))
@@ -59,7 +56,7 @@ function FundingCard() {
   )
 }
 
-function SmallSendCard() {
+function SendCard() {
   return (
     <>
       <span className={styles.cardEyebrow}>Send by username</span>
@@ -70,40 +67,10 @@ function SmallSendCard() {
   )
 }
 
-function SendCard({ progress }: { progress: MotionValue<number> }) {
-  const [completed, setCompleted] = useState(progress.get() >= 0.80)
-  const composeOpacity = useTransform(progress, [0, 0.73, 0.86, 1], [1, 1, 0, 0])
-  const sentOpacity = useTransform(progress, [0, 0.73, 0.86, 1], [0, 0, 1, 1])
-
-  useMotionValueEvent(progress, "change", (value) => {
-    const next = value >= 0.80
-    setCompleted((current) => current === next ? current : next)
-  })
-
-  return (
-    <div className={styles.sendCard}>
-      <motion.div className={styles.compose} style={{ opacity: composeOpacity }} aria-hidden={completed} inert={completed}>
-        <span className={styles.cardEyebrow}>Send by username</span>
-        <div className={styles.recipientLine}><Avatar /><span>@maya</span><strong>$25.00</strong><span className={styles.sendAction}>Send <ArrowUpRight size={20} /></span></div>
-        <p>A person. A username. A payment.</p>
-      </motion.div>
-      <motion.div className={styles.sent} style={{ opacity: sentOpacity }} aria-hidden={!completed} inert={!completed}>
-        <span className={styles.sentTick}><Check size={38} strokeWidth={2.1} /></span>
-        <strong>Sent to @maya</strong>
-        <span className={styles.sentAmount}>$25.00</span>
-        <div className={styles.sentActivity}><Avatar /><span>You sent $25.00 to @maya<small>Today</small></span><Check size={16} /></div>
-      </motion.div>
-    </div>
-  )
-}
-
-function HeroSequence({ destination, onHeroChange }: {
-  destination: Destination
-  onHeroChange: (visible: boolean) => void
-}) {
+function HeroSequence({ onHeroChange }: { onHeroChange: (visible: boolean) => void }) {
   const section = useRef<HTMLElement>(null)
   const stage = useRef<HTMLDivElement>(null)
-  const destinationScene = useRef<HTMLDivElement>(null)
+  const balanceCard = useRef<HTMLDivElement>(null)
   const productHeading = useRef<HTMLDivElement>(null)
   useHeroHandoff(section, stage)
   const globeDestination = useMotionValue({ x: 0, y: 50, scale: 0.62 })
@@ -121,8 +88,7 @@ function HeroSequence({ destination, onHeroChange }: {
   const globeOpacity = useTransform(progress, [0, 0.42, 0.69, 1], [1, 1, 0.52, 0.52])
   const sceneClip = useTransform(progress, (value) => {
     const contraction = portion(value, 0.08, 0.61)
-    const side = destination === "panels" ? 31 : 14
-    return "inset(" + 22 * contraction + "% " + side * contraction + "% " + 10 * contraction + "% round " + 32 * contraction + "px)"
+    return "inset(" + 22 * contraction + "% " + 31 * contraction + "% " + 10 * contraction + "% round " + 32 * contraction + "px)"
   })
   const sceneOpacity = useTransform(progress, [0, 0.50, 0.75, 1], [1, 1, 0, 0])
   const productsOpacity = useTransform(progress, [0, 0.40, 0.63, 1], [0, 0, 1, 1])
@@ -135,7 +101,7 @@ function HeroSequence({ destination, onHeroChange }: {
 
   useEffect(() => {
     const host = stage.current
-    const card = destinationScene.current
+    const card = balanceCard.current
     if (!host || !card) return
     const update = () => {
       // Layout offsets exclude Motion's transforms, keeping the settled sphere
@@ -148,15 +114,13 @@ function HeroSequence({ destination, onHeroChange }: {
         y += node.offsetTop
         node = node.offsetParent as HTMLElement | null
       }
-      const diameter = destination === "send"
-        ? card.offsetHeight * 1.18
-        : host.clientWidth <= 760
-          ? Math.max(card.offsetHeight * 1.35, card.offsetWidth * 0.78)
-          : Math.max(card.offsetHeight * 1.16, card.offsetWidth * 1.10)
+      const diameter = host.clientWidth <= 760
+        ? Math.max(card.offsetHeight * 1.35, card.offsetWidth * 0.78)
+        : Math.max(card.offsetHeight * 1.16, card.offsetWidth * 1.10)
       globeDestination.set({
         x: x - host.clientWidth / 2,
         y: y - host.clientHeight / 2,
-        scale: Math.max(0.28, Math.min(destination === "send" && host.clientWidth <= 760 ? 0.96 : 0.85, diameter / globeProjectionDiameter(host.clientWidth, host.clientHeight))),
+        scale: Math.max(0.28, Math.min(0.85, diameter / globeProjectionDiameter(host.clientWidth, host.clientHeight))),
       })
     }
     const observer = new ResizeObserver(update)
@@ -165,7 +129,7 @@ function HeroSequence({ destination, onHeroChange }: {
     if (productHeading.current) observer.observe(productHeading.current)
     update()
     return () => observer.disconnect()
-  }, [destination, globeDestination])
+  }, [globeDestination])
 
   useMotionValueEvent(progress, "change", (value) => {
     const nextHero = value < 0.30
@@ -189,17 +153,13 @@ function HeroSequence({ destination, onHeroChange }: {
         <div className={styles.products} aria-hidden={!productVisible} inert={!productVisible}>
           <motion.div ref={productHeading} className={styles.productHeading} style={{ opacity: titleOpacity }}>
             <span>Everyday money. One place.</span>
-            <h2>{destination === "panels" ? "Your money, made simple." : "Send to a person."}</h2>
+            <h2>Your money, made simple.</h2>
           </motion.div>
-          {destination === "panels" ? (
-            <div className={styles.panelRow}>
-              <motion.div className={styles.fundingCard} style={{ transform: leftTransform, opacity: companionsOpacity }}><FundingCard /></motion.div>
-              <motion.div ref={destinationScene} className={styles.centerCard} style={{ transform: centerTransform, opacity: productsOpacity }}><BalanceCard /></motion.div>
-              <motion.div className={styles.smallSendCard} style={{ transform: rightTransform, opacity: companionsOpacity }}><SmallSendCard /></motion.div>
-            </div>
-          ) : (
-            <motion.div ref={destinationScene} className={styles.sendScene} style={{ transform: centerTransform, opacity: productsOpacity }}><SendCard progress={progress} /></motion.div>
-          )}
+          <div className={styles.panelRow}>
+            <motion.div className={styles.fundingCard} style={{ transform: leftTransform, opacity: companionsOpacity }}><FundingCard /></motion.div>
+            <motion.div ref={balanceCard} className={styles.centerCard} style={{ transform: centerTransform, opacity: productsOpacity }}><BalanceCard /></motion.div>
+            <motion.div className={styles.smallSendCard} style={{ transform: rightTransform, opacity: companionsOpacity }}><SendCard /></motion.div>
+          </div>
           <motion.p className={styles.illustrative} style={{ opacity: companionsOpacity }}>An illustrative look inside PRYDD.</motion.p>
         </div>
       </div>
@@ -207,7 +167,7 @@ function HeroSequence({ destination, onHeroChange }: {
   )
 }
 
-function ReducedSequence({ destination, heroRef }: { destination: Destination; heroRef: RefObject<HTMLElement | null> }) {
+function ReducedSequence({ heroRef }: { heroRef: RefObject<HTMLElement | null> }) {
   return (
     <>
       <section ref={heroRef} className={styles.reducedHero}>
@@ -219,31 +179,25 @@ function ReducedSequence({ destination, heroRef }: { destination: Destination; h
         </div>
       </section>
       <section className={styles.reducedProducts}>
-        <div className={styles.productHeading}><span>Everyday money. One place.</span><h2>{destination === "panels" ? "Your money, made simple." : "Send to a person."}</h2></div>
-        {destination === "panels" ? (
-          <div className={styles.panelRow}><div className={styles.fundingCard}><FundingCard /></div><div className={styles.centerCard}><BalanceCard /></div><div className={styles.smallSendCard}><SmallSendCard /></div></div>
-        ) : (
-          <div className={styles.staticSent}><span className={styles.sentTick}><Check size={34} /></span><h3>Sent to @maya</h3><p>$25.00</p><span>Send dollars to another PRYDD user by username.</span></div>
-        )}
+        <div className={styles.productHeading}><span>Everyday money. One place.</span><h2>Your money, made simple.</h2></div>
+        <div className={styles.panelRow}>
+          <div className={styles.fundingCard}><FundingCard /></div>
+          <div className={styles.centerCard}><BalanceCard /></div>
+          <div className={styles.smallSendCard}><SendCard /></div>
+        </div>
         <p className={styles.illustrative}>An illustrative look inside PRYDD.</p>
       </section>
     </>
   )
 }
 
-export function PryddPreview({ initialPalette = "white", initialDestination = "panels", forceReducedMotion = false }: {
-  initialPalette?: Palette
-  initialDestination?: Destination
-  forceReducedMotion?: boolean
-}) {
-  const [palette, setPalette] = useState<Palette>(initialPalette)
-  const [destination, setDestination] = useState<Destination>(initialDestination)
+export function PryddHome() {
   const [onHero, setOnHero] = useState(true)
   const [activeChapter, setActiveChapter] = useState("")
   const [shortViewport, setShortViewport] = useState(false)
   const [systemReducedMotion, setSystemReducedMotion] = useState(false)
   const staticHeroRef = useRef<HTMLElement>(null)
-  const reduced = systemReducedMotion || forceReducedMotion || shortViewport
+  const reduced = systemReducedMotion || shortViewport
   const onHeroChange = useCallback((visible: boolean) => setOnHero((current) => current === visible ? current : visible), [])
 
   useEffect(() => {
@@ -290,16 +244,10 @@ export function PryddPreview({ initialPalette = "white", initialDestination = "p
       window.removeEventListener("scroll", schedule)
       window.removeEventListener("resize", schedule)
     }
-  }, [destination])
-
-  function chooseDestination(next: Destination) {
-    setDestination(next)
-    setOnHero(true)
-    window.scrollTo({ top: 0, behavior: "instant" })
-  }
+  }, [])
 
   return (
-    <main className={styles.preview} data-palette={palette} data-destination={destination} data-reduced-motion={reduced}>
+    <main className={styles.page} data-reduced-motion={reduced}>
       <a href="#prydd-story" className={styles.skip}>Skip to the product story</a>
       <header className={styles.header} data-on-hero={onHero}>
         <nav aria-label="PRYDD navigation">
@@ -312,20 +260,9 @@ export function PryddPreview({ initialPalette = "white", initialDestination = "p
         </nav>
       </header>
       <div id="prydd-top" />
-      {reduced ? <ReducedSequence destination={destination} heroRef={staticHeroRef} /> : <HeroSequence key={destination} destination={destination} onHeroChange={onHeroChange} />}
-      <div id="prydd-story" className={styles.storyAnchor}><StorySections variant={destination} /></div>
+      {reduced ? <ReducedSequence heroRef={staticHeroRef} /> : <HeroSequence onHeroChange={onHeroChange} />}
+      <div id="prydd-story" className={styles.storyAnchor}><StorySections /></div>
       <ClosingInvitation />
-      <aside className={styles.comparison} aria-label="Compare PRYDD design variants">
-        <span className={styles.compareLabel}>Compare</span>
-        <div className={styles.destinations} role="group" aria-label="Transition destination">
-          <button aria-pressed={destination === "panels"} onClick={() => chooseDestination("panels")}>Three panels</button>
-          <button aria-pressed={destination === "send"} onClick={() => chooseDestination("send")}>One payment</button>
-        </div>
-        <div className={styles.palettes} role="group" aria-label="Colour palette">
-          {(["white", "blue", "dark"] as const).map((colour) => <button key={colour} className={styles.swatch} data-colour={colour} aria-label={colour === "white" ? "White and blue palette" : colour === "blue" ? "Full blue palette" : "Dark and blue palette"} aria-pressed={palette === colour} onClick={() => setPalette(colour)} />)}
-        </div>
-        <button className={styles.reset} aria-label="Return to the beginning" onClick={() => { window.scrollTo({ top: 0, behavior: "instant" }); setOnHero(true) }}><RotateCcw size={15} /></button>
-      </aside>
     </main>
   )
 }

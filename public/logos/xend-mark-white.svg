@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <title>Xend mark, white</title>
-  <g transform="translate(100 100)">
-    <path d="M -95 0 C -50 -22 50 -22 95 0 C 50 22 -50 22 -95 0 Z" fill="#FFFFFF" transform="rotate(45)"/>
-    <path d="M -95 0 C -50 -22 50 -22 95 0 C 50 22 -50 22 -95 0 Z" fill="#FFFFFF" transform="rotate(-45)"/>
-  </g>
-</svg>

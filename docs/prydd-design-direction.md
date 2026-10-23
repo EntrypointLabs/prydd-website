@@ -1,5 +1,18 @@
 # PRYDD design direction
 
+## Adopted direction
+
+The comparison is closed. The PRYDD design is now the site's homepage at `/`, and the reversible comparison route `/design/prydd` has been removed along with the one-payment destination and the palette switcher.
+
+- **Destination:** three product panels. The one-sending-money sequence is no longer built; its implementation remains in git history.
+- **Palette:** the hero palette follows `prefers-color-scheme` rather than a control. Light mode uses the white hero; dark mode uses the `#17191d` hero with `#fafaf7` type. The full-blue palette is dropped. As in the comparison, the palette governs the hero only: **the body stays white/black in both schemes**.
+- **Theming:** the hero and body colours read from `--prydd-*` custom properties declared on the page root in `components/prydd/prydd-home.module.css`, replacing the hard-coded values that were scattered through both stylesheets. Only `--hero-bg` and `--hero-ink` change under `@media (prefers-color-scheme: dark)`; the body tokens are scheme-independent by design.
+- **Brand:** the rebrand is applied. Copy, metadata, JSON-LD, favicons and the generated Open Graph card all read PRYDD, and the navbar, footer and waitlist header share the `PryddWordmark`. The `xend.global` domain and `support@` mailbox, the `@xend_global` handle, the `com.giftedborg.xend` Android package in `assetlinks.json` and the legal entity `Entrypoint Labs, Inc.` are deliberately unchanged: they are identifiers, not branding, and renaming the package would break deep links and passkey sign-in.
+- **Open:** `public/litepaper.pdf` is still Xend-branded and is linked from the navbar and footer. There is no theme toggle; the hero palette follows the operating system.
+
+Sections below record the discovery that produced this direction. Where they describe the comparison controls, both destinations or three palettes, they are history.
+
+
 Working brief from the design discussion on 14 October 2026. A reversible local comparison at `/design/prydd` implements the user's explicit reference mapping for review. Both motion destinations and the three hero palettes remain available by request; selecting one is a later design decision.
 
 ## Governing reference mapping

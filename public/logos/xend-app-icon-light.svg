@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <title>Xend app icon, light</title>
-  <rect x="0.5" y="0.5" width="199" height="199" rx="43.5" fill="#F5F5F5" stroke="#E0E0E0" stroke-width="1"/>
-  <g transform="translate(100 100)">
-    <path d="M -84 0 C -42 -20 42 -20 84 0 C 42 20 -42 20 -84 0 Z" fill="#0a0a0a" transform="rotate(45)"/>
-    <path d="M -84 0 C -42 -20 42 -20 84 0 C 42 20 -42 20 -84 0 Z" fill="#0a0a0a" transform="rotate(-45)"/>
-  </g>
-</svg>

@@ -4,9 +4,10 @@ import { useEffect, useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
+import { PryddWordmark } from "@/components/prydd-wordmark"
 
 const navItems = [
-  { label: "Product", href: "/#features" },
+  { label: "Product", href: "/#prydd-story" },
   { label: "Litepaper", href: "/litepaper.pdf", external: true },
 ]
 
@@ -29,8 +30,8 @@ export function Navbar() {
       }`}
     >
       <nav className="max-w-6xl mx-auto flex items-center justify-between px-5 md:px-8 h-16">
-        <a href="/" className="flex items-center gap-2">
-          <img src="/logos/xend-lockup-black.svg" alt="Xend" className="w-full h-10" />
+        <a href="/" aria-label="PRYDD home" className="flex items-center">
+          <PryddWordmark />
         </a>
 
         <div className="hidden md:flex items-center gap-8">

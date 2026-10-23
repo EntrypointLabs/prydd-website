@@ -1,26 +1,43 @@
 import type React from "react";
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
+const pryddDisplay = localFont({
+  src: "../public/prydd/montserrat-variable.ttf",
+  variable: "--font-prydd",
+  weight: "100 900",
+  display: "swap",
+});
+
+const pryddBody = localFont({
+  src: "../public/prydd/inter-variable.ttf",
+  variable: "--font-prydd-body",
+  weight: "100 900",
+  display: "swap",
+});
+
 const SITE_URL = "https://xend.global";
-const OG_IMAGE = `${SITE_URL}/images/og-image.png`;
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#ffffff",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#17191d" },
+  ],
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    template: "%s | Xend",
-    default: "Xend — Spend money as you would, but faster",
+    template: "%s | PRYDD",
+    default: "PRYDD — Spend money as you would, but faster",
   },
   description:
-    "Xend is a dollar account for everyday life. Hold dollars on your phone, send to anyone by username in seconds for cents, and fund from local currency. A fast, low-fee alternative to slow bank transfers.",
+    "PRYDD is a dollar account for everyday life. Hold dollars on your phone, send to anyone by username in seconds for cents, and fund from local currency. A fast, low-fee alternative to slow bank transfers.",
   keywords: [
     "dollar account",
     "send money instantly by username",
@@ -35,10 +52,9 @@ export const metadata: Metadata = {
     "fund dollar account from local currency",
     "personal finance app instant payments",
     "Solana payment platform",
-    "Xend",
-    "Xend Global",
+    "PRYDD",
   ],
-  applicationName: "Xend",
+  applicationName: "PRYDD",
   authors: [{ name: "Entrypoint Labs, Inc." }],
   creator: "Entrypoint Labs, Inc.",
   publisher: "Entrypoint Labs, Inc.",
@@ -61,27 +77,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
-    siteName: "Xend",
-    title: "Xend — Spend money as you would, but faster",
+    siteName: "PRYDD",
+    title: "PRYDD — Spend money as you would, but faster",
     description:
       "Hold dollars on your phone. Send them to anyone in seconds, for cents. A checking account for the internet.",
-    images: [
-      {
-        url: OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: "Xend — a dollar account in your pocket",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@xend_global",
     creator: "@xend_global",
-    title: "Xend — Spend money as you would, but faster",
+    title: "PRYDD — Spend money as you would, but faster",
     description:
       "Hold dollars on your phone. Send them to anyone in seconds, for cents.",
-    images: [OG_IMAGE],
   },
   icons: {
     icon: [
@@ -91,9 +98,9 @@ export const metadata: Metadata = {
         sizes: "any",
         media: "(prefers-color-scheme: dark)",
       },
-      { url: "/logos/xend-mark-black.svg", type: "image/svg+xml" },
+      { url: "/prydd/mark.svg", type: "image/svg+xml" },
     ],
-    apple: "/logos/xend-mark-black.svg",
+    apple: "/prydd/apple-touch-icon.png",
   },
   formatDetection: {
     telephone: false,
@@ -109,16 +116,16 @@ const jsonLd = {
       "@type": "Organization",
       "@id": `${SITE_URL}#org`,
       name: "Entrypoint Labs, Inc.",
-      alternateName: "Xend",
+      alternateName: "PRYDD",
       url: SITE_URL,
-      logo: `${SITE_URL}/logos/xend-lockup-black.svg`,
+      logo: `${SITE_URL}/prydd/mark.svg`,
       sameAs: ["https://x.com/xend_global"],
     },
     {
       "@type": "WebSite",
       "@id": `${SITE_URL}#website`,
       url: SITE_URL,
-      name: "Xend",
+      name: "PRYDD",
       description:
         "A dollar account for everyday life — send money to anyone by username in seconds, for cents.",
       publisher: { "@id": `${SITE_URL}#org` },
@@ -127,7 +134,7 @@ const jsonLd = {
     {
       "@type": "SoftwareApplication",
       "@id": `${SITE_URL}#app`,
-      name: "Xend",
+      name: "PRYDD",
       operatingSystem: "iOS, Android",
       applicationCategory: "FinanceApplication",
       applicationSubCategory: "Mobile Banking",
@@ -154,9 +161,9 @@ const jsonLd = {
     {
       "@type": "ItemList",
       "@id": `${SITE_URL}#use-cases`,
-      name: "How to use Xend",
+      name: "How to use PRYDD",
       description:
-        "Three things you'll actually do with a Xend Account.",
+        "Three things you'll actually do with a PRYDD Account.",
       itemListOrder: "https://schema.org/ItemListOrderAscending",
       numberOfItems: 3,
       itemListElement: [
@@ -192,7 +199,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${pryddDisplay.variable} ${pryddBody.variable}`}>
       <head>
         <script
           type="application/ld+json"

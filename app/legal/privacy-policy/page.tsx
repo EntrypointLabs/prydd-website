@@ -4,7 +4,7 @@ import { LegalLead, LegalPage, LegalSection } from "@/components/legal-page"
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy policy for the Xend app and website.",
+  description: "Privacy policy for the PRYDD app and website.",
   alternates: {
     canonical: "/legal/privacy-policy",
   },
@@ -16,18 +16,18 @@ export default function Page() {
       <LegalSection>
         This Privacy Policy explains how Entrypoint Labs, Inc. (
         <LegalLead>&quot;we,&quot;</LegalLead> <LegalLead>&quot;us,&quot;</LegalLead> or{" "}
-        <LegalLead>&quot;our&quot;</LegalLead>), the team building Xend, handles information in
-        connection with Xend — the website at xend.global, the Xend mobile
+        <LegalLead>&quot;our&quot;</LegalLead>), the team building PRYDD, handles information in
+        connection with PRYDD — the website at xend.global, the PRYDD mobile
         application, and related services (together, the{" "}
         <LegalLead>&quot;Service&quot;</LegalLead>).
       </LegalSection>
 
       <LegalSection>
         <LegalLead>1. Who We Are.</LegalLead> Entrypoint Labs, Inc. is the
-        team building Xend, a dollar account for everyday life. Xend lets you
+        team building PRYDD, a dollar account for everyday life. PRYDD lets you
         hold a balance in U.S. dollars, fund it from a linked bank account or
         local payment method, and send or receive dollars to or from other
-        Xend users by username.
+        PRYDD users by username.
       </LegalSection>
 
       <LegalSection>
@@ -53,7 +53,7 @@ export default function Page() {
         you fund your Balance from a bank account or local payment method,
         we and our banking or payment partners process the information
         necessary to complete that funding transaction, such as the linked
-        account details you provide. Transfers between Xend users settle on
+        account details you provide. Transfers between PRYDD users settle on
         the Solana blockchain, a public ledger; the resulting on-chain
         transaction data is publicly visible on that network independent of
         anything we do.
@@ -124,7 +124,7 @@ export default function Page() {
         you to review when you connect a funding source. We also use
         blockchain analytics providers to screen on-chain transactions for
         compliance purposes, as described in Section 2. Transfers between
-        Xend users settle on the Solana network, a public blockchain that we
+        PRYDD users settle on the Solana network, a public blockchain that we
         do not operate or control. Each of these third parties has its own
         privacy practices that this Policy does not cover.
       </LegalSection>
