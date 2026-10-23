@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
     ],
-    sitemap: "https://xend.global/sitemap.xml",
-    host: "https://xend.global",
+    sitemap: "https://prydd.co/sitemap.xml",
+    host: "https://prydd.co",
   }
 }

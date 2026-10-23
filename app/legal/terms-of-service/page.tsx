@@ -16,7 +16,7 @@ export default function Page() {
       <LegalSection>
         This Terms of Service agreement (the <LegalLead>&quot;Agreement&quot;</LegalLead>) governs
         your access to and use of PRYDD, a dollar account product made up of
-        the website located at xend.global, the PRYDD mobile application, and
+        the website located at prydd.co, the PRYDD mobile application, and
         related services (together, the <LegalLead>&quot;Service&quot;</LegalLead>), operated by
         Entrypoint Labs, Inc. (<LegalLead>&quot;Entrypoint Labs,&quot;</LegalLead>{" "}
         <LegalLead>&quot;we,&quot;</LegalLead> <LegalLead>&quot;us,&quot;</LegalLead> or{" "}
@@ -220,10 +220,10 @@ export default function Page() {
         <LegalLead>16. Contact.</LegalLead> Questions about this Agreement,
         or requests related to your account, can be sent to us by email at{" "}
         <a
-          href="mailto:support@xend.global"
+          href="mailto:support@prydd.co"
           className="font-semibold text-foreground underline"
         >
-          support@xend.global
+          support@prydd.co
         </a>{" "}
         or on X at{" "}
         <a

@@ -18,7 +18,7 @@ const pryddBody = localFont({
   display: "swap",
 });
 
-const SITE_URL = "https://xend.global";
+const SITE_URL = "https://prydd.co";
 
 export const viewport: Viewport = {
   width: "device-width",

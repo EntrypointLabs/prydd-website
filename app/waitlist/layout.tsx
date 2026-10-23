@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 
-const SITE_URL = "https://xend.global"
+const SITE_URL = "https://prydd.co"
 
 export const metadata: Metadata = {
   title: "Join the waitlist",
