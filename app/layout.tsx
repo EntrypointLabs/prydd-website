@@ -19,7 +19,6 @@ const pryddBody = localFont({
 });
 
 const SITE_URL = "https://xend.global";
-const OG_IMAGE = `${SITE_URL}/images/og-image.png`;
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -82,14 +81,6 @@ export const metadata: Metadata = {
     title: "PRYDD — Spend money as you would, but faster",
     description:
       "Hold dollars on your phone. Send them to anyone in seconds, for cents. A checking account for the internet.",
-    images: [
-      {
-        url: OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: "PRYDD — a dollar account in your pocket",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -98,7 +89,6 @@ export const metadata: Metadata = {
     title: "PRYDD — Spend money as you would, but faster",
     description:
       "Hold dollars on your phone. Send them to anyone in seconds, for cents.",
-    images: [OG_IMAGE],
   },
   icons: {
     icon: [
