@@ -22,10 +22,10 @@
 .featureBody .illustrativeNote { margin: 0; color: var(--prydd-muted); font-size: 11px; line-height: 1.3; letter-spacing: -.01em; }
 
 .visualStage { position: relative; min-width: 0; height: 525px; margin: 0; background-color: var(--prydd-scene-bg); background-size: cover; background-position: center; overflow: hidden; }
-.fundingScene { background-image: linear-gradient(var(--prydd-scene-veil), var(--prydd-scene-veil)), url("/prydd/landscape-field.png"), linear-gradient(135deg, #d5e5e9, #f2efe5); }
-.accountScene { background-image: linear-gradient(var(--prydd-scene-veil), var(--prydd-scene-veil)), url("/prydd/landscape-sky.png"), linear-gradient(#d4e1ed, #f1f5f8); }
-.peopleScene { background-image: linear-gradient(var(--prydd-scene-veil), var(--prydd-scene-veil)), url("/prydd/landscape-shore.png"), linear-gradient(150deg, #c8d5dc, #e6ebeb); }
-.resultScene { background-image: linear-gradient(var(--prydd-scene-veil), var(--prydd-scene-veil)), url("/prydd/landscape-sky.png"), linear-gradient(130deg, #e4ecf2, #cfdde5); }
+.fundingScene { background-image: url("/prydd/landscape-field.png"), linear-gradient(135deg, #d5e5e9, #f2efe5); }
+.accountScene { background-image: url("/prydd/landscape-sky.png"), linear-gradient(#d4e1ed, #f1f5f8); }
+.peopleScene { background-image: url("/prydd/landscape-shore.png"), linear-gradient(150deg, #c8d5dc, #e6ebeb); }
+.resultScene { background-image: url("/prydd/landscape-sky.png"), linear-gradient(130deg, #e4ecf2, #cfdde5); }
 .localPanel, .dollarPanel, .accountWindow, .recipientPanel, .receiptPanel, .resultAccount { position: absolute; background: var(--prydd-card); color: var(--prydd-ink); border: 1px solid var(--prydd-line); border-radius: 16px; box-shadow: var(--prydd-panel-shadow); }
 .uiLabel { display: block; color: var(--prydd-muted); font-size: 11px; line-height: 1.3; letter-spacing: -.015em; }
 .fundingFlow { position: absolute; inset-inline: 0; top: 6%; display: flex; flex-direction: column; }

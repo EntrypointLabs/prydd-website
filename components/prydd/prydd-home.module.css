@@ -17,7 +17,6 @@
   --prydd-eyebrow: #a0dcff;
   --prydd-scene-bg: #e5ebed;
   --prydd-scene-ink: #17242b;
-  --prydd-scene-veil: #0000;
   --prydd-legend-bg: #f7f8f8;
   --prydd-success-ink: #27a644;
   --prydd-success-bg: #ebf8ed;
@@ -47,36 +46,7 @@
 :global(html):has(.page) { position: relative; }
 
 @media (prefers-color-scheme: dark) {
-  :global(html):has(.page) { color-scheme: dark; --prydd-canvas: #0b0c0e; background: var(--prydd-canvas); }
-  :global(html):has(.page) :global(body) { background: var(--prydd-canvas); }
-
   .page {
-    --prydd-bg: #0b0c0e;
-    --prydd-ink: #f4f4f2;
-    --prydd-muted: #9b9ea3;
-    --prydd-card: #16181c;
-    --prydd-soft: #22252b;
-    --prydd-line: #ffffff1f;
-    --prydd-hairline: #ffffff14;
-    --prydd-field-line: #ffffff26;
-    --prydd-chip: #22252b;
-    --prydd-chip-hover: #2c3037;
-    --prydd-chip-soft: #22252b;
-    --prydd-accent: #f4f4f2;
-    --prydd-accent-ink: #0b0c0e;
-    --prydd-received: #5fd396;
-    --prydd-scene-bg: #14171b;
-    --prydd-scene-ink: #cfd4d8;
-    --prydd-scene-veil: #0b0c0ea8;
-    --prydd-legend-bg: #1a1d22e6;
-    --prydd-success-ink: #5fd396;
-    --prydd-success-bg: #14281d;
-    --prydd-invitation-bg: #14161a;
-    --prydd-surface-dark: #181b20;
-    --prydd-footer-bg: #000;
-    --prydd-panel-shadow: 0 0 0 1px #ffffff14, 0 8px 16px -4px #00000080, 0 3px 6px -1.5px #00000066;
-    --prydd-card-shadow: 0 8px 30px #00000080;
-    --prydd-float-shadow: 0 1px 2px #00000080;
     --hero-bg: #17191d;
     --hero-ink: #fafaf7;
   }

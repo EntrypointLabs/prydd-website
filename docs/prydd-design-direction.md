@@ -5,8 +5,8 @@
 The comparison is closed. The PRYDD design is now the site's homepage at `/`, and the reversible comparison route `/design/prydd` has been removed along with the one-payment destination and the palette switcher.
 
 - **Destination:** three product panels. The one-sending-money sequence is no longer built; its implementation remains in git history.
-- **Palette:** the white/black palette is the light-mode design and the dark palette is the dark-mode design. Both are selected by `prefers-color-scheme`, not by a control. The full-blue palette is dropped.
-- **Theming:** every surface, rule, shadow and scene in the hero and the body reads from `--prydd-*` custom properties declared on the page root in `components/prydd/prydd-home.module.css`. The dark values live in a single `@media (prefers-color-scheme: dark)` block there. The landscape scenes keep their photographs and are darkened by a `--prydd-scene-veil` layer rather than by separate assets.
+- **Palette:** the hero palette follows `prefers-color-scheme` rather than a control. Light mode uses the white hero; dark mode uses the `#17191d` hero with `#fafaf7` type. The full-blue palette is dropped. As in the comparison, the palette governs the hero only: **the body stays white/black in both schemes**.
+- **Theming:** the hero and body colours read from `--prydd-*` custom properties declared on the page root in `components/prydd/prydd-home.module.css`, replacing the hard-coded values that were scattered through both stylesheets. Only `--hero-bg` and `--hero-ink` change under `@media (prefers-color-scheme: dark)`; the body tokens are scheme-independent by design.
 - **Open:** site metadata, JSON-LD and the OG image still describe Xend while the page reads PRYDD. Renaming the brand across SEO is a separate decision. There is no theme toggle; dark mode follows the operating system.
 
 Sections below record the discovery that produced this direction. Where they describe the comparison controls, both destinations or three palettes, they are history.
