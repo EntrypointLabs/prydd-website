@@ -4,7 +4,7 @@ import { PryddWordmark } from "@/components/prydd-wordmark"
 
 const links = [
   { label: "Litepaper", href: "/litepaper.pdf", external: true },
-  { label: "X / Twitter", href: "https://x.com/xend_global", external: true },
+  { label: "X / Twitter", href: "https://x.com/pryddfinance", external: true },
   { label: "Terms of Service", href: "/legal/terms-of-service" },
   { label: "Privacy Policy", href: "/legal/privacy-policy" },
 ]

@@ -84,8 +84,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@xend_global",
-    creator: "@xend_global",
+    site: "@pryddfinance",
+    creator: "@pryddfinance",
     title: "PRYDD — Spend money as you would, but faster",
     description:
       "Hold dollars on your phone. Send them to anyone in seconds, for cents.",
@@ -119,7 +119,7 @@ const jsonLd = {
       alternateName: "PRYDD",
       url: SITE_URL,
       logo: `${SITE_URL}/prydd/mark.svg`,
-      sameAs: ["https://x.com/xend_global"],
+      sameAs: ["https://x.com/pryddfinance"],
     },
     {
       "@type": "WebSite",
