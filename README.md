@@ -62,7 +62,6 @@ The app runs at [http://localhost:4030](http://localhost:4030).
 ```
 app/
   page.tsx              Home page (renders components/prydd)
-  opengraph-image.tsx   Open Graph card, generated at build time
   waitlist/             Waitlist signup flow
   legal/                Terms of Service & Privacy Policy
   api/waitlist/         Waitlist server action
@@ -70,8 +69,8 @@ components/prydd/       The homepage: globe hero, scroll handoff, story sections
 components/             Shared chrome (navbar, footer, wordmark, legal shell)
 components/ui/          shadcn/ui primitives
 lib/emails/             Transactional email templates and sending
-lib/og-fonts/           Static font instances for the Open Graph card
 prisma/                 Database schema and migrations
+scripts/                Litepaper and brand-image builders
 ```
 
 ## Scripts
