@@ -87,12 +87,11 @@ prisma/                 Database schema and migrations
 
 - Site: [prydd.co](https://prydd.co)
 - Litepaper: [prydd.co/litepaper.pdf](https://prydd.co/litepaper.pdf)
-- X: [@xend_global](https://x.com/xend_global) (handle not yet renamed)
+- X: [@pryddfinance](https://x.com/pryddfinance)
 
 ## Brand
 
 The site is PRYDD. A few identifiers deliberately still read `xend`, because they are bound to things outside this repo and renaming them breaks those things:
 
 - `com.giftedborg.xend` in `public/.well-known/assetlinks.json` and `apple-app-site-association` is the mobile app's bundle ID. Renaming it breaks Android deep links and passkey sign-in. Note that the apps' associated-domains entitlements must now list `prydd.co` for these files to be read at all.
-- `@xend_global` on X is a live account; there is no PRYDD handle to point at yet.
 - `Entrypoint Labs, Inc.` is the legal entity behind the product, not the brand, and stays as-is in the Terms and Privacy Policy.

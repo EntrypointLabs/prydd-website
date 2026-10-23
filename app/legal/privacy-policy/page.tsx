@@ -189,12 +189,12 @@ export default function Page() {
         </a>{" "}
         or on X at{" "}
         <a
-          href="https://x.com/xend_global"
+          href="https://x.com/pryddfinance"
           target="_blank"
           rel="noreferrer"
           className="font-semibold text-foreground underline"
         >
-          @xend_global
+          @pryddfinance
         </a>
         .
       </LegalSection>

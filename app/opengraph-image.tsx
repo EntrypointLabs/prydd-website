@@ -13,13 +13,17 @@ const MARK =
 // instance is Thin, so the display weights are instanced and subset at
 // lib/og-fonts.
 const font = (file: string) => readFile(path.join(process.cwd(), "lib", "og-fonts", file))
+// scripts/build-brand-images.py renders this from the hero globe's own photographs
+const field = () => readFile(path.join(process.cwd(), "public", "prydd", "og-field.png"))
 
 export default async function OpengraphImage() {
-  const [black, extraBold, body] = await Promise.all([
+  const [black, extraBold, body, backdrop] = await Promise.all([
     font("montserrat-900.ttf"),
     font("montserrat-800.ttf"),
     font("inter-400.ttf"),
+    field(),
   ])
+  const backdropSrc = `data:image/png;base64,${backdrop.toString("base64")}`
 
   return new ImageResponse(
     (
@@ -29,12 +33,14 @@ export default async function OpengraphImage() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          alignItems: "flex-start",
           justifyContent: "center",
           background: "#17191d",
           padding: "56px 72px",
         }}
       >
+        <img src={backdropSrc} width={1200} height={630} style={{ position: "absolute", top: 0, left: 0 }} alt="" />
+
         <div style={{ position: "absolute", top: 56, left: 64, display: "flex", alignItems: "center", gap: 11 }}>
           <svg width="38" height="39" viewBox="-3 0 214 214">
             <g transform="translate(4 6)">
@@ -50,9 +56,9 @@ export default async function OpengraphImage() {
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
+            alignItems: "flex-start",
             fontFamily: "Montserrat",
-            fontSize: 88,
+            fontSize: 72,
             fontWeight: 900,
             letterSpacing: "-0.06em",
             lineHeight: 0.96,
@@ -63,7 +69,7 @@ export default async function OpengraphImage() {
           <span>EVERYDAY</span>
           <span>GLOBAL MONEY.</span>
         </div>
-        <span style={{ fontFamily: "Inter", fontSize: 26, letterSpacing: "-0.035em", color: "#9b9ea3", marginTop: 34 }}>
+        <span style={{ fontFamily: "Inter", fontSize: 24, letterSpacing: "-0.035em", color: "#9b9ea3", marginTop: 28 }}>
           Add money. Hold dollars. Send by username.
         </span>
       </div>
