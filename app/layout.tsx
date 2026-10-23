@@ -19,6 +19,7 @@ const pryddBody = localFont({
 });
 
 const SITE_URL = "https://prydd.co";
+const OG_IMAGE = `${SITE_URL}/prydd/og-image.png`;
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -78,6 +79,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "PRYDD",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "PRYDD — one app for everyday global money",
+      },
+    ],
     title: "PRYDD — Spend money as you would, but faster",
     description:
       "Hold dollars on your phone. Send them to anyone in seconds, for cents. A checking account for the internet.",
@@ -89,6 +98,7 @@ export const metadata: Metadata = {
     title: "PRYDD — Spend money as you would, but faster",
     description:
       "Hold dollars on your phone. Send them to anyone in seconds, for cents.",
+    images: [OG_IMAGE],
   },
   icons: {
     icon: [

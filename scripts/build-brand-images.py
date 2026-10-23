@@ -8,8 +8,10 @@ rather than merely a colour.
     python3 scripts/build-brand-images.py
 
 Requires Google Chrome. Writes public/prydd/banner.png (the X header) and
-public/prydd/og-field.png (the backdrop the Open Graph card composites under
-its type).
+public/prydd/og-field.png, the untyped backdrop. The shipped card,
+public/prydd/og-image.png, is that backdrop with the headline set over it and
+is committed as a finished file; rerun this only when the artwork itself
+should change.
 """
 import math
 import pathlib
