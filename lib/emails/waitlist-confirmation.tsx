@@ -39,7 +39,7 @@ export default function WaitlistConfirmationEmail({
               <Text className="mt-8 text-sm text-gray-500">
                 Best regards,
                 <br />
-                The Xend Global Team
+                The PRYDD Team
               </Text>
             </Section>
           </Container>

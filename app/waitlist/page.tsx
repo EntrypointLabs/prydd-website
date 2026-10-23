@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { ArrowLeft, ArrowRight, Check, Loader2 } from "lucide-react"
 import { submitWaitlist } from "@/app/api/waitlist/action"
+import { PryddWordmark } from "@/components/prydd-wordmark"
 
 type Status = "idle" | "submitting" | "success" | "error"
 
@@ -44,7 +45,7 @@ export default function WaitlistPage() {
 
       <header className="relative z-10 flex items-center justify-between px-6 py-6 md:px-10">
         <Link href="/" className="flex items-center gap-2 group">
-          <img src="/logos/xend-lockup-black.svg" alt="Xend" className="w-full h-10" />
+          <PryddWordmark />
         </Link>
         <Link
           href="/"
