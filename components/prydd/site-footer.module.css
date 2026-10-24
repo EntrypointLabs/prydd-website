@@ -26,6 +26,7 @@
 .bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; padding-bottom: 32px; }
 .legal { display: flex; flex-direction: column; gap: 4px; }
 .year { font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: -.01em; }
+.yearLink { color: inherit; text-decoration: none; }
 .legalLinks { display: flex; flex-wrap: wrap; gap: 10px; }
 .legalLink { color: rgb(255 255 255 / .7); font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: -.01em; text-decoration: none; }
 
@@ -42,7 +43,7 @@
 .footerShell a:focus-visible { outline: 2px solid var(--prydd-footer-ink, #fff); outline-offset: 5px; }
 
 @media (hover: hover) and (pointer: fine) {
-  .navLink:hover, .legalLink:hover, .metaLink:hover, .disclaimersList a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .navLink:hover, .legalLink:hover, .metaLink:hover, .yearLink:hover, .disclaimersList a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .legalLink:hover, .metaLink:hover { color: var(--prydd-footer-ink, #fff); }
   .ctaPrimary:hover { background: rgb(255 255 255 / .88); }
   .ctaSecondary:hover { border-color: var(--prydd-footer-ink, #fff); }

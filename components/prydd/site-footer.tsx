@@ -37,13 +37,20 @@ const freeTools: FooterLink[] = [
   { label: "Routing number checker", href: "/tools/routing-number-checker" },
 ]
 
+const ENTRYPOINT_URL = "https://entrypointlabs.xyz"
+
+const entrypointLink = (
+  <a href={ENTRYPOINT_URL} target="_blank" rel="noopener noreferrer">
+    Entrypoint Labs, Inc.
+  </a>
+)
 const termsLink = <a href="/legal/terms-of-service">Terms of Service</a>
 const privacyLink = <a href="/legal/privacy-policy">Privacy Policy</a>
 
 const disclaimers: ReactNode[] = [
   <>
-    PRYDD is a dollar account (the &quot;PRYDD Account&quot;) provided by
-    Entrypoint Labs, Inc. (&quot;Entrypoint Labs&quot;), a financial technology
+    PRYDD is a dollar account (the &quot;PRYDD Account&quot;) provided by{" "}
+    {entrypointLink} (&quot;Entrypoint Labs&quot;), a financial technology
     company. Entrypoint Labs is not a bank or a digital asset custodian.
     Entrypoint Labs provides software that enables eligible people to open PRYDD
     Accounts and transact using stablecoins.
@@ -195,7 +202,15 @@ export function SiteFooter() {
         <div className={styles.bottom}>
           <div className={styles.legal}>
             <span className={styles.year}>
-              &copy; {new Date().getFullYear()} Entrypoint Labs, Inc.
+              &copy; {new Date().getFullYear()}{" "}
+              <a
+                className={styles.yearLink}
+                href={ENTRYPOINT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Entrypoint Labs, Inc.
+              </a>
             </span>
             <div className={styles.legalLinks}>
               <a className={styles.legalLink} href="/legal/terms-of-service">
