@@ -1,8 +1,8 @@
 "use client"
 
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react"
-import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion"
-import { ArrowLeftRight, ArrowUpRight, Check, MoreHorizontal, Plus, Sparkles } from "lucide-react"
+import { useEffect, useRef, useState, type CSSProperties, type RefObject } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { ArrowLeftRight, ArrowUpRight, MoreHorizontal, Plus, Sparkles } from "lucide-react"
 import styles from "./life-sequence.module.css"
 
 type Row = { label: string; meta: string; value: string }
@@ -58,48 +58,9 @@ const chapters: Chapter[] = [
     ],
   },
   {
-    id: "assistant",
-    title: "Ask, and PRYDD answers.",
-    body: "Your account speaks plain language. Ask where the money went, what is safe to spend, what to set aside before the weekend.",
-    cta: { label: "Meet the assistant", href: "/waitlist" },
-    backdrop: {},
-    variants: [
-      {
-        id: "spending",
-        label: "Spending",
-        caption: "Where did my money go?",
-        amount: "$612.40",
-        rows: [
-          { label: "Eating out", meta: "14 payments", value: "$268.10" },
-          { label: "Transport", meta: "9 payments", value: "$121.75" },
-        ],
-      },
-      {
-        id: "safe-to-spend",
-        label: "Safe to spend",
-        caption: "What can I spend today?",
-        amount: "$184.00",
-        rows: [
-          { label: "Rent set aside", meta: "Due in 9 days", value: "$840.00" },
-          { label: "Left in balance", meta: "After set-asides", value: "$1,024.00" },
-        ],
-      },
-      {
-        id: "activity",
-        label: "Activity",
-        caption: "Who did I pay this week?",
-        amount: "6 payments",
-        rows: [
-          { label: "To @maya", meta: "Sent · Tuesday", value: "−$25.00" },
-          { label: "From @sarah", meta: "Received · Monday", value: "+$50.00" },
-        ],
-      },
-    ],
-  },
-  {
     id: "crypto",
     title: "Crypto, in the same account.",
-    body: "Hold it beside your dollars. One balance, one activity feed, one sign-in. Nothing to move between apps.",
+    body: "Hold it beside your dollars. One balance, one activity feed, one sign-in.",
     note: "Capital at risk.",
     cta: { label: "Explore crypto", href: "/waitlist" },
     backdrop: { image: "/prydd/landscape-sky.png", position: "center 40%" },
@@ -130,70 +91,44 @@ const chapters: Chapter[] = [
         caption: "Sent to @leo",
         amount: "0.40 SOL",
         rows: [
-          { label: "Settled", meta: "Today · seconds", value: "Done" },
+          { label: "Settled", meta: "Today, in seconds", value: "Done" },
           { label: "Network fee", meta: "Paid in USD", value: "$0.01" },
         ],
       },
     ],
   },
   {
-    id: "investing",
-    title: "Explore stocks and ETFs.",
-    body: "Put dollars into companies and funds without leaving the account your money already lives in.",
-    note: "Capital at risk. Investing is not available in every country.",
-    cta: { label: "Start investing", href: "/waitlist" },
+    id: "assistant",
+    title: "Ask, and PRYDD answers.",
+    body: "Your account speaks plain language. Ask where the money went, what is safe to spend, what to set aside before the weekend.",
+    cta: { label: "Meet the assistant", href: "/waitlist" },
     backdrop: {},
     variants: [
       {
-        id: "stocks",
-        label: "Stocks",
-        caption: "Your holdings",
-        amount: "$5,214.00",
+        id: "spending",
+        label: "Spending",
+        caption: "Where did my money go?",
+        amount: "$612.40",
         rows: [
-          { label: "Apple", meta: "12 shares", value: "$2,640.00" },
-          { label: "Nvidia", meta: "9 shares", value: "$2,574.00" },
-        ],
-      },
-      {
-        id: "etfs",
-        label: "ETFs",
-        caption: "Your funds",
-        amount: "$1,980.00",
-        rows: [
-          { label: "World equity", meta: "Accumulating", value: "$1,320.00" },
-          { label: "Short treasuries", meta: "Distributing", value: "$660.00" },
-        ],
-      },
-      {
-        id: "watchlist",
-        label: "Watchlist",
-        caption: "Following",
-        amount: "8 companies",
-        rows: [
-          { label: "Visa", meta: "Added in March", value: "Watching" },
-          { label: "Shopify", meta: "Added in May", value: "Watching" },
+          { label: "Eating out", meta: "14 payments", value: "$268.10" },
+          { label: "Transport", meta: "9 payments", value: "$121.75" },
         ],
       },
     ],
   },
 ]
 
-const span = 1 / chapters.length
-// Half-width of the crossfade straddling each chapter boundary, so the outgoing
-// chapter is still fading while the incoming one is already arriving.
-const overlap = span * 0.28
+// Content holds at full opacity across the section and clears only in the last
+// tenth at either edge, so two neighbouring sections never read as present at
+// the same time.
+const REVEAL_TIMES = [0.061, 0.128, 0.878, 0.944]
+const REVEAL_VALUES = [0, 1, 1, 0]
 
-const band = (index: number) => ({ start: index * span, end: (index + 1) * span })
-
-function chapterFade(index: number) {
-  const { start, end } = band(index)
-  if (index === 0) return { times: [0, end - overlap, end + overlap], values: [1, 1, 0] }
-  if (index === chapters.length - 1) return { times: [start - overlap, start + overlap, 1], values: [0, 1, 1] }
-  return {
-    times: [start - overlap, start + overlap, end - overlap, end + overlap],
-    values: [0, 1, 1, 0],
-  }
-}
+// The backdrop drifts into place while the section is arriving and sits still
+// once its top reaches the viewport. The strip it leaves uncovered stays below
+// the fold for the whole of that travel.
+const PARALLAX_TIMES = [0, 0.5, 1]
+const PARALLAX_VALUES = ["-16.667%", "0%", "0%"]
 
 function ProductCard({ variant }: { variant: Variant }) {
   return (
@@ -221,43 +156,36 @@ function ProductCard({ variant }: { variant: Variant }) {
   )
 }
 
-function ChapterCopy({ chapter, children }: { chapter: Chapter; children?: ReactNode }) {
+function ChapterBody({ chapter }: { chapter: Chapter }) {
+  const [active, setActive] = useState(chapter.variants[0].id)
+  const variant = chapter.variants.find((entry) => entry.id === active) ?? chapter.variants[0]
   return (
-    <>
-      <h2>{chapter.title}</h2>
-      <p>{chapter.body}</p>
-      {chapter.note && <span className={styles.note}>{chapter.note}</span>}
-      <a className={styles.chapterCta} href={chapter.cta.href}>
-        {chapter.cta.label}
-        <ArrowUpRight size={16} aria-hidden="true" />
-      </a>
-      {children}
-    </>
-  )
-}
-
-function VariantPills({
-  chapter,
-  active,
-  onSelect,
-}: {
-  chapter: Chapter
-  active: string
-  onSelect: (id: string) => void
-}) {
-  return (
-    <div className={styles.pills} role="group" aria-label={chapter.title}>
-      {chapter.variants.map((variant) => (
-        <button
-          key={variant.id}
-          type="button"
-          aria-pressed={variant.id === active}
-          onClick={() => onSelect(variant.id)}
-          data-active={variant.id === active || undefined}
-        >
-          {variant.label}
-        </button>
-      ))}
+    <div className={styles.chapterInner}>
+      <div className={styles.copy}>
+        <h2>{chapter.title}</h2>
+        <p>{chapter.body}</p>
+        {chapter.note && <span className={styles.note}>{chapter.note}</span>}
+        <a className={styles.chapterCta} href={chapter.cta.href}>
+          {chapter.cta.label}
+          <ArrowUpRight size={16} aria-hidden="true" />
+        </a>
+      </div>
+      <div className={styles.cardSlot}><ProductCard variant={variant} /></div>
+      {chapter.variants.length > 1 ? (
+        <div className={styles.pills} role="group" aria-label={chapter.title}>
+          {chapter.variants.map((entry) => (
+            <button
+              key={entry.id}
+              type="button"
+              aria-pressed={entry.id === active}
+              onClick={() => setActive(entry.id)}
+              data-active={entry.id === active || undefined}
+            >
+              {entry.label}
+            </button>
+          ))}
+        </div>
+      ) : <span />}
     </div>
   )
 }
@@ -275,134 +203,141 @@ function Backdrop({ chapter }: { chapter: Chapter }) {
   )
 }
 
-function PinnedSequence() {
+function useSectionMotion(section: RefObject<HTMLElement | null>) {
+  const { scrollYProgress } = useScroll({ target: section, offset: ["start end", "end start"] })
+  const opacity = useTransform(scrollYProgress, REVEAL_TIMES, REVEAL_VALUES)
+  const backdropY = useTransform(scrollYProgress, PARALLAX_TIMES, PARALLAX_VALUES)
+  return { opacity, backdropY }
+}
+
+/** The frame grows out of the contained panel above it, mirroring the hero
+ *  globe's contraction into a card. */
+function OpeningChapter({ chapter, reduced }: { chapter: Chapter; reduced: boolean }) {
   const section = useRef<HTMLElement>(null)
-  const [activeChapter, setActiveChapter] = useState(0)
-  const [variants, setVariants] = useState(() => chapters.map((chapter) => chapter.variants[0].id))
-  const { scrollYProgress: progress } = useScroll({ target: section, offset: ["start start", "end end"] })
+  const { scrollYProgress } = useScroll({ target: section, offset: ["start start", "end end"] })
+  const closing = useTransform(scrollYProgress, [0, 0.42], [1, 0])
 
-  // The frame grows out of the contained panel above it, mirroring the hero
-  // globe's contraction into a card.
-  const closing = useTransform(progress, [0, 0.11], [1, 0])
-
-  useMotionValueEvent(progress, "change", (value) => {
-    const next = Math.min(chapters.length - 1, Math.max(0, Math.floor(value * chapters.length)))
-    setActiveChapter((current) => (current === next ? current : next))
-  })
+  if (reduced) {
+    return (
+      <section id="prydd-life" className={styles.chapterSection} data-photo>
+        <div className={styles.backdropLayer}><Backdrop chapter={chapter} /></div>
+        <ChapterBody chapter={chapter} />
+      </section>
+    )
+  }
 
   return (
-    <section
-      ref={section}
-      id="prydd-life"
-      className={styles.sequence}
-      aria-label="Savings, the assistant, crypto and investing inside one account"
-    >
-      <div className={styles.sticky}>
+    <section ref={section} id="prydd-life" className={styles.openingSection}>
+      <div className={styles.openingSticky}>
         <motion.div
           className={styles.stage}
+          data-photo
           style={{ "--closing": closing } as CSSProperties}
         >
-          {chapters.map((chapter, index) => {
-            const fade = chapterFade(index)
-            const live = index === activeChapter
-            return (
-              <ChapterLayer
-                key={chapter.id}
-                chapter={chapter}
-                index={index}
-                progress={progress}
-                fade={fade}
-                live={live}
-                variantId={variants[index]}
-                onSelect={(id) => setVariants((current) => current.map((value, slot) => (slot === index ? id : value)))}
-              />
-            )
-          })}
-          <div className={styles.rail} aria-hidden="true">
-            {chapters.map((chapter, index) => (
-              <span key={chapter.id} data-active={index === activeChapter || undefined} />
-            ))}
-          </div>
-          <p className={styles.illustrative}>Illustrative product views and amounts.</p>
+          <div className={styles.backdropLayer}><Backdrop chapter={chapter} /></div>
+          <ChapterBody chapter={chapter} />
         </motion.div>
       </div>
     </section>
   )
 }
 
-function ChapterLayer({
-  chapter,
-  index,
-  progress,
-  fade,
-  live,
-  variantId,
-  onSelect,
-}: {
-  chapter: Chapter
-  index: number
-  progress: ReturnType<typeof useScroll>["scrollYProgress"]
-  fade: { times: number[]; values: number[] }
-  live: boolean
-  variantId: string
-  onSelect: (id: string) => void
-}) {
-  const opacity = useTransform(progress, fade.times, fade.values)
-  const { start, end } = band(index)
-  const copyDrift = useTransform(progress, [start, end], [26, -26])
-  const cardDrift = useTransform(progress, [start, end], [-16, 16])
-  const variant = chapter.variants.find((entry) => entry.id === variantId) ?? chapter.variants[0]
+function ScrollChapter({ chapter, reduced }: { chapter: Chapter; reduced: boolean }) {
+  const section = useRef<HTMLElement>(null)
+  const { opacity, backdropY } = useSectionMotion(section)
+  const photo = chapter.backdrop.image ? true : undefined
+
+  if (reduced) {
+    return (
+      <section className={styles.chapterSection} data-photo={photo}>
+        <div className={styles.backdropLayer}><Backdrop chapter={chapter} /></div>
+        <ChapterBody chapter={chapter} />
+      </section>
+    )
+  }
 
   return (
-    <motion.div
-      className={styles.chapter}
-      data-photo={chapter.backdrop.image ? true : undefined}
-      style={{ opacity }}
-      aria-hidden={!live}
-      inert={!live}
-    >
-      <Backdrop chapter={chapter} />
-      <div className={styles.chapterInner}>
-        <motion.div className={styles.copy} style={{ y: copyDrift }}>
-          <ChapterCopy chapter={chapter} />
-        </motion.div>
-        <motion.div className={styles.cardSlot} style={{ y: cardDrift }}>
-          <ProductCard variant={variant} />
-        </motion.div>
-        <VariantPills chapter={chapter} active={variantId} onSelect={onSelect} />
-      </div>
-    </motion.div>
+    <section ref={section} className={styles.chapterSection} data-photo={photo}>
+      <motion.div className={styles.backdropLayer} style={{ y: backdropY }}>
+        <Backdrop chapter={chapter} />
+      </motion.div>
+      <motion.div className={styles.revealed} style={{ opacity }}>
+        <ChapterBody chapter={chapter} />
+      </motion.div>
+    </section>
   )
 }
 
-function StackedSequence() {
-  const [variants, setVariants] = useState(() => chapters.map((chapter) => chapter.variants[0].id))
+function SafeSpaceSection({ reduced }: { reduced: boolean }) {
+  const section = useRef<HTMLElement>(null)
+  const { opacity } = useSectionMotion(section)
+  const body = (
+    <div className={styles.safeInner}>
+      <div className={styles.safeCopy}>
+        <h2>Your money&rsquo;s safe space.</h2>
+        <p>
+          Sign in with a passkey on your phone. No seed phrase to memorise, no password to leak.
+          Lose the phone and recovery is part of the product, not a support ticket.
+        </p>
+        <a className={styles.safeCta} href="/waitlist">
+          Learn more
+          <ArrowUpRight size={16} aria-hidden="true" />
+        </a>
+      </div>
+      <div className={styles.shieldStage} aria-hidden="true">
+        <span className={styles.shield}>
+          <span className={styles.shieldMark} />
+          <span className={styles.shieldSheen} />
+        </span>
+      </div>
+    </div>
+  )
+
+  if (reduced) return <section className={styles.safeSection}>{body}</section>
   return (
-    <section className={styles.stacked} aria-label="Savings, the assistant, crypto and investing inside one account">
-      {chapters.map((chapter, index) => {
-        const variant = chapter.variants.find((entry) => entry.id === variants[index]) ?? chapter.variants[0]
-        return (
-          <div key={chapter.id} className={styles.stackedChapter} data-photo={chapter.backdrop.image ? true : undefined}>
-            <Backdrop chapter={chapter} />
-            <div className={styles.chapterInner}>
-              <div className={styles.copy}><ChapterCopy chapter={chapter} /></div>
-              <div className={styles.cardSlot}><ProductCard variant={variant} /></div>
-              <VariantPills
-                chapter={chapter}
-                active={variants[index]}
-                onSelect={(id) => setVariants((current) => current.map((value, slot) => (slot === index ? id : value)))}
-              />
-            </div>
-          </div>
-        )
-      })}
-      <p className={styles.illustrative} data-stacked="true">Illustrative product views and amounts.</p>
+    <section ref={section} className={styles.safeSection}>
+      <motion.div className={styles.revealed} style={{ opacity }}>{body}</motion.div>
+    </section>
+  )
+}
+
+const holdings = ["Apple", "Nvidia", "Visa", "Shopify", "Zoom"]
+
+function InvestingSection({ reduced }: { reduced: boolean }) {
+  const section = useRef<HTMLElement>(null)
+  const { opacity } = useSectionMotion(section)
+  const body = (
+    <div className={styles.investingInner}>
+      <div className={styles.copy}>
+        <h2>Explore stocks and ETFs.</h2>
+        <p>Put dollars into companies and funds without leaving the account your money already lives in.</p>
+        <span className={styles.note}>Capital at risk. Investing is not available in every country.</span>
+        <a className={styles.chapterCta} href="/waitlist">
+          Try it out
+          <ArrowUpRight size={16} aria-hidden="true" />
+        </a>
+      </div>
+      <div className={styles.discRow} aria-hidden="true">
+        {holdings.map((name, index) => (
+          <span key={name} className={styles.disc} style={{ "--index": index } as CSSProperties}>
+            <span className={styles.discFace}>{name.slice(0, 2).toUpperCase()}</span>
+            <span className={styles.discFace} data-reverse />
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+
+  if (reduced) return <section className={styles.investingSection}>{body}</section>
+  return (
+    <section ref={section} className={styles.investingSection}>
+      <motion.div className={styles.revealed} style={{ opacity }}>{body}</motion.div>
     </section>
   )
 }
 
 export function LifeSequence() {
-  const [reduced, setReduced] = useState<boolean | null>(null)
+  const [reduced, setReduced] = useState(false)
 
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce), (max-height: 600px)")
@@ -412,6 +347,13 @@ export function LifeSequence() {
     return () => query.removeEventListener("change", update)
   }, [])
 
-  if (reduced === null) return <StackedSequence />
-  return reduced ? <StackedSequence /> : <PinnedSequence />
+  const [opening, ...rest] = chapters
+  return (
+    <div className={styles.run}>
+      <OpeningChapter chapter={opening} reduced={reduced} />
+      {rest.map((chapter) => <ScrollChapter key={chapter.id} chapter={chapter} reduced={reduced} />)}
+      <SafeSpaceSection reduced={reduced} />
+      <InvestingSection reduced={reduced} />
+    </div>
+  )
 }
