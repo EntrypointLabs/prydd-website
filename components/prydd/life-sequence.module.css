@@ -1,0 +1,292 @@
+.sequence {
+  position: relative;
+  height: 460svh;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 600px;
+}
+
+.stage {
+  --closing: 0;
+  --open-y: calc(var(--closing) * 9svh);
+  --open-x: calc(var(--closing) * max(32px, (100vw - 1312px) / 2));
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #050505;
+  color: #fff;
+  font-family: var(--font-prydd-body), Arial, sans-serif;
+  clip-path: inset(var(--open-y) var(--open-x) round calc(var(--closing) * 24px));
+  will-change: clip-path;
+}
+
+.chapter {
+  position: absolute;
+  inset: 0;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: #050505;
+}
+
+[data-photo] > .backdrop {
+  background-color: #1a2127;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Photographic chapters carry the same scrim weight as the dark panel the
+   sequence grows out of, so the opening move reads as one surface. */
+[data-photo] > .backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, #000000d9 0%, #0000005c 38%, #00000040 62%, #000000c2 100%),
+    linear-gradient(90deg, #00000059, #0000001a);
+}
+
+.chapterInner {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  justify-items: center;
+  height: 100%;
+  padding:
+    calc(var(--prydd-header-height, 88px) + 40px + var(--open-y, 0px))
+    calc(32px + var(--open-x, 0px))
+    calc(58px + var(--open-y, 0px));
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 640px;
+  text-align: center;
+}
+
+.copy h2 {
+  margin: 0;
+  font-family: var(--font-prydd), sans-serif;
+  font-size: clamp(32px, 3.9vw, 60px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.032em;
+  text-wrap: balance;
+}
+
+.copy p {
+  margin: 20px 0 0;
+  max-width: 520px;
+  font-size: clamp(14px, 1.05vw, 17px);
+  line-height: 1.4;
+  letter-spacing: -.02em;
+  color: #ffffffd1;
+  text-wrap: pretty;
+}
+
+.note {
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: -.005em;
+  color: #ffffff9e;
+}
+
+.chapterCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  margin-top: 28px;
+  padding: 13px 24px;
+  border-radius: 1000px;
+  background: #fff;
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -.02em;
+  text-decoration: none;
+  transition: transform 150ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.chapterCta:active { transform: translateY(1px); }
+.stage a:focus-visible, .stage button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+
+.cardSlot {
+  display: grid;
+  place-items: center;
+  align-self: center;
+  width: 100%;
+}
+
+.card {
+  width: min(330px, 100%);
+  padding: 22px;
+  border: 1px solid #ffffff2e;
+  border-radius: 16px;
+  background: #ffffff14;
+}
+
+/* Frosting is what keeps the card legible over a photograph; on the flat
+   chapters there is nothing behind it to blur, so it only costs compositing. */
+[data-photo] .card {
+  background: #ffffff1a;
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+}
+
+.cardCaption {
+  display: block;
+  font-size: 11px;
+  letter-spacing: -.005em;
+  color: #ffffffa8;
+}
+
+.cardAmount {
+  display: block;
+  margin-top: 7px;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -.045em;
+}
+
+.cardRows {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cardRows li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-top: 1px solid #ffffff1f;
+  font-size: 12px;
+  letter-spacing: -.015em;
+}
+
+.cardRows li > span { min-width: 0; }
+.cardRows li small { display: block; margin-top: 3px; font-size: 10px; color: #ffffff8f; }
+.cardRows li > b { margin-left: auto; font-weight: 500; white-space: nowrap; }
+
+.cardActions {
+  display: flex;
+  gap: 9px;
+  margin-top: 18px;
+  padding-top: 17px;
+  border-top: 1px solid #ffffff1f;
+}
+
+.cardActions > span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff1f;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pills button {
+  min-height: 44px;
+  padding: 12px 20px;
+  border: 1px solid #ffffff38;
+  border-radius: 1000px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -.02em;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.pills button[data-active] { background: #fff; color: #000; border-color: #fff; }
+.pills button:not([data-active]):hover { background: #ffffff1f; }
+
+.rail {
+  position: absolute;
+  right: calc(26px + var(--open-x, 0px));
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  transform: translateY(-50%);
+}
+
+.rail > span {
+  width: 2px;
+  height: 22px;
+  border-radius: 2px;
+  background: #ffffff38;
+  transition: background-color 300ms ease;
+}
+
+.rail > span[data-active] { background: #fff; }
+
+.illustrative {
+  position: absolute;
+  inset-inline: 0;
+  bottom: calc(21px + var(--open-y, 0px));
+  margin: 0;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: .035em;
+  color: #ffffff9e;
+}
+
+.stacked { background: #050505; }
+.stacked .illustrative[data-stacked] { position: static; padding: 16px 0 24px; }
+
+.stackedChapter {
+  position: relative;
+  min-height: 680px;
+  color: #fff;
+  font-family: var(--font-prydd-body), Arial, sans-serif;
+}
+
+.stackedChapter .chapterInner { padding-block: 72px; gap: 44px; grid-template-rows: auto auto auto; }
+
+@media (max-width: 1024px) {
+  .rail { right: 16px; }
+  .chapterInner { padding-inline: calc(24px + var(--open-x, 0px)); }
+}
+
+@media (max-width: 760px) {
+  .stage { --open-x: calc(var(--closing) * 16px); --open-y: calc(var(--closing) * 5svh); }
+  .sequence { height: 420svh; }
+  .rail { display: none; }
+  .chapterInner {
+    padding:
+      calc(var(--prydd-header-height, 88px) + 24px + var(--open-y, 0px))
+      calc(20px + var(--open-x, 0px))
+      calc(52px + var(--open-y, 0px));
+  }
+  .copy p { font-size: 14px; }
+  .chapterCta { margin-top: 22px; }
+  .card { width: min(300px, 100%); padding: 18px; }
+  .cardAmount { font-size: 28px; }
+  .pills button { padding: 12px 16px; font-size: 12px; }
+  .stackedChapter { min-height: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapterCta, .pills button, .rail > span { transition: none; }
+}
