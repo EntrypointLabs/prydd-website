@@ -129,7 +129,7 @@ const jsonLd = {
       alternateName: "PRYDD",
       url: SITE_URL,
       logo: `${SITE_URL}/prydd/mark.svg`,
-      sameAs: ["https://x.com/pryddfinance"],
+      sameAs: ["https://x.com/pryddfinance", "https://entrypointlabs.xyz"],
     },
     {
       "@type": "WebSite",
