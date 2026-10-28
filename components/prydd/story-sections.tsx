@@ -1,6 +1,7 @@
 import type { ReactNode } from "react"
 import { ArrowDown, ArrowDownLeft, ArrowRight, ArrowUpRight, Check, ChevronDown, Plus } from "lucide-react"
 import { LifeSequence } from "./life-sequence"
+import { SiteFooter } from "./site-footer"
 import styles from "./story-sections.module.css"
 
 function Photo({ tile, className = "" }: { tile: number; className?: string }) {
@@ -115,16 +116,7 @@ export function ClosingInvitation() {
   return (
     <div className={styles.closingBody}>
       <section className={styles.invitation} aria-labelledby="prydd-invitation-heading"><div className={styles.invitationInner}><div className={styles.invitationCopy}><h2 id="prydd-invitation-heading">Everyday global money starts here.</h2></div><div className={styles.invitationActions}><a href="/waitlist" className={styles.invitationLink}>Join early access<ArrowUpRight size={16} aria-hidden="true" /></a></div></div></section>
-      <footer className={styles.footerShell}>
-        <div className={styles.footer}>
-          <span className={styles.footerBrand}><BrandSymbol />PRYDD</span>
-          <nav aria-label="PRYDD footer" className={styles.footerGroups}>
-            <div className={styles.footerGroup}><h2>Product</h2><a href="#prydd-funding">Add money</a><a href="#prydd-account">Your account</a><a href="#prydd-people">Send by username</a></div>
-            <div className={styles.footerGroup}><h2>Early access</h2><a href="/waitlist">Join early access</a></div>
-            <div className={styles.footerGroup}><h2>Legal</h2><a href="/legal/privacy-policy">Privacy policy</a><a href="/legal/terms-of-service">Terms of service</a></div>
-          </nav>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }
