@@ -1,7 +1,7 @@
 import type { ReactNode } from "react"
 
 import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
+import { SiteFooter } from "@/components/prydd/site-footer"
 
 export function LegalSection({ children }: { children: ReactNode }) {
   return (
@@ -36,7 +36,7 @@ export function LegalPage({
         </p>
         <div className="mt-10 space-y-6">{children}</div>
       </div>
-      <Footer />
+      <SiteFooter />
     </main>
   )
 }

@@ -1,0 +1,65 @@
+.footerShell { width: 100%; color: var(--prydd-footer-ink, #fff); background: var(--prydd-footer-bg, #000); font-family: var(--font-prydd-body), Arial, sans-serif; font-weight: 400; font-synthesis: none; padding-top: 46px; }
+.inner { width: 100%; max-width: 1440px; margin: 0 auto; padding-inline: 64px; display: flex; flex-direction: column; gap: 56px; }
+
+.top { display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; padding-block: 32px; }
+.brand { display: inline-flex; align-items: center; gap: 8px; color: inherit; font-family: var(--font-prydd), sans-serif; font-size: 24px; font-weight: 800; line-height: 1; letter-spacing: -.035em; text-decoration: none; }
+.brandSymbol { display: inline-block; flex: 0 0 24px; width: 24px; height: 24px; background: currentColor; mask: url("/prydd/mark.svg") center / contain no-repeat; -webkit-mask: url("/prydd/mark.svg") center / contain no-repeat; }
+
+.columns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; gap: 32px; flex: 0 1 895px; }
+.column { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.columnTitle { margin: 0; font-size: 16px; font-weight: 400; line-height: 21px; letter-spacing: -.02em; opacity: .6; }
+.linkList { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0 0 0 16px; list-style: none; border-left: 1px solid rgb(255 255 255 / .35); }
+.navLink { color: inherit; font-size: 16px; font-weight: 500; line-height: 21px; letter-spacing: -.02em; text-decoration: none; }
+
+.ctaTitle { margin: 0; font-size: 14px; font-weight: 500; line-height: 18px; letter-spacing: -.02em; opacity: .6; }
+.ctaList { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 36px; padding: 9px 16px; border: 1px solid transparent; border-radius: 1000px; font-size: 14px; font-weight: 500; line-height: 1.3; letter-spacing: -.02em; text-decoration: none; white-space: nowrap; }
+.ctaPrimary { background: var(--prydd-footer-ink, #fff); color: var(--prydd-footer-bg, #000); }
+.ctaSecondary { border-color: rgb(255 255 255 / .35); color: inherit; }
+
+.meta { display: flex; align-items: baseline; flex-wrap: wrap; gap: 24px; }
+
+.metaLabel { color: inherit; text-decoration: none; font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: -.01em; }
+.metaList { display: flex; flex-wrap: wrap; gap: 24px; margin: 0; padding: 0; list-style: none; }
+.metaLink { color: rgb(255 255 255 / .7); font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: -.01em; text-decoration: none; }
+
+.bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; padding-bottom: 32px; }
+.legal { display: flex; flex-direction: column; gap: 4px; }
+.year { font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: -.01em; }
+.yearLink { color: inherit; text-decoration: none; }
+.legalLinks { display: flex; flex-wrap: wrap; gap: 10px; }
+.legalLink { color: rgb(255 255 255 / .7); font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: -.01em; text-decoration: none; }
+
+.disclaimers { display: flex; flex-direction: column; gap: 16px; flex: 0 1 895px; }
+.disclaimersHeader { margin: 0; font-size: 14px; font-weight: 500; line-height: 18px; letter-spacing: -.02em; opacity: .5; }
+.disclaimersGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 32px; }
+.disclaimersList { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.disclaimersList li { display: flex; align-items: flex-start; gap: 12px; color: rgb(255 255 255 / .7); font-size: 12px; line-height: 16px; letter-spacing: -.01em; }
+.disclaimersList p { margin: 0; text-wrap: pretty; }
+.disclaimersList a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.num { flex: 0 0 auto; font-variant-numeric: tabular-nums; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.footerShell a:focus-visible { outline: 2px solid var(--prydd-footer-ink, #fff); outline-offset: 5px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .navLink:hover, .legalLink:hover, .metaLink:hover, .yearLink:hover, .disclaimersList a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .legalLink:hover, .metaLink:hover { color: var(--prydd-footer-ink, #fff); }
+  .ctaPrimary:hover { background: rgb(255 255 255 / .88); }
+  .ctaSecondary:hover { border-color: var(--prydd-footer-ink, #fff); }
+}
+
+@media (max-width: 991px) {
+  .top { flex-direction: column; }
+  .columns { flex-basis: auto; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .meta { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .metaList { gap: 8px 20px; }
+  .bottom { flex-direction: column-reverse; align-items: stretch; gap: 32px; }
+  .legal { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .disclaimers { flex-basis: auto; }
+  .disclaimersGrid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 767px) {
+  .inner { padding-inline: 24px; }
+}
