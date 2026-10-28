@@ -177,6 +177,7 @@ function ChapterBody({ chapter }: { chapter: Chapter }) {
             <button
               key={entry.id}
               type="button"
+              className={styles.variantPill}
               aria-pressed={entry.id === active}
               onClick={() => setActive(entry.id)}
               data-active={entry.id === active || undefined}

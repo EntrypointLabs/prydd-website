@@ -79,11 +79,9 @@
 .mark { display: inline-block; width: 36px; height: 37px; mask: url("/prydd/mark.svg") center / contain no-repeat; background: currentColor; }
 .howLink { font-size: 13px; grid-column: 3; grid-row: 1; justify-self: end; }
 .navCta, .heroCta { display: inline-flex; align-items: center; justify-content: center; gap: 12px; border-radius: 99px; font-weight: 650; }
-.navCta { grid-column: 3; grid-row: 1; padding: 10px 16px; font-size: 14px; font-weight: 500; background: var(--prydd-accent); color: var(--prydd-accent-ink); white-space: nowrap; }
-.header[data-on-hero="true"] .navCta { background: var(--hero-action); color: var(--hero-action-ink); }
-.heroCta { padding: 17px 27px; font-size: 15px; background: var(--hero-action); color: var(--hero-action-ink); min-height: 54px; }
-.navCta, .heroCta { transition: transform 150ms var(--ease-out), opacity 150ms ease; }
-.navCta:active, .heroCta:active { transform: translateY(1px); }
+.navCta { composes: pill filled from "./pill.module.css"; grid-column: 3; grid-row: 1; padding: 10px 16px; font-size: 14px; font-weight: 500; --pill-fill: var(--prydd-accent); color: var(--prydd-accent-ink); white-space: nowrap; }
+.header[data-on-hero="true"] .navCta { --pill-fill: var(--hero-action); color: var(--hero-action-ink); }
+.heroCta { composes: pill filled from "./pill.module.css"; padding: 17px 27px; font-size: 15px; --pill-fill: var(--hero-action); color: var(--hero-action-ink); min-height: 54px; }
 .sequence { height: 240svh; position: relative; }
 .sticky { position: sticky; top: 0; height: 100svh; min-height: 600px; overflow: hidden; }
 .sceneFill { position: absolute; inset: 0; background: var(--hero-bg); }
@@ -128,7 +126,6 @@
 .reducedProducts { padding: 95px 5vw 70px; }
 
 @media (hover: hover) and (pointer: fine) {
-  .heroCta:hover, .navCta:hover { transform: translateY(-2px); opacity: .9; }
   .howLink:hover { text-decoration: underline; text-underline-offset: 5px; }
 }
 
@@ -207,7 +204,3 @@
   .reducedHero .heroCta { min-height: 42px; padding: 11px 18px; font-size: 12px; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .heroCta, .navCta { transition: opacity 150ms ease; }
-  .heroCta:hover, .navCta:hover, .heroCta:active, .navCta:active { transform: none; }
-}

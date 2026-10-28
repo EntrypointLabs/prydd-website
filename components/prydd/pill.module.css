@@ -1,0 +1,66 @@
+/* A pill whose fill lives in a pseudo-element rather than on the element
+   itself, so hover and press resize the shape and never the label. Consumers
+   set --pill-fill / --pill-stroke instead of their own background or border. */
+.pill {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  border: 0;
+}
+
+.pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  transform: scale(1);
+  background-color: var(--pill-fill, transparent);
+  transition:
+    transform .28s cubic-bezier(.34, 1.56, .64, 1),
+    inset .28s cubic-bezier(.34, 1.56, .64, 1),
+    background-color .17s ease-out;
+}
+
+.outlined::before {
+  box-shadow: inset 0 0 0 1px var(--pill-stroke, currentColor);
+}
+
+/* The curve overshoots its target and settles back; that is what reads as lift
+   rather than a plain grow. */
+.filled:not(:disabled):not([aria-disabled="true"]):hover::before {
+  transform: scale(1.04);
+  background-color: var(--pill-fill-hover, var(--pill-fill, transparent));
+}
+
+/* An outlined pill pushes its edge outward instead of scaling, so the hairline
+   stays exactly one pixel wide while the shape grows. */
+.outlined:not(:disabled):not([aria-disabled="true"]):hover::before {
+  inset: -2%;
+  box-shadow: inset 0 0 0 1px var(--pill-stroke-hover, var(--pill-stroke, currentColor));
+}
+
+/* Pressing drops the spring: going down is immediate and damped, and only the
+   release springs back. A bounce on the way down feels slow. */
+.filled:not(:disabled):not([aria-disabled="true"]):active::before {
+  transition-duration: .17s;
+  transition-timing-function: ease-out;
+  transform: scale(.96);
+}
+
+.outlined:not(:disabled):not([aria-disabled="true"]):active::before {
+  transition-duration: .17s;
+  transition-timing-function: ease-out;
+  inset: 2%;
+}
+
+/* The hover and press rules above are far more specific, so holding the shape
+   still needs !important. Colour feedback is kept: it carries no motion. */
+@media (prefers-reduced-motion: reduce) {
+  .pill::before {
+    transition: background-color .17s ease-out !important;
+    transform: none !important;
+    inset: 0 !important;
+  }
+}
