@@ -1,5 +1,6 @@
 import type { ReactNode } from "react"
 import { ArrowDown, ArrowDownLeft, ArrowRight, ArrowUpRight, Check, ChevronDown, Plus } from "lucide-react"
+import { LifeSequence } from "./life-sequence"
 import { SiteFooter } from "./site-footer"
 import styles from "./story-sections.module.css"
 
@@ -106,7 +107,7 @@ export function StorySections() {
         <FeatureChapter id="prydd-people" eyebrow="Payments by username" title="A username connects a payment to a person." description="Move dollars to another PRYDD user with their username." bullets={["Send dollars to another PRYDD user.", "Identify the recipient by username.", "See the payment in readable activity."]} action={{ href: "#prydd-activity", label: "Follow the payment" }}><PeopleScene /></FeatureChapter>
         <FeatureChapter id="prydd-activity" eyebrow="Account activity" title="The payment and your balance tell the same story." description="In this example, a $25 payment leaves $225 in the account." bullets={["Money added: $250.", "Sent to @maya: $25.", "Remaining balance: $225."]} action={{ href: "#prydd-faq", label: "Find answers" }} flip><ResultScene /></FeatureChapter>
       </div>
-      <HumanContext /><PracticalOverview /><QuestionsChapter />
+      <HumanContext /><PracticalOverview /><LifeSequence /><QuestionsChapter />
     </div>
   )
 }
