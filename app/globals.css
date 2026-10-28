@@ -119,6 +119,14 @@
     font-feature-settings: "ss01", "cv11";
   }
 
+  /* Safari tints the iOS status bar from theme-color on first paint, then from
+     the document canvas once the page has been scrolled. Every page paints its
+     own background over this, so only the canvas and the overscroll area read
+     it. */
+  html {
+    background-color: #17191d;
+  }
+
   [data-scroll-container] {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
