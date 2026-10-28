@@ -28,8 +28,8 @@
   --prydd-panel-shadow: 0 0 0 1px #0000000a, 0 8px 16px -4px #0000000d, 0 3px 6px -1.5px #0000000a;
   --prydd-card-shadow: 0 8px 30px #0000000f;
   --prydd-float-shadow: 0 1px 2px #00000012;
-  --hero-bg: #fff;
-  --hero-ink: #000;
+  --hero-bg: #17191d;
+  --hero-ink: #fafaf7;
   --hero-action: #2457f5;
   --hero-action-ink: #fff;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -44,13 +44,6 @@
 }
 
 :global(html):has(.page) { position: relative; }
-
-@media (prefers-color-scheme: dark) {
-  .page {
-    --hero-bg: #17191d;
-    --hero-ink: #fafaf7;
-  }
-}
 
 .skip {
   position: fixed;
