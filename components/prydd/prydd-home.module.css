@@ -78,10 +78,10 @@
 .brand { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-prydd), sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -.035em; line-height: 1; }
 .mark { display: inline-block; width: 36px; height: 37px; mask: url("/prydd/mark.svg") center / contain no-repeat; background: currentColor; }
 .howLink { font-size: 13px; grid-column: 3; grid-row: 1; justify-self: end; }
-.navCta, .heroCta { display: inline-flex; align-items: center; justify-content: center; gap: 12px; border-radius: 99px; font-weight: 650; }
-.navCta { composes: pill filled from "./pill.module.css"; grid-column: 3; grid-row: 1; padding: 10px 16px; font-size: 14px; font-weight: 500; --pill-fill: var(--prydd-accent); color: var(--prydd-accent-ink); white-space: nowrap; }
+.navCta, .heroCta { font-weight: 650; }
+.navCta { composes: pill sm filled from "./pill.module.css"; grid-column: 3; grid-row: 1; font-weight: 500; --pill-fill: var(--prydd-accent); color: var(--prydd-accent-ink); }
 .header[data-on-hero="true"] .navCta { --pill-fill: var(--hero-action); color: var(--hero-action-ink); }
-.heroCta { composes: pill filled from "./pill.module.css"; padding: 17px 27px; font-size: 15px; --pill-fill: var(--hero-action); color: var(--hero-action-ink); min-height: 54px; }
+.heroCta { composes: pill lg filled from "./pill.module.css"; --pill-fill: var(--hero-action); color: var(--hero-action-ink); }
 .sequence { height: 240svh; position: relative; }
 .sticky { position: sticky; top: 0; height: 100svh; min-height: 600px; overflow: hidden; }
 .sceneFill { position: absolute; inset: 0; background: var(--hero-bg); }
@@ -142,14 +142,14 @@
   .chapterNav { font-size: 10px; gap: 19px; }
   .brand { font-size: 23px; gap: 5px; }
   .mark { width: 31px; height: 32px; }
-  .navCta { font-size: 10px; padding: 11px 13px; gap: 6px; }
+  .navCta { --btn-height: 32px; --btn-pad-h: 13px; --btn-font: 11px; --btn-gap: 5px; --btn-icon: 12px; }
   .howLink { font-size: 12px; }
   .sequence { height: 250svh; }
   .sticky { min-height: 610px; }
   .heroCopy { padding: 65px 20px 80px; }
   .heroCopy h1 { font-size: clamp(27px, 7.9vw, 59px); line-height: .98; letter-spacing: -.063em; }
   .heroCopy p { font-size: 12px; line-height: 1.6; max-width: min(74vw, 270px); margin: 22px 0 23px; }
-  .heroCta { min-height: 49px; font-size: 13px; padding: 15px 22px; }
+  .heroCta { --btn-height: 44px; --btn-pad-h: 18px; --btn-font: 14px; }
   .scrollHint { bottom: 99px; font-size: 8px; }
   .products { padding: 85px 20px 90px; }
   .productHeading { margin-bottom: 60px; }
@@ -201,6 +201,6 @@
   .reducedHero .heroCopy { inset: 64px 0 86px; height: auto; padding: 0 18px; }
   .reducedHero .heroCopy h1 { font-size: clamp(22px, 5svh, 30px); }
   .reducedHero .heroCopy p { font-size: 11px; line-height: 1.35; max-width: 240px; margin: 12px 0; }
-  .reducedHero .heroCta { min-height: 42px; padding: 11px 18px; font-size: 12px; }
+  .reducedHero .heroCta { --btn-height: 40px; --btn-pad-h: 16px; --btn-font: 13px; }
 }
 

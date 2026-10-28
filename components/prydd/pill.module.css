@@ -1,12 +1,42 @@
 /* A pill whose fill lives in a pseudo-element rather than on the element
    itself, so hover and press resize the shape and never the label. Consumers
    set --pill-fill / --pill-stroke instead of their own background or border. */
+/* Three sizes, each a block of tokens. Height is declared rather than left to
+   fall out of padding and line-height, so every pill lands on the scale no
+   matter what it contains. */
+.sm { --btn-height: 36px; --btn-pad-h: 16px; --btn-font: 14px; --btn-line: 18px; --btn-gap: 6px; --btn-icon: 14px; }
+.md { --btn-height: 40px; --btn-pad-h: 18px; --btn-font: 14px; --btn-line: 18px; --btn-gap: 8px; --btn-icon: 15px; }
+.lg { --btn-height: 48px; --btn-pad-h: 20px; --btn-font: 16px; --btn-line: 18px; --btn-gap: 9px; --btn-icon: 16px; }
+
+/* Only the workhorse size steps up on wide viewports. */
+@media (min-width: 1024px) {
+  .md { --btn-height: 44px; --btn-pad-h: 20px; --btn-font: 15px; }
+}
+
 .pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap, 8px);
+  height: var(--btn-height, 40px);
+  padding: 0 var(--btn-pad-h, 18px);
+  border: 0;
+  border-radius: 1000px;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--btn-font, 14px);
+  line-height: var(--btn-line, 18px);
+  letter-spacing: -.02em;
+  white-space: nowrap;
+  text-decoration: none;
   position: relative;
   isolation: isolate;
-  background: transparent;
-  border: 0;
 }
+
+.pill svg { flex: none; width: var(--btn-icon, 15px); height: var(--btn-icon, 15px); }
+
+/* A label-less pill is a circle of the same height. */
+.iconOnly { width: var(--btn-height, 40px); padding: 0; }
 
 .pill::before {
   content: "";

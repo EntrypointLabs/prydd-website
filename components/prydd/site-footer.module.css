@@ -13,9 +13,9 @@
 
 .ctaTitle { margin: 0; font-size: 14px; font-weight: 500; line-height: 18px; letter-spacing: -.02em; opacity: .6; }
 .ctaList { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
-.cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 36px; padding: 10px 17px; border-radius: 1000px; font-size: 14px; font-weight: 500; line-height: 1.3; letter-spacing: -.02em; text-decoration: none; white-space: nowrap; }
-.ctaPrimary { composes: pill filled from "./pill.module.css"; --pill-fill: var(--prydd-footer-ink, #fff); --pill-fill-hover: rgb(255 255 255 / .88); color: var(--prydd-footer-bg, #000); }
-.ctaSecondary { composes: pill outlined from "./pill.module.css"; --pill-stroke: rgb(255 255 255 / .35); --pill-stroke-hover: var(--prydd-footer-ink, #fff); color: inherit; }
+.cta { font-weight: 500; }
+.ctaPrimary { composes: pill sm filled from "./pill.module.css"; --pill-fill: var(--prydd-footer-ink, #fff); --pill-fill-hover: rgb(255 255 255 / .88); color: var(--prydd-footer-bg, #000); }
+.ctaSecondary { composes: pill sm outlined from "./pill.module.css"; --pill-stroke: rgb(255 255 255 / .35); --pill-stroke-hover: var(--prydd-footer-ink, #fff); color: inherit; }
 
 .meta { display: flex; align-items: baseline; flex-wrap: wrap; gap: 24px; }
 
