@@ -1,5 +1,13 @@
 {
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["YCKKUWB4WD.xyz.entrypointlabs.prydd"],
+        "components": []
+      }
+    ]
+  },
   "webcredentials": {
-    "apps": ["<APPLE_TEAM_ID>.com.giftedborg.xend"]
+    "apps": ["YCKKUWB4WD.xyz.entrypointlabs.prydd"]
   }
 }
