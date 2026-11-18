@@ -116,6 +116,9 @@ importers:
       cmdk:
         specifier: 1.0.4
         version: 1.0.4(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      country-to-currency:
+        specifier: 3.0.1
+        version: 3.0.1
       date-fns:
         specifier: 4.1.0
         version: 4.1.0
@@ -1573,6 +1576,9 @@ packages:
   consola@3.4.2:
     resolution: {integrity: sha512-5IKcdX0nnYavi6G7TtOhwkYzyjfJlatbjMjuLSfE2kYT5pMDOilZ4OvMhi637CcDICTmz3wARPoyhqyX1Y+XvA==}
     engines: {node: ^14.18.0 || >=16.10.0}
+
+  country-to-currency@3.0.1:
+    resolution: {integrity: sha512-FAo2ga8296d0Ra6vj9TB4Kax36AmqrGEc0aoLflCx5ijMtifNwA8lCqQsFfTLP2lRVKHWh/DedSpqI6v9VHyjw==}
 
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
@@ -3609,6 +3615,8 @@ snapshots:
   confbox@0.2.4: {}
 
   consola@3.4.2: {}
+
+  country-to-currency@3.0.1: {}
 
   csstype@3.2.3: {}
 
