@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import { PryddWordmark } from "@/components/prydd-wordmark"
 import styles from "./site-footer.module.css"
 
 type FooterLink = { label: string; href: string; external?: boolean }
@@ -135,8 +136,7 @@ export function SiteFooter() {
       <div className={styles.inner}>
         <div className={styles.top}>
           <a className={styles.brand} href="/" aria-label="PRYDD home">
-            <span className={styles.brandSymbol} aria-hidden="true" />
-            PRYDD
+            <PryddWordmark variant="footer" />
           </a>
 
           <nav className={styles.columns} aria-label="Footer">

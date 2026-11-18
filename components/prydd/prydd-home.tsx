@@ -5,6 +5,7 @@ import { motion, useMotionValue, useMotionValueEvent, useScroll, useTransform } 
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, Plus } from "lucide-react"
 import { PhotoGlobe, globeProjectionDiameter } from "./photo-globe"
 import { photoPosition } from "./photo-atlas"
+import { PryddWordmark } from "@/components/prydd-wordmark"
 import { StorySections, ClosingInvitation } from "./story-sections"
 import { useHeroHandoff } from "./use-hero-handoff"
 import styles from "./prydd-home.module.css"
@@ -19,7 +20,7 @@ const chapters = [
 ] as const
 
 function Brand() {
-  return <span className={styles.brand}><span className={styles.mark} aria-hidden="true" />PRYDD</span>
+  return <PryddWordmark variant="header" />
 }
 
 function Avatar({ cell = 0 }: { cell?: number }) {

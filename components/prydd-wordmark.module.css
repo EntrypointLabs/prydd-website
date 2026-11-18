@@ -1,0 +1,39 @@
+/* One lockup. The homepage resets font-feature-settings to normal, which drops
+   Montserrat ss01 (the alternate Y the waitlist shows). Set the features here
+   so every logo matches the waitlist, and only currentColor changes. */
+.lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  font-family: var(--font-prydd), sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  font-feature-settings: "ss01", "cv11";
+  font-synthesis: none;
+}
+
+.mark {
+  display: block;
+  flex: none;
+  width: 30px;
+  background: currentColor;
+  aspect-ratio: 208 / 214;
+  height: auto;
+  -webkit-mask: url("/prydd/mark.svg") center / contain no-repeat;
+  mask: url("/prydd/mark.svg") center / contain no-repeat;
+  mask-mode: alpha;
+}
+
+.symbol {
+  display: inline-flex;
+  line-height: 0;
+  flex: 0 0 auto;
+  color: inherit;
+}
+
+.symbol .mark {
+  width: 22px;
+}

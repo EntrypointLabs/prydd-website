@@ -2,8 +2,7 @@
 .inner { width: 100%; max-width: 1440px; margin: 0 auto; padding-inline: 64px; display: flex; flex-direction: column; gap: 56px; }
 
 .top { display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; padding-block: 32px; }
-.brand { display: inline-flex; align-items: center; gap: 8px; color: inherit; font-family: var(--font-prydd), sans-serif; font-size: 24px; font-weight: 800; line-height: 1; letter-spacing: -.035em; text-decoration: none; }
-.brandSymbol { display: inline-block; flex: 0 0 24px; width: 24px; height: 24px; background: currentColor; mask: url("/prydd/mark.svg") center / contain no-repeat; -webkit-mask: url("/prydd/mark.svg") center / contain no-repeat; }
+.brand { color: inherit; text-decoration: none; }
 
 .columns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; gap: 32px; flex: 0 1 895px; }
 .column { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
