@@ -1,33 +1,24 @@
-const sizes = {
-  sm: { mark: 22, text: 19, gap: 6 },
-  md: { mark: 30, text: 26, gap: 8 },
+import { cn } from "@/lib/utils"
+import styles from "./prydd-wordmark.module.css"
+
+const variants = {
+  nav: styles.nav,
+  header: styles.header,
+  footer: styles.footer,
+  symbol: styles.symbol,
 } as const
 
-export function PryddWordmark({ size = "md" }: { size?: keyof typeof sizes }) {
-  const { mark, text, gap } = sizes[size]
+export function PryddWordmark({
+  variant = "nav",
+  className,
+}: {
+  variant?: keyof typeof variants
+  className?: string
+}) {
   return (
-    <span className="inline-flex items-center text-foreground" style={{ gap }}>
-      <span
-        aria-hidden="true"
-        className="inline-block bg-current"
-        style={{
-          width: mark,
-          height: mark * (214 / 208),
-          mask: 'url("/prydd/mark.svg") center / contain no-repeat',
-          WebkitMask: 'url("/prydd/mark.svg") center / contain no-repeat',
-        }}
-      />
-      <span
-        style={{
-          fontFamily: "var(--font-prydd), sans-serif",
-          fontSize: text,
-          fontWeight: 800,
-          letterSpacing: "-0.035em",
-          lineHeight: 1,
-        }}
-      >
-        PRYDD
-      </span>
+    <span className={cn(styles.logo, variants[variant], className)}>
+      <span className={styles.mark} aria-hidden="true" />
+      {variant === "symbol" ? null : <span className={styles.word}>PRYDD</span>}
     </span>
   )
 }

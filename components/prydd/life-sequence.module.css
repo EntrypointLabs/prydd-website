@@ -217,7 +217,9 @@
   width: 46%;
   height: 46%;
   background: #1c1c1c;
+  -webkit-mask: url("/prydd/mark.svg") center / contain no-repeat;
   mask: url("/prydd/mark.svg") center / contain no-repeat;
+  mask-mode: alpha;
   filter: drop-shadow(0 1px 0 #ffffff80);
 }
 
@@ -298,7 +300,9 @@
   width: 42%;
   height: 42%;
   background: #cfcfcf;
+  -webkit-mask: url("/prydd/mark.svg") center / contain no-repeat;
   mask: url("/prydd/mark.svg") center / contain no-repeat;
+  mask-mode: alpha;
 }
 
 @keyframes disc-spin {

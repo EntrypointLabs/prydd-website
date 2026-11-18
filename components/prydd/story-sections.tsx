@@ -1,5 +1,6 @@
 import type { ReactNode } from "react"
 import { ArrowDown, ArrowDownLeft, ArrowRight, ArrowUpRight, Check, ChevronDown, Plus } from "lucide-react"
+import { PryddWordmark } from "@/components/prydd-wordmark"
 import { LifeSequence } from "./life-sequence"
 import { SiteFooter } from "./site-footer"
 import styles from "./story-sections.module.css"
@@ -10,7 +11,7 @@ function Photo({ tile, className = "" }: { tile: number; className?: string }) {
   return <span className={styles.photo + " " + className} aria-hidden="true"><svg className={styles.photoCrop} viewBox={(tile % 4) * cellWidth + " " + Math.floor(tile / 4) * cellHeight + " " + cellWidth + " " + cellHeight} preserveAspectRatio="xMidYMid slice" focusable="false"><image href="/prydd/photos-atlas.png" width="1448" height="1086" /></svg></span>
 }
 
-function BrandSymbol() { return <span className={styles.brandSymbol} aria-hidden="true" /> }
+function BrandSymbol() { return <PryddWordmark variant="symbol" /> }
 
 function ActivityRecord({ sent = false }: { sent?: boolean }) {
   return <div className={styles.activityRecord}>{sent ? <Photo tile={0} className={styles.activityPortrait} /> : <span className={styles.addedIcon} aria-hidden="true"><ArrowDownLeft size={16} /></span>}<div><strong>{sent ? "To @maya" : "Money added"}</strong><span>{sent ? "Sent · Today" : "Local currency → USD"}</span></div><b>{sent ? "−$25.00" : "+$250.00"}</b></div>

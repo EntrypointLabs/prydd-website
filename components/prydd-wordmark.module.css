@@ -1,0 +1,81 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  font-family: var(--font-prydd), sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.word {
+  color: inherit;
+}
+
+.mark {
+  display: block;
+  flex: none;
+  background: currentColor;
+  aspect-ratio: 208 / 214;
+  height: auto;
+  -webkit-mask: url("/prydd/mark.svg") center / contain no-repeat;
+  mask: url("/prydd/mark.svg") center / contain no-repeat;
+  mask-mode: alpha;
+}
+
+.nav {
+  gap: 8px;
+  font-size: 26px;
+}
+
+.nav .mark {
+  width: 30px;
+}
+
+.header {
+  gap: 9px;
+  font-size: 27px;
+}
+
+.header .mark {
+  width: 36px;
+}
+
+.footer {
+  gap: 8px;
+  font-size: 24px;
+}
+
+.footer .mark {
+  width: 24px;
+}
+
+.symbol {
+  line-height: 0;
+  flex: 0 0 auto;
+}
+
+.symbol .mark {
+  width: 22px;
+}
+
+@media (max-width: 760px) {
+  .header {
+    gap: 5px;
+    font-size: 23px;
+  }
+
+  .header .mark {
+    width: 31px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header {
+    font-size: 21px;
+  }
+
+  .header .mark {
+    width: 28px;
+  }
+}

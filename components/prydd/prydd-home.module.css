@@ -68,8 +68,6 @@
 .chapterNav a[aria-current="location"] { box-shadow: inset 0 -2px 0 var(--prydd-accent); }
 .header[data-on-hero="true"] .chapterNav, .header[data-on-hero="true"] .navCta { display: none; }
 .header[data-on-hero="false"] .howLink { display: none; }
-.brand { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-prydd), sans-serif; font-size: 27px; font-weight: 800; letter-spacing: -.035em; line-height: 1; }
-.mark { display: inline-block; width: 36px; height: 37px; mask: url("/prydd/mark.svg") center / contain no-repeat; background: currentColor; }
 .howLink { font-size: 13px; grid-column: 3; grid-row: 1; justify-self: end; }
 .navCta, .heroCta { font-weight: 650; }
 .navCta { composes: pill sm filled from "./pill.module.css"; grid-column: 3; grid-row: 1; font-weight: 500; --pill-fill: var(--prydd-accent); color: var(--prydd-accent-ink); }
@@ -133,8 +131,6 @@
   .header nav { height: 73px; padding: 0 24px; }
   .header[data-on-hero="false"] nav { height: 113px; grid-template-rows: 73px 40px; }
   .chapterNav { font-size: 10px; gap: 19px; }
-  .brand { font-size: 23px; gap: 5px; }
-  .mark { width: 31px; height: 32px; }
   .navCta { --btn-height: 32px; --btn-pad-h: 13px; --btn-font: 11px; --btn-gap: 5px; --btn-icon: 12px; }
   .howLink { font-size: 12px; }
   .sequence { height: 250svh; }
@@ -180,8 +176,6 @@
 @media (max-width: 360px) {
   .header nav { padding-inline: 16px; gap: 10px; }
   .chapterNav { font-size: 9px; gap: 13px; }
-  .brand { font-size: 21px; }
-  .mark { width: 28px; height: 29px; }
   .activity b { font-size: 7px; }
 }
 
