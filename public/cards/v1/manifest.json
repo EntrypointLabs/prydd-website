@@ -1,0 +1,15 @@
+{
+  "generic": { "photo": "photos/world.jpg" },
+  "countries": {
+    "GB": { "lines": ["UNITED", "KINGDOM"], "photo": "photos/gb.jpg", "flag": "flags/gb.png", "titleWidths": [163.5, 232] },
+    "NG": { "lines": ["NIGERIA"], "photo": "photos/ng.jpg", "flag": "flags/ng.png" },
+    "TH": { "lines": ["THAILAND"], "photo": "photos/th.jpg", "flag": "flags/th.png" },
+    "US": { "lines": ["UNITED", "STATES"], "photo": "photos/us.jpg", "flag": "flags/us.png" },
+    "GH": { "lines": ["GHANA"], "photo": "photos/gh.jpg", "flag": "flags/gh.png" },
+    "KE": { "lines": ["KENYA"], "photo": "photos/ke.jpg", "flag": "flags/ke.png", "symbol": "KSh" },
+    "ZA": { "lines": ["SOUTH", "AFRICA"], "photo": "photos/za.jpg", "flag": "flags/za.png" },
+    "AE": { "lines": ["UNITED ARAB", "EMIRATES"], "photo": "photos/ae.jpg", "flag": "flags/ae.png" },
+    "FR": { "lines": ["FRANCE"], "photo": "photos/fr.jpg", "flag": "flags/fr.png" },
+    "JP": { "lines": ["JAPAN"], "photo": "photos/jp.jpg", "flag": "flags/jp.png" }
+  }
+}

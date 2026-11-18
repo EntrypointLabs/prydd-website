@@ -1,0 +1,16 @@
+Prydd country card images
+
+Photos (Unsplash License, https://unsplash.com/license), cropped and colour graded:
+  gb  derived from the Wise card reference and Unsplash photos of Westminster
+  ng  Lagos, Nupo Deyon Daniel          https://unsplash.com/photos/67ruAEYmp4c
+  th  Wat Arun, Haley Hong              https://unsplash.com/photos/MKVGJ4d3E6c
+  us  One World Trade Center, Massimiliano Morosinotto  https://unsplash.com/photos/_ZEk8iXVWyI
+  gh  Black Star Gate, Ifeoluwa B.      https://unsplash.com/photos/-CgUhaShACE
+  ke  Nairobi, Kenny Murgor             https://unsplash.com/photos/vyagy6HJpVE
+  za  Table Mountain, Peter Burdon      https://unsplash.com/photos/F1po0flco3k
+  ae  Burj Khalifa, Ahmed Aldaie        https://unsplash.com/photos/aKj9uDanF18
+  fr  Eiffel Tower, Andrea Maschio      https://unsplash.com/photos/UEY9zNRK5RU
+  jp  Tokyo Tower, Tobias Wilden        https://unsplash.com/photos/bNeYImiDDbw
+  world  Clouds, Dan Meyers             https://unsplash.com/photos/f1WMJR8pLqo
+
+Flags: flag-icons 7.2.3 (MIT, https://github.com/lipis/flag-icons), clipped to a circle.
