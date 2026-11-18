@@ -1,20 +1,24 @@
-.logo {
+/* One lockup. The homepage resets font-feature-settings to normal, which drops
+   Montserrat ss01 (the alternate Y the waitlist shows). Set the features here
+   so every logo matches the waitlist, and only currentColor changes. */
+.lockup {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   color: inherit;
   font-family: var(--font-prydd), sans-serif;
   font-weight: 800;
+  font-size: 26px;
   letter-spacing: -0.035em;
   line-height: 1;
-}
-
-.word {
-  color: inherit;
+  font-feature-settings: "ss01", "cv11";
+  font-synthesis: none;
 }
 
 .mark {
   display: block;
   flex: none;
+  width: 30px;
   background: currentColor;
   aspect-ratio: 208 / 214;
   height: auto;
@@ -23,59 +27,13 @@
   mask-mode: alpha;
 }
 
-.nav {
-  gap: 8px;
-  font-size: 26px;
-}
-
-.nav .mark {
-  width: 30px;
-}
-
-.header {
-  gap: 9px;
-  font-size: 27px;
-}
-
-.header .mark {
-  width: 36px;
-}
-
-.footer {
-  gap: 8px;
-  font-size: 24px;
-}
-
-.footer .mark {
-  width: 24px;
-}
-
 .symbol {
+  display: inline-flex;
   line-height: 0;
   flex: 0 0 auto;
+  color: inherit;
 }
 
 .symbol .mark {
   width: 22px;
-}
-
-@media (max-width: 760px) {
-  .header {
-    gap: 5px;
-    font-size: 23px;
-  }
-
-  .header .mark {
-    width: 31px;
-  }
-}
-
-@media (max-width: 360px) {
-  .header {
-    font-size: 21px;
-  }
-
-  .header .mark {
-    width: 28px;
-  }
 }
