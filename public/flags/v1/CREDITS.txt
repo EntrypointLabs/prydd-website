@@ -1,0 +1,5 @@
+Round currency flags for the Prydd app, one per lower-case ISO 3166 country code
+(and "eu" for the euro), 120x120 WebP with a transparent outside.
+
+Rendered from flag-icons 7.2.3 (MIT, https://github.com/lipis/flag-icons),
+1x1 variant, clipped to a circle.
