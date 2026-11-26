@@ -51,8 +51,7 @@ export default function Page() {
         between PRYDD users settle using the Solana blockchain. Nothing in
         this Agreement or elsewhere on the Service constitutes financial,
         investment, legal, or tax advice, and any figures, timelines, or
-        forward-looking statements — including anything in our litepaper —
-        are illustrative only and may change without notice.
+        forward-looking statements are illustrative only and may change without notice.
       </LegalSection>
 
       <LegalSection>
@@ -172,7 +171,7 @@ export default function Page() {
         on and may link to third parties we do not operate, including the
         Solana network, banking or payment partners used to fund your
         Balance, our transaction screening providers, and destinations like
-        our litepaper or social media. We do not control and are not
+        social media. We do not control and are not
         responsible for the content, security, or practices of any third
         party, and using the Service does not imply our endorsement of any
         linked destination.

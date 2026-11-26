@@ -5,70 +5,82 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0a0a0a;
+  --foreground: #000000;
   --card: #ffffff;
-  --card-foreground: #0a0a0a;
-  --surface: #fafaf9;
-  --surface-strong: #f4f4f3;
+  --card-foreground: #000000;
+  --surface: #f9f9f8;
+  --surface-strong: #f2f2f0;
   --popover: #ffffff;
-  --popover-foreground: #0a0a0a;
-  --primary: #0a0a0a;
+  --popover-foreground: #000000;
+  --primary: #000000;
   --primary-foreground: #ffffff;
-  --secondary: #f4f4f3;
-  --secondary-foreground: #0a0a0a;
-  --muted: #f4f4f3;
+  --secondary: #f2f2f0;
+  --secondary-foreground: #000000;
+  --muted: #f2f2f0;
   --muted-foreground: #6b6b6b;
-  --accent: #ebf2ff;
-  --accent-foreground: #1d4ed8;
-  --brand: #2563eb;
-  --destructive: #ef4444;
+  --accent: #f2f2f0;
+  --accent-foreground: #000000;
+  --destructive: #ff3c2e;
   --destructive-foreground: #ffffff;
-  --border: #e8e8e6;
-  --input: #e8e8e6;
-  --ring: #0a0a0a;
-  --chart-1: #2563eb;
-  --chart-2: #60a5fa;
-  --chart-3: #93c5fd;
-  --chart-4: #1e40af;
-  --chart-5: #1e3a8a;
+  --border: #cccccc;
+  --input: #cccccc;
+  --ring: #000000;
+  --chart-1: #000000;
+  --chart-2: #4d4d4d;
+  --chart-3: #808080;
+  --chart-4: #b3b3b3;
+  --chart-5: #d9d9d9;
   --radius: 0.875rem;
   --sidebar: #ffffff;
-  --sidebar-foreground: #0f172a;
-  --sidebar-primary: #2563eb;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #000000;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f1f5f9;
-  --sidebar-accent-foreground: #0f172a;
-  --sidebar-border: #e2e8f0;
-  --sidebar-ring: #2563eb;
+  --sidebar-accent: #f2f2f0;
+  --sidebar-accent-foreground: #000000;
+  --sidebar-border: #cccccc;
+  --sidebar-ring: #000000;
 }
 
 .dark {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-  --card: #111c34;
-  --card-foreground: #f8fafc;
-  --surface: #0b1426;
-  --surface-strong: #111c34;
-  --popover: #111c34;
-  --popover-foreground: #f8fafc;
-  --primary: #3b82f6;
-  --primary-foreground: #ffffff;
-  --secondary: #1e293b;
-  --secondary-foreground: #f8fafc;
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;
-  --accent: #1e3a8a;
-  --accent-foreground: #dbeafe;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: #1e293b;
-  --input: #1e293b;
-  --ring: #3b82f6;
+  --background: #0e0f0c;
+  --foreground: #f1f1ee;
+  --card: #1a1b18;
+  --card-foreground: #f1f1ee;
+  --surface: #151612;
+  --surface-strong: #1a1b18;
+  --popover: #1a1b18;
+  --popover-foreground: #f1f1ee;
+  --primary: #ffffff;
+  --primary-foreground: #0e0f0c;
+  --secondary: #22231f;
+  --secondary-foreground: #f1f1ee;
+  --muted: #22231f;
+  --muted-foreground: #9a9a96;
+  --accent: #22231f;
+  --accent-foreground: #f1f1ee;
+  --destructive: #ff675c;
+  --destructive-foreground: #0e0f0c;
+  --border: #333333;
+  --input: #333333;
+  --ring: #ffffff;
+  --chart-1: #ffffff;
+  --chart-2: #c2c2bf;
+  --chart-3: #8f8f8c;
+  --chart-4: #5c5c59;
+  --chart-5: #333333;
+  --sidebar: #0e0f0c;
+  --sidebar-foreground: #f1f1ee;
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: #0e0f0c;
+  --sidebar-accent: #22231f;
+  --sidebar-accent-foreground: #f1f1ee;
+  --sidebar-border: #333333;
+  --sidebar-ring: #ffffff;
 }
 
 @theme inline {
-  --font-sans: "Geist", "Geist Fallback", "Inter", system-ui, sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --font-sans: var(--font-prydd-body), "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -85,7 +97,6 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-brand: var(--brand);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -124,7 +135,7 @@
      own background over this, so only the canvas and the overscroll area read
      it. */
   html {
-    background-color: #17191d;
+    background-color: #ffffff;
   }
 
   [data-scroll-container] {
@@ -201,6 +212,6 @@
   }
 
   .bg-radial-glow {
-    background: radial-gradient(60% 50% at 50% 0%, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+    background: radial-gradient(60% 50% at 50% 0%, rgba(0, 0, 0, 0.04) 0%, transparent 70%);
   }
 }

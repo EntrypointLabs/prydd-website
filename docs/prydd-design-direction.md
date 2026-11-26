@@ -2,6 +2,8 @@
 
 ## Adopted direction
 
+**Update, 26 November 2026.** The name is written Prydd in copy (PRYDD only in the logo lockup). The hero is now an Altitude-style split: headline, copy and one action on the left, the photo globe on a sky photograph on the right, and a drifting strip of currency pills along the bottom in place of a logo marquee. The globe still contracts into the balance card. Send by username was never built and is gone from the page; the chapters are Add money, Send, Earn, Invest, Pay with Prydd, Security and FAQs, followed by a Coming next grid. Colours follow the app's tokens; the blue hero action and the dark hero are retired. The litepaper link is removed. PRODUCT.md at the repo root holds the brand brief.
+
 The comparison is closed. The PRYDD design is now the site's homepage at `/`, and the reversible comparison route `/design/prydd` has been removed along with the one-payment destination and the palette switcher.
 
 - **Destination:** three product panels. The one-sending-money sequence is no longer built; its implementation remains in git history.

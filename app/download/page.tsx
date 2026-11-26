@@ -23,7 +23,7 @@ export default function DownloadPage() {
   return (
     <main className="relative min-h-screen bg-background text-foreground">
       <header className="flex items-center justify-between px-6 py-6 md:px-10">
-        <Link href="/" aria-label="PRYDD home">
+        <Link href="/" aria-label="Prydd home">
           <PryddWordmark />
         </Link>
         <Link
@@ -37,11 +37,11 @@ export default function DownloadPage() {
 
       <section className="flex flex-col items-center px-5 pt-14 pb-24 md:pt-24">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.04em] text-center max-w-3xl leading-[1.05]">
-          Get PRYDD on your phone.
+          Get Prydd on your phone.
         </h1>
 
         <p className="mt-6 text-base sm:text-lg text-muted-foreground text-center max-w-lg leading-relaxed">
-          Hold dollars and send to anyone by username. PRYDD is in beta, so the iPhone app
+          Hold dollars and send to anyone in seconds. Prydd is in beta, so the iPhone app
           installs through Apple&apos;s TestFlight.
         </p>
 
@@ -78,8 +78,8 @@ export default function DownloadPage() {
         <ol className="mt-14 w-full max-w-md grid gap-px bg-border rounded-2xl overflow-hidden border border-border text-sm">
           {[
             "Open the link on your iPhone and install TestFlight if asked.",
-            "Tap Accept, then Install to add PRYDD.",
-            "Open PRYDD and create your account with a passkey.",
+            "Tap Accept, then Install to add Prydd.",
+            "Open Prydd and create your account with a passkey.",
           ].map((step, index) => (
             <li key={step} className="flex gap-4 bg-background px-5 py-4">
               <span className="font-mono tabular-nums text-muted-foreground">{index + 1}</span>

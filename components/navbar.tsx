@@ -8,7 +8,6 @@ import { PryddWordmark } from "@/components/prydd-wordmark"
 
 const navItems = [
   { label: "Product", href: "/#prydd-story" },
-  { label: "Litepaper", href: "/litepaper.pdf", external: true },
 ]
 
 export function Navbar() {
@@ -30,7 +29,7 @@ export function Navbar() {
       }`}
     >
       <nav className="max-w-6xl mx-auto flex items-center justify-between px-5 md:px-8 h-16">
-        <a href="/" aria-label="PRYDD home" className="flex items-center">
+        <a href="/" aria-label="Prydd home" className="flex items-center">
           <PryddWordmark />
         </a>
 
@@ -39,8 +38,6 @@ export function Navbar() {
             <a
               key={item.label}
               href={item.href}
-              target={item.external ? "_blank" : undefined}
-              rel={item.external ? "noopener noreferrer" : undefined}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               {item.label}
@@ -71,8 +68,6 @@ export function Navbar() {
               <a
                 key={item.label}
                 href={item.href}
-                target={item.external ? "_blank" : undefined}
-                rel={item.external ? "noopener noreferrer" : undefined}
                 className="px-3 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
