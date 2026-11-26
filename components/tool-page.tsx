@@ -39,14 +39,14 @@ export function ToolPage({ title, summary }: { title: string; summary: string })
           {summary}
         </p>
         <p className="mt-8 text-base leading-relaxed text-muted-foreground">
-          We are still building this one. Join early access and we will tell you
+          We are still building this one. Get the app and we will tell you
           when it is live.
         </p>
         <a
-          href="/waitlist"
+          href="/download"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-5 h-11 text-sm font-medium text-primary-foreground"
         >
-          Join early access
+          Get the app
           <ArrowUpRight size={16} aria-hidden="true" />
         </a>
       </div>

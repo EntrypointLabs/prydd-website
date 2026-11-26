@@ -49,7 +49,7 @@ export function Navbar() {
           <Button
             size="sm"
             className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-4 h-9 font-medium"
-            onClick={() => router.push("/waitlist")}
+            onClick={() => router.push("/download")}
           >
             Get started
           </Button>
@@ -83,7 +83,7 @@ export function Navbar() {
               className="mt-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-full h-11"
               onClick={() => {
                 setMobileMenuOpen(false)
-                router.push("/waitlist")
+                router.push("/download")
               }}
             >
               Get started

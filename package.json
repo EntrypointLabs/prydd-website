@@ -61,7 +61,6 @@
     "react-hook-form": "^7.60.0",
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.4",
-    "resend": "^6.3.0",
     "shaders": "latest",
     "sonner": "^1.7.4",
     "tailwind-merge": "^3.3.1",
@@ -71,8 +70,6 @@
     "zod": "3.25.76"
   },
   "devDependencies": {
-    "@react-email/components": "^0.5.7",
-    "@react-email/tailwind": "^1.2.2",
     "@tailwindcss/postcss": "^4.1.9",
     "@types/node": "^22",
     "@types/react": "^19",
