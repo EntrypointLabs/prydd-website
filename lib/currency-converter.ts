@@ -254,19 +254,21 @@ export function startingAmount(perUsd: number): string {
 }
 
 /**
- * Turns a comma the visitor typed as a decimal separator into a point. The
- * field shows its own grouping commas, so only a comma that was just typed at
- * the caret, or a lone comma followed by one or two digits in a value that did
- * not come from deleting one character of a grouped figure (a pasted "12,50"),
- * is read as a decimal.
+ * Turns a comma the visitor entered as a decimal separator into a point. The
+ * field shows its own grouping commas, so only the text just inserted is
+ * examined: a comma in it followed by at most two digits ("," on its own,
+ * "1,5" from a predictive keyboard, a pasted "12,50") is a decimal. Deletions
+ * never reinterpret a comma.
  */
-export function normaliseDecimalComma(raw: string, caret: number, previous: string): string {
-  if (raw.includes(".")) return raw
-  if (caret > 0 && raw[caret - 1] === "," && raw.split(",").length > previous.split(",").length) {
-    return raw.slice(0, caret - 1) + "." + raw.slice(caret)
-  }
-  if (previous.length - raw.length !== 1 && /^\d+,\d{1,2}$/.test(raw)) return raw.replace(",", ".")
-  return raw
+export function normaliseDecimalComma(raw: string, caret: number, inputType: string, data: string | null): string {
+  if (raw.includes(".") || !inputType.startsWith("insert")) return raw
+  if (data === null) return /^\d+,\d{1,2}$/.test(raw) ? raw.replace(",", ".") : raw
+  const start = caret - data.length
+  if (start < 0 || raw.slice(start, caret) !== data) return raw
+  const match = /,(\d{0,2})$/.exec(data)
+  if (!match || data.indexOf(",") !== match.index) return raw
+  const comma = start + match.index
+  return raw.slice(0, comma) + "." + raw.slice(comma + 1)
 }
 
 export function groupDigits(text: string): string {

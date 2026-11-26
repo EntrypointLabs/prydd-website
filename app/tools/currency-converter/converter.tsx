@@ -27,6 +27,10 @@ export function Converter({ initialRates }: { initialRates: DisplayRates | null 
   const [from, setFrom] = useState("USD")
   const [to, setTo] = useState<string | null>(null)
   const [typed, setTyped] = useState<string | null>(null)
+  // The server cannot know the visitor's timezone, so the first render shows
+  // UTC and the local time replaces it once mounted, keeping hydration stable.
+  const [localTime, setLocalTime] = useState(false)
+  useEffect(() => setLocalTime(true), [])
   const [picking, setPicking] = useState<Side | null>(null)
   const touched = useRef(false)
 
@@ -136,7 +140,8 @@ export function Converter({ initialRates }: { initialRates: DisplayRates | null 
               value={shown}
               onChange={(event) => {
                 const raw = event.target.value
-                const next = normaliseDecimalComma(raw, event.target.selectionStart ?? raw.length, shown)
+                const input = event.nativeEvent as InputEvent
+                const next = normaliseDecimalComma(raw, event.target.selectionStart ?? raw.length, input.inputType ?? "", input.data ?? null)
                   .replace(/[^0-9.,]/g, "")
                 if (next.split(".").length <= 2) setTyped(groupDigits(next))
               }}
@@ -189,7 +194,7 @@ export function Converter({ initialRates }: { initialRates: DisplayRates | null 
         </p>
         <p className="text-sm text-foreground/45">
           Today&apos;s reference rate
-          {rates ? `, ${quotedTime(rates.quotedAt)}` : ""}
+          {rates ? `, ${quotedTime(rates.quotedAt, localTime)}` : ""}
         </p>
       </div>
 
@@ -211,15 +216,17 @@ function figureSize(text: string): string {
   return `${phone} ${wide}`
 }
 
-function quotedTime(iso: string): string {
+function quotedTime(iso: string, local: boolean): string {
   const date = new Date(iso)
   if (Number.isNaN(date.getTime())) return ""
-  return `updated ${date.toLocaleString("en-GB", {
+  const text = date.toLocaleString("en-GB", {
     day: "numeric",
     month: "short",
     hour: "2-digit",
     minute: "2-digit",
-  })}`
+    timeZone: local ? undefined : "UTC",
+  })
+  return `updated ${text}${local ? "" : " UTC"}`
 }
 
 function CurrencyFlag({ code, size }: { code: string; size: number }) {
