@@ -23,7 +23,7 @@ export default function DownloadPage() {
   return (
     <main className="relative min-h-screen bg-background text-foreground">
       <header className="flex items-center justify-between px-6 py-6 md:px-10">
-        <Link href="/" aria-label="PRYDD home">
+        <Link href="/" aria-label="Prydd home">
           <PryddWordmark />
         </Link>
         <Link
@@ -36,13 +36,13 @@ export default function DownloadPage() {
       </header>
 
       <section className="flex flex-col items-center px-5 pt-14 pb-24 md:pt-24">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.04em] text-center max-w-3xl leading-[1.05]">
-          Get PRYDD on your phone.
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.04em] text-center max-w-3xl leading-[1.05] text-balance">
+          Get Prydd on your iPhone.
         </h1>
 
         <p className="mt-6 text-base sm:text-lg text-muted-foreground text-center max-w-lg leading-relaxed">
-          Hold dollars and send to anyone by username. PRYDD is in beta, so the iPhone app
-          installs through Apple&apos;s TestFlight.
+          Hold dollars, add money in local currency and send to anyone in seconds.
+          Prydd is in public beta, so the app installs through Apple&apos;s TestFlight.
         </p>
 
         <div className="mt-10 w-full max-w-md flex flex-col gap-3">
@@ -54,7 +54,7 @@ export default function DownloadPage() {
           >
             <AppleGlyph />
             <span className="flex-1 text-[15px] font-medium">
-              Download for iOS <span className="opacity-60 font-normal">(TestFlight)</span>
+              Download for iPhone <span className="opacity-60 font-normal">(TestFlight)</span>
             </span>
             <ArrowUpRight
               size={18}
@@ -77,9 +77,9 @@ export default function DownloadPage() {
 
         <ol className="mt-14 w-full max-w-md grid gap-px bg-border rounded-2xl overflow-hidden border border-border text-sm">
           {[
-            "Open the link on your iPhone and install TestFlight if asked.",
-            "Tap Accept, then Install to add PRYDD.",
-            "Open PRYDD and create your account with a passkey.",
+            "Open this page on your iPhone and tap Download for iPhone.",
+            "Install TestFlight if asked, then tap Accept and Install.",
+            "Open Prydd, confirm your email with the code we send, then create your passkey.",
           ].map((step, index) => (
             <li key={step} className="flex gap-4 bg-background px-5 py-4">
               <span className="font-mono tabular-nums text-muted-foreground">{index + 1}</span>

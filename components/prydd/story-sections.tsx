@@ -14,7 +14,7 @@ function Photo({ tile, className = "" }: { tile: number; className?: string }) {
 function BrandSymbol() { return <PryddWordmark variant="symbol" /> }
 
 function ActivityRecord({ sent = false }: { sent?: boolean }) {
-  return <div className={styles.activityRecord}>{sent ? <Photo tile={0} className={styles.activityPortrait} /> : <span className={styles.addedIcon} aria-hidden="true"><ArrowDownLeft size={16} /></span>}<div><strong>{sent ? "To @maya" : "Money added"}</strong><span>{sent ? "Sent · Today" : "Local currency → USD"}</span></div><b>{sent ? "−$25.00" : "+$250.00"}</b></div>
+  return <div className={styles.activityRecord}>{sent ? <Photo tile={0} className={styles.activityPortrait} /> : <span className={styles.addedIcon} aria-hidden="true"><ArrowDownLeft size={16} /></span>}<div><strong>{sent ? "To Maya" : "Money added"}</strong><span>{sent ? "Sent · Today" : "Local currency → USD"}</span></div><b>{sent ? "−$25.00" : "+$250.00"}</b></div>
 }
 
 function FeatureChapter({ id, eyebrow, title, description, bullets, action, note, flip = false, children }: {
@@ -55,10 +55,10 @@ function AccountScene() {
 
 function PeopleScene() {
   return (
-    <figure className={styles.visualStage + " " + styles.peopleScene} aria-label="Illustrative payment of 25 dollars to maya identified by username">
+    <figure className={styles.visualStage + " " + styles.peopleScene} aria-label="Illustrative payment of 25 dollars to a saved contact named Maya">
       <Photo tile={2} className={styles.floatingPortrait1} /><Photo tile={8} className={styles.floatingPortrait2} />
-      <div className={styles.recipientPanel}><div className={styles.recipientHeader}><span>Send by username</span><span className={styles.tinyCheck} aria-hidden="true"><Check size={15} /></span></div><div className={styles.recipientIdentity}><Photo tile={0} className={styles.mayaPortrait} /><div><span className={styles.uiLabel}>Recipient</span><strong>@maya</strong></div></div><div className={styles.recipientAmount}><span className={styles.uiLabel}>Amount sent</span><strong>$25<span>.00</span></strong></div><div className={styles.recipientResult}><span className={styles.resultCheck} aria-hidden="true"><Check size={15} /></span><span>Sent to @maya<small>Today</small></span></div></div>
-      <span className={styles.usernamePill}>@maya</span>
+      <div className={styles.recipientPanel}><div className={styles.recipientHeader}><span>Send</span><span className={styles.tinyCheck} aria-hidden="true"><Check size={15} /></span></div><div className={styles.recipientIdentity}><Photo tile={0} className={styles.mayaPortrait} /><div><span className={styles.uiLabel}>Recipient</span><strong>Maya</strong></div></div><div className={styles.recipientAmount}><span className={styles.uiLabel}>Amount sent</span><strong>$25<span>.00</span></strong></div><div className={styles.recipientResult}><span className={styles.resultCheck} aria-hidden="true"><Check size={15} /></span><span>Sent to Maya<small>Today</small></span></div></div>
+      <span className={styles.usernamePill}>Saved contact</span>
     </figure>
   )
 }
@@ -66,7 +66,7 @@ function PeopleScene() {
 function ResultScene() {
   return (
     <figure className={styles.visualStage + " " + styles.resultScene} aria-label="Illustrative receipt and activity showing 250 dollars added, 25 dollars sent and 225 dollars remaining">
-      <div className={styles.receiptPanel}><span className={styles.receiptCheck} aria-hidden="true"><Check size={24} /></span><span className={styles.uiLabel}>Payment sent</span><strong>$25<span>.00</span></strong><Photo tile={0} className={styles.receiptPortrait} /><span className={styles.receiptPerson}>To @maya</span><small>Today</small></div>
+      <div className={styles.receiptPanel}><span className={styles.receiptCheck} aria-hidden="true"><Check size={24} /></span><span className={styles.uiLabel}>Payment sent</span><strong>$25<span>.00</span></strong><Photo tile={0} className={styles.receiptPortrait} /><span className={styles.receiptPerson}>To Maya</span><small>Today</small></div>
       <div className={styles.resultAccount}><div className={styles.windowHeader}><span><BrandSymbol />Your account</span><span>USD</span></div><div className={styles.resultBalance}><span className={styles.uiLabel}>Remaining balance</span><strong>$225<span>.00</span></strong></div><div className={styles.activityHeader}><strong>Activity</strong><span>Today</span></div><ActivityRecord /><ActivityRecord sent /></div>
       <div className={styles.resultLegend}>$250 added <ArrowRight size={13} aria-hidden="true" /> $25 sent <ArrowRight size={13} aria-hidden="true" /> $225 remaining</div>
     </figure>
@@ -81,16 +81,55 @@ function HumanContext() {
 
 function PracticalOverview() {
   return (
-    <section className={styles.practicalSection} aria-labelledby="prydd-practical-heading"><div className={styles.shell}><div className={styles.practicalSplit}><div className={styles.practicalPhoto}><h2 id="prydd-practical-heading">Everyday money,<br />brought together.</h2></div><ul className={styles.practicalList}><li><Plus size={22} strokeWidth={1.5} aria-hidden="true" /><div><h3>Bring money in</h3><p>Add money from local currency to your PRYDD balance.</p></div></li><li><span className={styles.practicalDollar} aria-hidden="true">$</span><div><h3>Hold dollars</h3><p>Your account balance is denominated in USD.</p></div></li><li><ArrowUpRight size={22} strokeWidth={1.5} aria-hidden="true" /><div><h3>Pay by username</h3><p>Send dollars to another PRYDD user and see the payment in your activity.</p></div></li></ul></div></div></section>
+    <section className={styles.practicalSection} aria-labelledby="prydd-practical-heading"><div className={styles.shell}><div className={styles.practicalSplit}><div className={styles.practicalPhoto}><h2 id="prydd-practical-heading">Small things<br />that add up.</h2></div><ul className={styles.practicalList}><li><Check size={22} strokeWidth={1.5} aria-hidden="true" /><div><h3>Fees covered</h3><p>We pay the network fee on every send, swap and Earn move.</p></div></li><li><span className={styles.practicalDollar} aria-hidden="true">$</span><div><h3>Convert a price</h3><p>See what anything costs in your own currency. <a href="/tools/currency-converter">Try the converter</a></p></div></li><li><ArrowUpRight size={22} strokeWidth={1.5} aria-hidden="true" /><div><h3>One feed</h3><p>Every payment, top-up and change, in one list.</p></div></li></ul></div></div></section>
+  )
+}
+
+const comingNext = [
+  { title: "Prydd Card", body: "Spend your balance anywhere, online and in store.", art: "card" },
+  { title: "Prydd Plus", body: "A membership for people who use Prydd every day.", art: "plus" },
+  { title: "Jars", body: "Keep money apart from spending and save towards a goal.", art: "/prydd/illustrations/jar.webp" },
+  { title: "Group spending", body: "Invite up to four people to spend from one pot.", art: "/prydd/illustrations/group.webp" },
+  { title: "Split a bill", body: "Share the cost and settle up in a tap.", art: "/prydd/illustrations/split.webp" },
+  { title: "Scheduled transfers", body: "Set it up now and send it later, or on repeat.", art: "/prydd/illustrations/calendar.webp" },
+  { title: "Find an ATM", body: "Find a cash machine near you.", art: "/prydd/illustrations/atm.webp" },
+] as const
+
+function ComingArt({ art }: { art: string }) {
+  if (art === "card") return <span className={styles.cardArt} aria-hidden="true"><BrandSymbol /></span>
+  if (art === "plus") return <span className={styles.plusArt} aria-hidden="true"><BrandSymbol /><Plus size={22} strokeWidth={2} /></span>
+  return <img className={styles.comingImage} src={art} alt="" width={720} height={720} loading="lazy" decoding="async" />
+}
+
+function ComingNext() {
+  return (
+    <section id="prydd-next" className={styles.comingSection} aria-labelledby="prydd-next-heading">
+      <div className={styles.shell}>
+        <div className={styles.comingIntro}><h2 id="prydd-next-heading">What&rsquo;s coming next.</h2><p>Built in the open. Each of these is on the way, not live yet.</p></div>
+        <ul className={styles.comingGrid}>
+          {comingNext.map((item) => (
+            <li key={item.title} className={styles.comingTile}>
+              <div className={styles.comingArt}><ComingArt art={item.art} /></div>
+              <span className={styles.comingBadge}>Coming soon</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   )
 }
 
 const questions = [
-  { question: "What is PRYDD?", answer: "PRYDD brings local funding, a dollar balance and payments between users by username into one app." },
-  { question: "How do I add money?", answer: "Add money from local currency to your PRYDD dollar balance. Supported funding methods will be confirmed before launch." },
-  { question: "What currency does my balance use?", answer: "Your PRYDD balance uses US dollars (USD)." },
-  { question: "Who can I send money to?", answer: "Send dollars to another PRYDD user using their username." },
-  { question: "How do I get the app?", answer: "Choose Get the app. On iPhone, PRYDD installs through TestFlight while we are in beta. Android is coming soon." },
+  { question: "What is Prydd?", answer: "An app to hold dollars, add money in local currency, send, earn, invest and pay online with your face, all in one account." },
+  { question: "How do I add money?", answer: "Send money by bank transfer in your local currency. It lands as dollars." },
+  { question: "What currency is my balance in?", answer: "US dollars. You can view it in your own currency too." },
+  { question: "Who can I send money to?", answer: "A saved contact, a local bank account, or anyone who shares a Prydd QR code." },
+  { question: "Do I need ID?", answer: "Not to open an account. Adding or sending local currency above a daily limit needs one quick ID check." },
+  { question: "Are there fees?", answer: "We cover network fees. Bank top-ups and bank sends carry the partner's fee, shown before you confirm." },
+  { question: "What if I lose my phone?", answer: "Recover your account on a new phone with your email. Your money stays where it is." },
+  { question: "How do I get the app?", answer: "Tap Get the app. On iPhone, Prydd installs through TestFlight while we're in beta. Android is coming soon." },
 ]
 
 function QuestionsChapter() {
@@ -103,12 +142,12 @@ export function StorySections() {
   return (
     <div className={styles.storySections}>
       <div className={styles.featureRows}>
-        <FeatureChapter id="prydd-funding" eyebrow="Local funding" title="Add money in local currency. Keep it in dollars." description="Bring money into PRYDD and see it as a dollar balance." bullets={["Add money from local currency.", "Hold your balance in US dollars.", "See added money in your account activity."]} action={{ href: "#prydd-account", label: "Explore your account" }} note="Illustrative product views and amounts throughout this page."><FundingScene /></FeatureChapter>
-        <FeatureChapter id="prydd-account" eyebrow="Dollar account" title="Your balance and payments, in one place." description="A clear dollar balance above a readable view of the money coming in and going out." bullets={["Hold a USD balance in your account.", "See the payments you receive and send.", "Understand each payment by its activity entry."]} action={{ href: "#prydd-people", label: "Explore username payments" }} flip><AccountScene /></FeatureChapter>
-        <FeatureChapter id="prydd-people" eyebrow="Payments by username" title="A username connects a payment to a person." description="Move dollars to another PRYDD user with their username." bullets={["Send dollars to another PRYDD user.", "Identify the recipient by username.", "See the payment in readable activity."]} action={{ href: "#prydd-activity", label: "Follow the payment" }}><PeopleScene /></FeatureChapter>
-        <FeatureChapter id="prydd-activity" eyebrow="Account activity" title="The payment and your balance tell the same story." description="In this example, a $25 payment leaves $225 in the account." bullets={["Money added: $250.", "Sent to @maya: $25.", "Remaining balance: $225."]} action={{ href: "#prydd-faq", label: "Find answers" }} flip><ResultScene /></FeatureChapter>
+        <FeatureChapter id="prydd-funding" eyebrow="Add money" title="Add money in local currency. Keep it in dollars." description="Top up by bank transfer and see it land as a dollar balance." bullets={["Top up by bank transfer.", "Start with no ID.", "One quick ID check lifts your daily limit."]} action={{ href: "#prydd-account", label: "Explore your account" }} note="Illustrative product views and amounts throughout this page."><FundingScene /></FeatureChapter>
+        <FeatureChapter id="prydd-account" eyebrow="Dollar account" title="Your balance and payments, in one place." description="A clear dollar balance above a readable list of money in and money out." bullets={["Hold your balance in US dollars.", "See every payment you send and receive.", "Your balance only moves when the money has actually moved."]} action={{ href: "#prydd-send", label: "Explore Send" }} flip><AccountScene /></FeatureChapter>
+        <FeatureChapter id="prydd-send" eyebrow="Send" title="Send to anyone in seconds." description="Pick a contact, enter an amount, done. Or send straight to a local bank account." bullets={["Send to a saved contact.", "Send to a local bank account.", "Scan a QR code to pay."]} action={{ href: "#prydd-activity", label: "Follow the payment" }}><PeopleScene /></FeatureChapter>
+        <FeatureChapter id="prydd-activity" eyebrow="Account activity" title="Your payments and your balance tell the same story." description="In this example, $250 comes in and a $25 payment leaves $225." bullets={["Money added: $250.", "Sent to Maya: $25.", "Remaining balance: $225."]} action={{ href: "#prydd-life", label: "Explore Earn" }} flip><ResultScene /></FeatureChapter>
       </div>
-      <HumanContext /><PracticalOverview /><LifeSequence /><QuestionsChapter />
+      <HumanContext /><LifeSequence /><PracticalOverview /><ComingNext /><QuestionsChapter />
     </div>
   )
 }
@@ -116,7 +155,7 @@ export function StorySections() {
 export function ClosingInvitation() {
   return (
     <div className={styles.closingBody}>
-      <section className={styles.invitation} aria-labelledby="prydd-invitation-heading"><div className={styles.invitationInner}><div className={styles.invitationCopy}><h2 id="prydd-invitation-heading">Everyday global money starts here.</h2></div><div className={styles.invitationActions}><a href="/download" className={styles.invitationLink}>Get the app<ArrowUpRight size={16} aria-hidden="true" /></a></div></div></section>
+      <section className={styles.invitation} aria-labelledby="prydd-invitation-heading"><div className={styles.invitationInner}><div className={styles.invitationCopy}><h2 id="prydd-invitation-heading">Money, but faster. Get the app.</h2></div><div className={styles.invitationActions}><a href="/download" className={styles.invitationLink}>Get the app<ArrowUpRight size={16} aria-hidden="true" /></a></div></div></section>
       <SiteFooter />
     </div>
   )

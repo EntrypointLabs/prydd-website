@@ -48,8 +48,8 @@
   transform: scale(1);
   background-color: var(--pill-fill, transparent);
   transition:
-    transform .28s cubic-bezier(.34, 1.56, .64, 1),
-    inset .28s cubic-bezier(.34, 1.56, .64, 1),
+    transform .28s cubic-bezier(.22, 1, .36, 1),
+    inset .28s cubic-bezier(.22, 1, .36, 1),
     background-color .17s ease-out;
 }
 
