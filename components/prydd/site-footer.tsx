@@ -163,8 +163,8 @@ export function SiteFooter() {
             <div className={styles.column}>
               <h2 className={styles.ctaTitle}>Get started</h2>
               <div className={styles.ctaList}>
-                <a className={`${styles.cta} ${styles.ctaPrimary}`} href="/waitlist">
-                  Join early access
+                <a className={`${styles.cta} ${styles.ctaPrimary}`} href="/download">
+                  Get the app
                 </a>
                 <a
                   className={`${styles.cta} ${styles.ctaSecondary}`}

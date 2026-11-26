@@ -148,7 +148,7 @@ function HeroSequence({ onHeroChange }: { onHeroChange: (visible: boolean) => vo
         <motion.div className={styles.heroCopy} style={{ opacity: headlineOpacity, transform: headlineTransform }} aria-hidden={!heroVisible} inert={!heroVisible}>
           <h1><span>One app for</span><span>everyday</span><span>global money.</span></h1>
           <p>Add money. Hold dollars. Send by username.</p>
-          <a className={styles.heroCta} href="/waitlist">Join early access <ArrowUpRight size={18} /></a>
+          <a className={styles.heroCta} href="/download">Get the app <ArrowUpRight size={18} /></a>
         </motion.div>
         <motion.div className={styles.scrollHint} style={{ opacity: hintOpacity }} aria-hidden="true">Scroll to explore <ArrowDown size={16} /></motion.div>
         <div className={styles.products} aria-hidden={!productVisible} inert={!productVisible}>
@@ -176,7 +176,7 @@ function ReducedSequence({ heroRef }: { heroRef: RefObject<HTMLElement | null> }
         <div className={styles.heroCopy}>
           <h1><span>One app for</span><span>everyday</span><span>global money.</span></h1>
           <p>Add money. Hold dollars. Send by username.</p>
-          <a className={styles.heroCta} href="/waitlist">Join early access <ArrowUpRight size={18} /></a>
+          <a className={styles.heroCta} href="/download">Get the app <ArrowUpRight size={18} /></a>
         </div>
       </section>
       <section className={styles.reducedProducts}>
@@ -257,7 +257,7 @@ export function PryddHome() {
           <div className={styles.chapterNav} role="group" aria-label="Product chapters">
             {chapters.map((chapter) => <a key={chapter.id} href={"#" + chapter.id} aria-current={activeChapter === chapter.id ? "location" : undefined}>{chapter.label}</a>)}
           </div>
-          <a className={styles.navCta} href="/waitlist">Join early access <ArrowUpRight size={15} /></a>
+          <a className={styles.navCta} href="/download">Get the app <ArrowUpRight size={15} /></a>
         </nav>
       </header>
       <div id="prydd-top" />

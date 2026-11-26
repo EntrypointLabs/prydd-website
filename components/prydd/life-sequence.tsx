@@ -22,7 +22,7 @@ const chapters: Chapter[] = [
     id: "savings",
     title: "Life, meets savings.",
     body: "Set dollars aside inside the account you already use. Name the goal, watch it fill, spend it the moment you need it.",
-    cta: { label: "Explore Savings", href: "/waitlist" },
+    cta: { label: "Explore Savings", href: "/download" },
     backdrop: { image: "/prydd/landscape-field.png", position: "center 65%" },
     variants: [
       {
@@ -62,7 +62,7 @@ const chapters: Chapter[] = [
     title: "Crypto, in the same account.",
     body: "Hold it beside your dollars. One balance, one activity feed, one sign-in.",
     note: "Capital at risk.",
-    cta: { label: "Explore crypto", href: "/waitlist" },
+    cta: { label: "Explore crypto", href: "/download" },
     backdrop: { image: "/prydd/landscape-sky.png", position: "center 40%" },
     variants: [
       {
@@ -101,7 +101,7 @@ const chapters: Chapter[] = [
     id: "assistant",
     title: "Ask, and PRYDD answers.",
     body: "Your account speaks plain language. Ask where the money went, what is safe to spend, what to set aside before the weekend.",
-    cta: { label: "Meet the assistant", href: "/waitlist" },
+    cta: { label: "Meet the assistant", href: "/download" },
     backdrop: {},
     variants: [
       {
@@ -280,7 +280,7 @@ function SafeSpaceSection({ reduced }: { reduced: boolean }) {
           Sign in with a passkey on your phone. No seed phrase to memorise, no password to leak.
           Lose the phone and recovery is part of the product, not a support ticket.
         </p>
-        <a className={styles.safeCta} href="/waitlist">
+        <a className={styles.safeCta} href="/download">
           Learn more
           <ArrowUpRight size={16} aria-hidden="true" />
         </a>
@@ -313,7 +313,7 @@ function InvestingSection({ reduced }: { reduced: boolean }) {
         <h2>Explore stocks and ETFs.</h2>
         <p>Put dollars into companies and funds without leaving the account your money already lives in.</p>
         <span className={styles.note}>Capital at risk. Investing is not available in every country.</span>
-        <a className={styles.chapterCta} href="/waitlist">
+        <a className={styles.chapterCta} href="/download">
           Try it out
           <ArrowUpRight size={16} aria-hidden="true" />
         </a>

@@ -90,12 +90,12 @@ const questions = [
   { question: "How do I add money?", answer: "Add money from local currency to your PRYDD dollar balance. Supported funding methods will be confirmed before launch." },
   { question: "What currency does my balance use?", answer: "Your PRYDD balance uses US dollars (USD)." },
   { question: "Who can I send money to?", answer: "Send dollars to another PRYDD user using their username." },
-  { question: "How do I join early access?", answer: "Choose Join early access and leave your email on the waitlist." },
+  { question: "How do I get the app?", answer: "Choose Get the app. On iPhone, PRYDD installs through TestFlight while we are in beta. Android is coming soon." },
 ]
 
 function QuestionsChapter() {
   return (
-    <section id="prydd-faq" className={styles.questionsSection} aria-labelledby="prydd-questions-heading"><div className={styles.faqShell}><div className={styles.faqInner}><div className={styles.faqIntro}><h2 id="prydd-questions-heading">Frequently<br />asked questions</h2><p>A few answers about the account,<br /> payments and joining early access.</p><a className={styles.chapterAction} href="/waitlist">Join early access<ArrowUpRight size={15} aria-hidden="true" /></a></div><div className={styles.questionsList}>{questions.map(({ question, answer }) => <details key={question} className={styles.question}><summary>{question}<ChevronDown size={18} aria-hidden="true" /></summary><p>{answer}</p></details>)}</div></div></div></section>
+    <section id="prydd-faq" className={styles.questionsSection} aria-labelledby="prydd-questions-heading"><div className={styles.faqShell}><div className={styles.faqInner}><div className={styles.faqIntro}><h2 id="prydd-questions-heading">Frequently<br />asked questions</h2><p>A few answers about the account,<br /> payments and getting the app.</p><a className={styles.chapterAction} href="/download">Get the app<ArrowUpRight size={15} aria-hidden="true" /></a></div><div className={styles.questionsList}>{questions.map(({ question, answer }) => <details key={question} className={styles.question}><summary>{question}<ChevronDown size={18} aria-hidden="true" /></summary><p>{answer}</p></details>)}</div></div></div></section>
   )
 }
 
@@ -116,7 +116,7 @@ export function StorySections() {
 export function ClosingInvitation() {
   return (
     <div className={styles.closingBody}>
-      <section className={styles.invitation} aria-labelledby="prydd-invitation-heading"><div className={styles.invitationInner}><div className={styles.invitationCopy}><h2 id="prydd-invitation-heading">Everyday global money starts here.</h2></div><div className={styles.invitationActions}><a href="/waitlist" className={styles.invitationLink}>Join early access<ArrowUpRight size={16} aria-hidden="true" /></a></div></div></section>
+      <section className={styles.invitation} aria-labelledby="prydd-invitation-heading"><div className={styles.invitationInner}><div className={styles.invitationCopy}><h2 id="prydd-invitation-heading">Everyday global money starts here.</h2></div><div className={styles.invitationActions}><a href="/download" className={styles.invitationLink}>Get the app<ArrowUpRight size={16} aria-hidden="true" /></a></div></div></section>
       <SiteFooter />
     </div>
   )

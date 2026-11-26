@@ -14,6 +14,9 @@ const nextConfig = {
   reactStrictMode: true,
   // Prydd's checkout app is served at prydd.co/pay because passkeys made in the
   // Prydd app belong to prydd.co, and browsers only offer them on that host.
+  async redirects() {
+    return [{ source: "/waitlist", destination: "/download", permanent: true }]
+  },
   async rewrites() {
     return [
       { source: "/pay", destination: "https://prydd-pay.vercel.app/pay" },

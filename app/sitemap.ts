@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${BASE_URL}/waitlist`,
+      url: `${BASE_URL}/download`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
