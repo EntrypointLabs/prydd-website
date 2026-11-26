@@ -336,7 +336,7 @@ function CurrencyPicker({
               aria-label="Search currencies"
               autoComplete="off"
               spellCheck={false}
-              className="min-w-0 flex-1 bg-transparent text-[15px] font-medium text-foreground outline-none placeholder:text-foreground/55"
+              className="min-w-0 flex-1 bg-transparent text-base font-medium text-foreground outline-none placeholder:text-foreground/55"
             />
             {search ? (
               <button
