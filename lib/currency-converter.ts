@@ -257,11 +257,18 @@ export function startingAmount(perUsd: number): string {
  * Turns a comma the visitor entered as a decimal separator into a point. The
  * field shows its own grouping commas, so only the text just inserted is
  * examined: a comma in it followed by at most two digits ("," on its own,
- * "1,5" from a predictive keyboard, a pasted "12,50") is a decimal. Deletions
+ * "1,5" from a predictive keyboard, a pasted "12,50") is a decimal, and a
+ * pasted European figure such as "1.234,56" swaps its separators. Deletions
  * never reinterpret a comma.
  */
 export function normaliseDecimalComma(raw: string, caret: number, inputType: string, data: string | null): string {
-  if (raw.includes(".") || !inputType.startsWith("insert")) return raw
+  if (!inputType.startsWith("insert")) return raw
+  const european = /^\d{1,3}(\.\d{3})+,\d+$/
+  if (data === null && european.test(raw)) return raw.replace(/\./g, "").replace(",", ".")
+  if (data !== null && european.test(data) && raw.slice(caret - data.length, caret) === data) {
+    return raw.slice(0, caret - data.length) + data.replace(/\./g, "").replace(",", ".") + raw.slice(caret)
+  }
+  if (raw.includes(".")) return raw
   if (data === null) return /^\d+,\d{1,2}$/.test(raw) ? raw.replace(",", ".") : raw
   const start = caret - data.length
   if (start < 0 || raw.slice(start, caret) !== data) return raw
