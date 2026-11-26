@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <LegalPage title="Privacy Policy" lastUpdated="28th July 2026">
+    <LegalPage title="Privacy Policy" lastUpdated="26th November 2026">
       <LegalSection>
         This Privacy Policy explains how Entrypoint Labs, Inc. (
         <LegalLead>&quot;we,&quot;</LegalLead> <LegalLead>&quot;us,&quot;</LegalLead> or{" "}
@@ -79,11 +79,12 @@ export default function Page() {
       </LegalSection>
 
       <LegalSection>
-        <LegalLead>Waitlist information.</LegalLead> The prydd.co website
-        also lets visitors who don&apos;t yet have the app join a waitlist
-        for early access. If you join the waitlist, we collect the email
-        address you submit and use it to send you a confirmation email and
-        to invite you to create an account when a spot opens up.
+        <LegalLead>Former waitlist information.</LegalLead> The prydd.co
+        website previously let visitors join a waitlist for early access by
+        submitting an email address. The waitlist is now closed and the
+        website no longer collects email addresses. If you joined it, we
+        still hold the email address you submitted and use it only to tell
+        you that the app is available.
       </LegalSection>
 
       <LegalSection>
@@ -95,8 +96,8 @@ export default function Page() {
       <LegalSection>
         <LegalLead>3. How We Use Information.</LegalLead> We use the
         information described in Section 2 to: operate your account and
-        process transfers and funding requests; confirm your spot on the
-        waitlist and invite you to create an account; secure the Service and
+        process transfers and funding requests; tell former waitlist members
+        that the app is available; secure the Service and
         prevent fraud, unauthorized access, and abuse; comply with
         applicable law; communicate with you about your account, security,
         or changes to the Service; and diagnose technical problems and
@@ -149,7 +150,7 @@ export default function Page() {
         transaction information for as long as your account is active, and
         for a reasonable period afterward as needed for security, fraud
         prevention, dispute resolution, or legal and financial recordkeeping
-        obligations. We retain your waitlist email address until you either
+        obligations. We retain a former waitlist email address until you either
         create an account or ask us to delete it, whichever comes first. We
         retain server logs only as long as needed for security and
         operational purposes, after which they are deleted or aggregated in
