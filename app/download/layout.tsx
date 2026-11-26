@@ -5,7 +5,7 @@ const SITE_URL = "https://prydd.co"
 const OG_IMAGE = `${SITE_URL}/prydd/og-image.png`
 const OG_ALT = "Prydd: Money, but faster"
 const DESCRIPTION =
-  "Get Prydd on your iPhone through TestFlight. Hold dollars, add money in local currency and send to anyone in seconds. Android is coming soon."
+  "Prydd is in public beta on iPhone through TestFlight. Hold dollars, add money in local currency and send to anyone in seconds. Android is coming soon."
 
 export const metadata: Metadata = {
   title: "Download Prydd",
