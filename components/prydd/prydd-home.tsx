@@ -17,9 +17,9 @@ const chapters = [
   { id: "prydd-funding", label: "Add money" },
   { id: "prydd-send", label: "Send" },
   { id: "prydd-life", label: "Earn" },
-  { id: "prydd-invest", label: "Invest" },
   { id: "prydd-pay", label: "Pay with Prydd" },
   { id: "prydd-security", label: "Security" },
+  { id: "prydd-invest", label: "Invest" },
   { id: "prydd-faq", label: "FAQs" },
 ] as const
 
@@ -248,10 +248,15 @@ export function PryddHome() {
     let frame = 0
     const update = () => {
       frame = 0
+      const threshold = Math.min(220, window.innerHeight * 0.35)
       let current = ""
+      let nearest = -Infinity
       for (const chapter of chapters) {
-        const element = document.getElementById(chapter.id)
-        if (element && element.getBoundingClientRect().top <= Math.min(220, window.innerHeight * 0.35)) current = chapter.id
+        const top = document.getElementById(chapter.id)?.getBoundingClientRect().top
+        if (top !== undefined && top <= threshold && top > nearest) {
+          nearest = top
+          current = chapter.id
+        }
       }
       setActiveChapter((previous) => previous === current ? previous : current)
     }

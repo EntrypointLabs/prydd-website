@@ -253,6 +253,22 @@ export function startingAmount(perUsd: number): string {
   return groupDigits(String(value))
 }
 
+/**
+ * Turns a comma the visitor typed as a decimal separator into a point. The
+ * field shows its own grouping commas, so only a comma that was just typed at
+ * the caret, or a lone comma followed by one or two digits in a value that did
+ * not come from deleting one character of a grouped figure (a pasted "12,50"),
+ * is read as a decimal.
+ */
+export function normaliseDecimalComma(raw: string, caret: number, previous: string): string {
+  if (raw.includes(".")) return raw
+  if (caret > 0 && raw[caret - 1] === "," && raw.split(",").length > previous.split(",").length) {
+    return raw.slice(0, caret - 1) + "." + raw.slice(caret)
+  }
+  if (previous.length - raw.length !== 1 && /^\d+,\d{1,2}$/.test(raw)) return raw.replace(",", ".")
+  return raw
+}
+
 export function groupDigits(text: string): string {
   const [whole, ...rest] = text.split(".")
   const grouped = whole.replace(/,/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")

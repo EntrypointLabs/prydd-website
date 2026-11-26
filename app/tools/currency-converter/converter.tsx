@@ -15,6 +15,7 @@ import {
   parseAmount,
   startingAmount,
   type DisplayRates,
+  normaliseDecimalComma,
 } from "@/lib/currency-converter"
 import { cn } from "@/lib/utils"
 
@@ -134,7 +135,9 @@ export function Converter({ initialRates }: { initialRates: DisplayRates | null 
               autoComplete="off"
               value={shown}
               onChange={(event) => {
-                const next = event.target.value.replace(/[^0-9.,]/g, "")
+                const raw = event.target.value
+                const next = normaliseDecimalComma(raw, event.target.selectionStart ?? raw.length, shown)
+                  .replace(/[^0-9.,]/g, "")
                 if (next.split(".").length <= 2) setTyped(groupDigits(next))
               }}
               onBlur={() =>
