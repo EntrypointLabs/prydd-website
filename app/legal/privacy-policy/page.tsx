@@ -4,7 +4,7 @@ import { LegalLead, LegalPage, LegalSection } from "@/components/legal-page"
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy policy for the PRYDD app and website.",
+  description: "Privacy policy for the Prydd app and website.",
   alternates: {
     canonical: "/legal/privacy-policy",
   },
@@ -16,18 +16,20 @@ export default function Page() {
       <LegalSection>
         This Privacy Policy explains how Entrypoint Labs, Inc. (
         <LegalLead>&quot;we,&quot;</LegalLead> <LegalLead>&quot;us,&quot;</LegalLead> or{" "}
-        <LegalLead>&quot;our&quot;</LegalLead>), the team building PRYDD, handles information in
-        connection with PRYDD — the website at prydd.co, the PRYDD mobile
+        <LegalLead>&quot;our&quot;</LegalLead>), the team building Prydd, handles information in
+        connection with Prydd: the website at prydd.co, the Prydd mobile
         application, and related services (together, the{" "}
         <LegalLead>&quot;Service&quot;</LegalLead>).
       </LegalSection>
 
       <LegalSection>
         <LegalLead>1. Who We Are.</LegalLead> Entrypoint Labs, Inc. is the
-        team building PRYDD, a dollar account for everyday life. PRYDD lets you
-        hold a balance in U.S. dollars, fund it from a linked bank account or
-        local payment method, and send or receive dollars to or from other
-        PRYDD users by username.
+        team building Prydd, a dollar account for everyday life. Prydd lets
+        you hold a balance in U.S. dollars, add money in your local currency,
+        send to other Prydd accounts, saved contacts, Solana addresses, and
+        local bank accounts, swap and hold other digital assets, earn with
+        third-party lending providers, and pay online merchants with Pay
+        with Prydd.
       </LegalSection>
 
       <LegalSection>
@@ -37,31 +39,44 @@ export default function Page() {
 
       <LegalSection>
         <LegalLead>Account and device information.</LegalLead> When you
-        create an account, we receive a public key and credential identifier
-        from your device&apos;s passkey — the biometric data used to unlock
-        it (such as a fingerprint or face scan) never leaves your device and
-        is not something we ever see or store. We do not currently require
-        identity verification such as a government ID to open an account,
-        though we may request it in the future as described in our Terms of
-        Service.
+        create an account, we collect your email address, which we use to
+        sign you in and to help you recover your account, and we receive a
+        public key and credential identifier from your passkey and from the
+        key secured on your phone. The biometric data used to unlock them
+        (such as a fingerprint or face scan) never leaves your device and is
+        not something we ever see or store. We hold one of your
+        account&apos;s three keys in encrypted form for recovery only. If
+        you enable notifications, we store a push notification token for
+        your device.
+      </LegalSection>
+
+      <LegalSection>
+        <LegalLead>Identity information.</LegalLead> We do not require
+        identity verification to open an account. If you raise your limits
+        for adding or sending local currency, our payment partner verifies
+        your identity, for example with your bank verification number and a
+        code sent to your phone. We receive the result of that check, not
+        your bank verification number, and we do not store it. We may
+        request further verification as described in our Terms of Service.
       </LegalSection>
 
       <LegalSection>
         <LegalLead>Balance and transaction information.</LegalLead> We
         maintain a record of your Balance and of transfers you send or
-        receive, including the counterparty username, amount, and time. When
-        you fund your Balance from a bank account or local payment method,
-        we and our banking or payment partners process the information
-        necessary to complete that funding transaction, such as the linked
-        account details you provide. Transfers between PRYDD users settle on
-        the Solana blockchain, a public ledger; the resulting on-chain
-        transaction data is publicly visible on that network independent of
-        anything we do.
+        receive, including the counterparty address, amount, and time, as
+        well as swaps, Earn deposits and withdrawals, and payments to
+        merchants, including the merchant&apos;s name. Contacts you save are
+        kept on your device. When you add money in local currency or send to
+        a bank account, we and our payment partners process the information
+        needed to complete it, such as the bank account details you provide.
+        Transfers settle on the Solana blockchain, a public ledger; the
+        resulting transaction data is publicly visible on that network
+        independent of anything we do.
       </LegalSection>
 
       <LegalSection>
         <LegalLead>Compliance and screening information.</LegalLead> We use
-        blockchain analytics tools to screen the on-chain transactions
+        blockchain analytics tools to screen the blockchain transactions
         associated with your account for exposure to sanctioned parties,
         suspected money laundering, or other financial crime risk
         indicators, as described in our Terms of Service. This screening
@@ -117,16 +132,18 @@ export default function Page() {
       <LegalSection>
         <LegalLead>5. Third-Party Services.</LegalLead> The Service is hosted
         on Vercel&apos;s infrastructure, which processes logs and analytics
-        data on our behalf. We use Resend to send transactional email, and
-        we work with banking or payment partners to let you fund your
-        Balance from a linked bank account or local payment method — those
-        partners process the information necessary to complete a funding
-        transaction under their own privacy practices, which we encourage
-        you to review when you connect a funding source. We also use
-        blockchain analytics providers to screen on-chain transactions for
-        compliance purposes, as described in Section 2. Transfers between
-        PRYDD users settle on the Solana network, a public blockchain that we
-        do not operate or control. Each of these third parties has its own
+        data on our behalf. We use Resend to send transactional email. We
+        work with payment partners to let you add money in local currency,
+        send to bank accounts, and verify your identity when you raise your
+        limits; those partners process the information necessary to complete
+        a transaction under their own privacy practices. Key management
+        providers secure two of your account&apos;s keys, and lending and
+        liquidity providers carry out Earn and Swap. We also use blockchain
+        analytics providers to screen blockchain transactions for compliance
+        purposes, as described in Section 2. When you pay a merchant with Pay
+        with Prydd, the merchant receives the payment amount and reference
+        it needs to fulfil your order. Transfers settle on the Solana
+        network, a public blockchain that we do not operate or control. Each of these third parties has its own
         privacy practices that this Policy does not cover.
       </LegalSection>
 
@@ -134,7 +151,8 @@ export default function Page() {
         <LegalLead>6. Data Sharing.</LegalLead> We do not sell your personal
         information. We may share information described in Section 2 with:
         service providers who help us operate the Service, such as hosting,
-        email, and banking or payment partners, under obligations to
+        email, key management, and banking or payment partners, under
+        obligations to
         protect it; our blockchain analytics and transaction screening
         providers, so they can screen your account and transactions as
         described in Section 2; law enforcement or regulators where
@@ -155,8 +173,8 @@ export default function Page() {
         retain server logs only as long as needed for security and
         operational purposes, after which they are deleted or aggregated in
         a way that no longer identifies a specific person. Because transfers
-        settle on the Solana blockchain, we cannot delete the on-chain
-        record of a completed transaction — that record exists independently
+        settle on the Solana blockchain, we cannot delete the blockchain
+        record of a completed transaction; that record exists independently
         on a public, immutable ledger.
       </LegalSection>
 
