@@ -11,8 +11,23 @@ import { CurrencyStream } from "./currency-stream"
 import { useHeroHandoff } from "./use-hero-handoff"
 import styles from "./prydd-home.module.css"
 
-const HERO_THEME_COLOR = "#17191d"
-const PAGE_THEME_COLOR = "#ffffff"
+const HERO_CHROME = [23, 25, 29]
+const PAGE_CHROME = [255, 255, 255]
+let paintedChrome = ""
+
+/**
+ * Colours the header and the browser chrome (the iOS status bar reads
+ * theme-color, then samples the fixed header once the page scrolls) at a point
+ * between the dark hero (0) and the white page (1).
+ */
+function paintChrome(mix: number) {
+  const hex = "#" + HERO_CHROME.map((from, index) => Math.round(from + (PAGE_CHROME[index] - from) * mix).toString(16).padStart(2, "0")).join("")
+  if (hex === paintedChrome) return
+  paintedChrome = hex
+  document.documentElement.style.setProperty("--prydd-chrome", hex)
+  const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')
+  if (meta) meta.content = hex
+}
 const clamp = (value: number) => Math.max(0, Math.min(1, value))
 const portion = (value: number, start: number, end: number) => clamp((value - start) / (end - start))
 const chapters = [
@@ -157,12 +172,28 @@ function HeroSequence({ onHeroChange }: { onHeroChange: (visible: boolean) => vo
     return () => observer.disconnect()
   }, [globeStart, globeDestination])
 
+  // The header turns white exactly as the white page opens above the shrinking
+  // hero, so the bar tracks the globe in both directions.
+  const syncChrome = (value: number) => {
+    const nav = document.querySelector("header nav")
+    const headerHeight = (nav && parseFloat(getComputedStyle(nav).gridTemplateRows)) || 80
+    const gap = 0.22 * portion(value, 0.08, 0.61) * (stage.current?.clientHeight ?? window.innerHeight)
+    const raw = clamp(gap / headerHeight)
+    const mix = raw > 0.97 ? 1 : raw < 0.03 ? 0 : raw
+    paintChrome(mix)
+    onHeroChange(mix < 0.5)
+  }
+
   useMotionValueEvent(progress, "change", (value) => {
     const nextHero = value < 0.26
     const nextProduct = value >= 0.47
     setHeroVisible((current) => current === nextHero ? current : nextHero)
     setProductVisible((current) => current === nextProduct ? current : nextProduct)
-    onHeroChange(value < 0.13)
+    syncChrome(value)
+  })
+
+  useEffect(() => {
+    syncChrome(progress.get())
   })
 
   return (
@@ -222,14 +253,6 @@ export function PryddHome() {
   const onHeroChange = useCallback((visible: boolean) => setOnHero((current) => current === visible ? current : visible), [])
 
   useEffect(() => {
-    // Safari re-samples the status bar from the page once it scrolls and does
-    // not return to the initial theme-color on its own, so keep the tag in step
-    // with whatever sits under the bar.
-    const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')
-    if (meta) meta.content = onHero ? HERO_THEME_COLOR : PAGE_THEME_COLOR
-  }, [onHero])
-
-  useEffect(() => {
     const query = window.matchMedia("(max-height: 600px)")
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
     const update = () => {
@@ -277,6 +300,17 @@ export function PryddHome() {
       window.cancelAnimationFrame(frame)
       window.removeEventListener("scroll", schedule)
       window.removeEventListener("resize", schedule)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (reduced) paintChrome(onHero ? 0 : 1)
+  }, [reduced, onHero])
+
+  useEffect(() => {
+    return () => {
+      paintedChrome = ""
+      document.documentElement.style.removeProperty("--prydd-chrome")
     }
   }, [])
 
