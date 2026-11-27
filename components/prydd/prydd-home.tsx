@@ -75,8 +75,7 @@ function SendCard() {
 function HeroCopy() {
   return (
     <>
-      <h1>Money, but faster.</h1>
-      <p>Hold dollars, add money in local currency and send to anyone in seconds. Earn, invest and pay online with your face, all from one account.</p>
+      <h1><span>One app for</span><span>everyday</span><span>global money.</span></h1>
       <a className={styles.heroCta} href="/download">Get the app <ArrowUpRight size={18} /></a>
       <span className={styles.heroNote}>Public beta on iPhone. Android soon.</span>
     </>
@@ -109,8 +108,11 @@ function HeroSequence({ onHeroChange }: { onHeroChange: (visible: boolean) => vo
     return "translate3d(" + x + "px, " + y + "px, 0) scale(" + scale + ")"
   })
   const globeOpacity = useTransform(progress, [0, 0.42, 0.69, 1], [1, 1, 0.52, 0.52])
-  const skyOpacity = useTransform(progress, [0, 0.16, 0.46, 1], [1, 1, 0, 0])
-  const skyTransform = useTransform(progress, (value) => "scale(" + (1 - 0.06 * portion(value, 0.08, 0.46)) + ")")
+  const skyOpacity = useTransform(progress, [0, 0.50, 0.75, 1], [1, 1, 0, 0])
+  const skyClip = useTransform(progress, (value) => {
+    const contraction = portion(value, 0.08, 0.61)
+    return "inset(" + 22 * contraction + "% " + 31 * contraction + "% " + 10 * contraction + "% round " + 32 * contraction + "px)"
+  })
   const productsOpacity = useTransform(progress, [0, 0.40, 0.63, 1], [0, 0, 1, 1])
   const titleOpacity = useTransform(progress, [0, 0.42, 0.61, 1], [0, 0, 1, 1])
   const centerTransform = useTransform(progress, (value) => "translateY(" + 40 * (1 - portion(value, 0.40, 0.70)) + "px) scale(" + (0.96 + portion(value, 0.40, 0.70) * 0.04) + ")")
@@ -138,8 +140,7 @@ function HeroSequence({ onHeroChange }: { onHeroChange: (visible: boolean) => vo
     }
     const update = () => {
       const sphere = globeProjectionDiameter(host.clientWidth, host.clientHeight)
-      const fit = Math.min(sky.offsetWidth, sky.offsetHeight) * 0.74
-      globeStart.set({ ...centreOf(sky), scale: Math.max(0.24, Math.min(1, fit / sphere)) })
+      globeStart.set({ ...centreOf(sky), scale: Math.min(1, sky.offsetHeight * 0.9 / sphere) })
       const diameter = host.clientWidth <= 760
         ? Math.max(card.offsetHeight * 1.35, card.offsetWidth * 0.78)
         : Math.max(card.offsetHeight * 1.16, card.offsetWidth * 1.10)
@@ -165,8 +166,7 @@ function HeroSequence({ onHeroChange }: { onHeroChange: (visible: boolean) => vo
   return (
     <section ref={section} className={styles.sequence} aria-label="Money, but faster: from the Prydd globe to your account">
       <div ref={stage} className={styles.sticky}>
-        <motion.div ref={skyPanel} className={styles.sky} style={{ opacity: skyOpacity, transform: skyTransform }} aria-hidden="true" />
-        <motion.div className={styles.heroRule} style={{ opacity: headlineOpacity }} aria-hidden="true" />
+        <motion.div ref={skyPanel} className={styles.sky} style={{ opacity: skyOpacity, clipPath: skyClip }} aria-hidden="true" />
         <motion.div className={styles.globeLayer} style={{ transform: globeTransform, opacity: globeOpacity }}><PhotoGlobe /></motion.div>
         <motion.div className={styles.heroCopy} style={{ opacity: headlineOpacity, transform: headlineTransform }} aria-hidden={!heroVisible} inert={!heroVisible}>
           <HeroCopy />
@@ -194,7 +194,6 @@ function ReducedSequence({ heroRef }: { heroRef: RefObject<HTMLElement | null> }
     <>
       <section ref={heroRef} className={styles.reducedHero}>
         <div className={styles.sky} aria-hidden="true"><div className={styles.reducedGlobe}><PhotoGlobe reducedMotion /></div></div>
-        <div className={styles.heroRule} aria-hidden="true" />
         <div className={styles.heroCopy}><HeroCopy /></div>
         <div className={styles.heroStream}><CurrencyStream /></div>
       </section>
