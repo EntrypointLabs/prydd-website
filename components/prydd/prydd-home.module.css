@@ -2,7 +2,7 @@
   --prydd-header-height: 88px;
   --prydd-bg: #fff;
   --prydd-ink: #000;
-  --prydd-muted: #727272;
+  --prydd-muted: rgb(0 0 0 / 0.5);
   --prydd-card: #fff;
   --prydd-soft: #f4f5f6;
   --prydd-line: #0000000f;
@@ -13,13 +13,12 @@
   --prydd-chip-soft: #f5f5f5;
   --prydd-accent: #000;
   --prydd-accent-ink: #fff;
-  --prydd-received: #208550;
-  --prydd-eyebrow: #a0dcff;
+  --prydd-received: #33c758;
   --prydd-scene-bg: #e5ebed;
   --prydd-scene-ink: #17242b;
   --prydd-legend-bg: #f7f8f8;
-  --prydd-success-ink: #27a644;
-  --prydd-success-bg: #ebf8ed;
+  --prydd-success-ink: #33c758;
+  --prydd-success-bg: rgb(51 199 88 / 0.1);
   --prydd-invitation-bg: #dfe5ea;
   --prydd-surface-dark: #050505;
   --prydd-surface-dark-ink: #fff;
@@ -28,10 +27,8 @@
   --prydd-panel-shadow: 0 0 0 1px #0000000a, 0 8px 16px -4px #0000000d, 0 3px 6px -1.5px #0000000a;
   --prydd-card-shadow: 0 8px 30px #0000000f;
   --prydd-float-shadow: 0 1px 2px #00000012;
-  --hero-bg: #17191d;
-  --hero-ink: #fafaf7;
-  --hero-action: #2457f5;
-  --hero-action-ink: #fff;
+  --hero-stream-height: 136px;
+  --hero-sky: #94d1f4;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   background: var(--prydd-bg);
   color: var(--prydd-ink);
@@ -59,29 +56,29 @@
 
 .skip:focus { transform: none; }
 .page a:focus-visible, .page button:focus-visible { outline: 3px solid var(--prydd-accent); outline-offset: 5px; }
-.header[data-on-hero="true"] a:focus-visible, .heroCopy a:focus-visible { outline-color: var(--hero-ink); }
 .header { position: fixed; inset: 0 0 auto; z-index: 30; color: var(--prydd-ink); background: var(--prydd-bg); border-bottom: 1px solid var(--prydd-line); }
-.header[data-on-hero="true"] { color: var(--hero-ink); background: transparent; border-bottom-color: transparent; }
+.header[data-on-hero="true"] { background: transparent; border-bottom-color: transparent; }
 .header nav { max-width: 1440px; height: 80px; padding: 0 64px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; }
+.navActions { grid-column: 3; grid-row: 1; display: flex; align-items: center; gap: 22px; }
 .chapterNav { grid-column: 2; grid-row: 1; display: flex; justify-content: center; align-items: center; gap: 24px; font-size: 13px; }
 .chapterNav a { white-space: nowrap; padding-block: 10px; }
 .chapterNav a[aria-current="location"] { box-shadow: inset 0 -2px 0 var(--prydd-accent); }
-.header[data-on-hero="true"] .chapterNav, .header[data-on-hero="true"] .navCta { display: none; }
+.header[data-on-hero="true"] .chapterNav { visibility: hidden; }
 .header[data-on-hero="false"] .howLink { display: none; }
-.howLink { font-size: 13px; grid-column: 3; grid-row: 1; justify-self: end; }
-.navCta, .heroCta { font-weight: 650; }
-.navCta { composes: pill sm filled from "./pill.module.css"; grid-column: 3; grid-row: 1; font-weight: 500; --pill-fill: var(--prydd-accent); color: var(--prydd-accent-ink); }
-.header[data-on-hero="true"] .navCta { --pill-fill: var(--hero-action); color: var(--hero-action-ink); }
-.heroCta { composes: pill lg filled from "./pill.module.css"; --pill-fill: var(--hero-action); color: var(--hero-action-ink); }
+.howLink { font-size: 14px; font-weight: 500; white-space: nowrap; }
+.navCta { composes: pill sm filled from "./pill.module.css"; font-weight: 500; --pill-fill: var(--prydd-accent); color: var(--prydd-accent-ink); }
+.heroCta { composes: pill lg filled from "./pill.module.css"; font-weight: 500; --pill-fill: var(--prydd-accent); color: var(--prydd-accent-ink); }
 .sequence { height: 240svh; position: relative; }
 .sticky { position: sticky; top: 0; height: 100svh; min-height: 600px; overflow: hidden; }
-.sceneFill { position: absolute; inset: 0; background: var(--hero-bg); }
-.globeLayer { position: absolute; inset: 0; will-change: transform; }
-.heroCopy { position: absolute; top: 0; inset-inline: 0; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 3; padding: 65px 24px 30px; text-align: center; color: var(--hero-ink); font-family: var(--font-prydd), sans-serif; }
-.heroCopy h1 { font-size: clamp(42px, 4.8vw, 78px); line-height: .96; font-weight: 900; letter-spacing: -.06em; text-transform: uppercase; margin: 0; max-width: 750px; }
-.heroCopy h1 span { display: block; }
-.heroCopy p { font-size: clamp(13px, 1.28vw, 18px); letter-spacing: -.035em; margin: 24px 0 26px; max-width: 430px; text-wrap: balance; }
-.scrollHint { position: absolute; bottom: 98px; left: 50%; transform: translateX(-50%); color: var(--hero-ink); font-size: 10px; letter-spacing: .07em; display: flex; align-items: center; gap: 12px; text-transform: uppercase; z-index: 4; }
+.sky { position: absolute; top: 0; right: 0; width: 50%; bottom: var(--hero-stream-height); overflow: hidden; border-bottom-left-radius: 28px; background: var(--hero-sky) url("/prydd/landscape-sky.jpg") center 35% / cover no-repeat; transform-origin: 100% 0; box-shadow: 0 30px 60px -40px rgb(40 90 130 / 0.45); }
+.sky::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 80% at 70% 15%, rgb(255 255 255 / 0.35), transparent 60%); pointer-events: none; }
+.heroRule { position: absolute; z-index: 2; left: max(64px, calc((100% - 1440px) / 2 + 64px)); right: calc(50% + 48px); bottom: var(--hero-stream-height); height: 1px; background: var(--prydd-line); }
+.globeLayer { position: absolute; inset: 0; z-index: 2; will-change: transform; }
+.heroCopy { position: absolute; z-index: 3; top: 0; bottom: var(--hero-stream-height); left: max(64px, calc((100% - 1440px) / 2 + 64px)); width: min(560px, calc(50% - 112px)); padding-top: 80px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; color: var(--prydd-ink); }
+.heroCopy h1 { font-size: clamp(46px, 5.4vw, 88px); line-height: .98; font-weight: 500; letter-spacing: -.04em; margin: 0; text-wrap: balance; }
+.heroCopy p { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.45; letter-spacing: -.012em; color: rgb(0 0 0 / 0.62); margin: 26px 0 34px; max-width: 440px; text-wrap: pretty; }
+.heroNote { display: block; margin-top: 14px; font-size: 13px; color: rgb(0 0 0 / 0.56); letter-spacing: -.005em; }
+.heroStream { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: var(--hero-stream-height); display: flex; flex-direction: column; justify-content: center; }
 .products { position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column; justify-content: center; padding: 110px 5vw 95px; }
 .productHeading { text-align: center; margin: 0 auto 36px; }
 .productHeading > span { display: block; font-size: 14px; color: var(--prydd-muted); margin-bottom: 24px; }
@@ -112,8 +109,8 @@
 .smallAmount > span + span { background: var(--prydd-accent); color: var(--prydd-accent-ink); width: 35px; height: 35px; display: grid; place-items: center; border-radius: 50%; }
 .illustrative { font-size: 9px; color: var(--prydd-muted); text-align: center; letter-spacing: .035em; margin-top: 40px; }
 .storyAnchor { scroll-margin-top: var(--prydd-header-height); }
-.reducedHero { position: relative; min-height: 100svh; overflow: hidden; background: var(--hero-bg); }
-.reducedGlobe { position: absolute; inset: 0; }
+.reducedHero { position: relative; min-height: 100svh; overflow: hidden; background: var(--prydd-bg); }
+.reducedGlobe { position: absolute; inset: 8%; }
 .reducedProducts { padding: 95px 5vw 70px; }
 
 @media (hover: hover) and (pointer: fine) {
@@ -121,9 +118,14 @@
 }
 
 @media (max-width: 991px) {
-  .page { --prydd-header-height: 122px; }
-  .header[data-on-hero="false"] nav { height: 122px; grid-template-rows: 76px 46px; row-gap: 0; }
-  .chapterNav { grid-column: 1 / -1; grid-row: 2; }
+  .page { --prydd-header-height: 126px; }
+  .header[data-on-hero="false"] nav { height: 126px; grid-template-rows: 80px 46px; row-gap: 0; }
+  .header[data-on-hero="true"] .chapterNav { display: none; }
+  .chapterNav { grid-column: 1 / -1; grid-row: 2; overflow-x: auto; justify-content: flex-start; scrollbar-width: none; padding-inline: 2px; }
+  .chapterNav::-webkit-scrollbar { display: none; }
+  .sky { width: auto; left: 52%; }
+  .heroCopy { width: calc(52% - 96px); }
+  .heroRule { right: 48%; }
 }
 
 @media (max-width: 760px) {
@@ -133,13 +135,18 @@
   .chapterNav { font-size: 10px; gap: 19px; }
   .navCta { --btn-height: 32px; --btn-pad-h: 13px; --btn-font: 11px; --btn-gap: 5px; --btn-icon: 12px; }
   .howLink { font-size: 12px; }
+  .page { --hero-stream-height: 96px; }
+  .navActions { gap: 14px; }
+  .howLink { display: none; }
   .sequence { height: 250svh; }
-  .sticky { min-height: 610px; }
-  .heroCopy { padding: 65px 20px 80px; }
-  .heroCopy h1 { font-size: clamp(27px, 7.9vw, 59px); line-height: .98; letter-spacing: -.063em; }
-  .heroCopy p { font-size: 12px; line-height: 1.6; max-width: min(74vw, 270px); margin: 22px 0 23px; }
-  .heroCta { --btn-height: 44px; --btn-pad-h: 18px; --btn-font: 14px; }
-  .scrollHint { bottom: 99px; font-size: 8px; }
+  .sticky { min-height: 640px; }
+  .heroCopy { left: 20px; right: 20px; width: auto; top: 0; bottom: auto; padding-top: 104px; justify-content: flex-start; }
+  .heroCopy h1 { font-size: clamp(40px, 11.5vw, 56px); }
+  .heroCopy p { font-size: 15px; margin: 16px 0 22px; }
+  .heroCta { --btn-height: 46px; --btn-pad-h: 20px; --btn-font: 15px; }
+  .heroNote { margin-top: 10px; font-size: 12px; }
+  .heroRule { display: none; }
+  .sky { left: 16px; right: 16px; width: auto; top: max(430px, 58svh); border-radius: 24px; }
   .products { padding: 85px 20px 90px; }
   .productHeading { margin-bottom: 60px; }
   .productHeading > span { font-size: 8px; margin-bottom: 12px; }
@@ -184,10 +191,9 @@
   .header nav { height: 64px; }
   .header[data-on-hero="false"] nav { height: 104px; grid-template-rows: 64px 40px; }
   .reducedHero { height: 100svh; min-height: 0; }
-  .reducedGlobe { inset: 64px 0 86px; }
-  .reducedHero .heroCopy { inset: 64px 0 86px; height: auto; padding: 0 18px; }
-  .reducedHero .heroCopy h1 { font-size: clamp(22px, 5svh, 30px); }
-  .reducedHero .heroCopy p { font-size: 11px; line-height: 1.35; max-width: 240px; margin: 12px 0; }
+  .reducedHero .heroCopy { padding-top: 64px; }
+  .reducedHero .heroCopy h1 { font-size: clamp(32px, 8svh, 52px); }
+  .reducedHero .heroCopy p { font-size: 14px; line-height: 1.35; margin: 12px 0 16px; }
   .reducedHero .heroCta { --btn-height: 40px; --btn-pad-h: 16px; --btn-font: 13px; }
 }
 

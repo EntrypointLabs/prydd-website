@@ -7,7 +7,7 @@ import { tools } from "@/components/tool-page"
 
 export const metadata: Metadata = {
   title: "Free tools",
-  description: "Free currency and bank lookup tools from PRYDD.",
+  description: "Free currency and bank lookup tools from Prydd.",
   alternates: { canonical: "/tools" },
   robots: { index: false, follow: true },
 }

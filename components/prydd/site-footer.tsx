@@ -8,16 +8,17 @@ const columns: { title: string; links: FooterLink[] }[] = [
   {
     title: "Product",
     links: [
+      { label: "Send", href: "/#prydd-send" },
       { label: "Add money", href: "/#prydd-funding" },
-      { label: "Your account", href: "/#prydd-account" },
-      { label: "Send by username", href: "/#prydd-people" },
-      { label: "FAQs", href: "/#prydd-faq" },
+      { label: "Earn", href: "/#prydd-life" },
+      { label: "Invest", href: "/#prydd-invest" },
+      { label: "Security", href: "/#prydd-security" },
+      { label: "Pay with Prydd", href: "/#prydd-pay" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "Litepaper", href: "/litepaper.pdf", external: true },
       { label: "X (Twitter)", href: "https://x.com/pryddfinance", external: true },
       { label: "Contact", href: "mailto:support@prydd.co" },
     ],
@@ -50,16 +51,18 @@ const privacyLink = <a href="/legal/privacy-policy">Privacy Policy</a>
 
 const disclaimers: ReactNode[] = [
   <>
-    PRYDD is a dollar account (the &quot;PRYDD Account&quot;) provided by{" "}
+    Prydd is a dollar account (the &quot;Prydd Account&quot;) provided by{" "}
     {entrypointLink} (&quot;Entrypoint Labs&quot;), a financial technology
     company. Entrypoint Labs is not a bank or a digital asset custodian.
-    Entrypoint Labs provides software that enables eligible people to open PRYDD
+    Entrypoint Labs provides software that enables eligible people to open Prydd
     Accounts and transact using stablecoins.
   </>,
   <>
-    Entrypoint Labs does not take custody of customer funds. Balances are held
-    in smart accounts on the Solana blockchain, controlled by the customer
-    through a passkey bound to the secure hardware on their device.
+    Balances are held in smart accounts on the Solana blockchain that need two
+    of three keys to move money. You hold two: your passkey, synced through your
+    platform account, and a key secured on your phone. Entrypoint Labs holds the
+    third, encrypted, for account recovery only. It cannot move money on its
+    own.
   </>,
   <>
     Entrypoint Labs does not provide banking services. Connectivity to banking
@@ -67,7 +70,7 @@ const disclaimers: ReactNode[] = [
     made available through third-party partners.
   </>,
   <>
-    Stablecoins available through PRYDD are issued by third parties. Entrypoint
+    Stablecoins available through Prydd are issued by third parties. Entrypoint
     Labs is not a stablecoin issuer, does not make any promise and does not have
     any obligation to redeem stablecoins. Reserves backing stablecoins are held
     by the issuers, not by Entrypoint Labs.
@@ -79,31 +82,42 @@ const disclaimers: ReactNode[] = [
     Protection Corporation (SIPC) or any other government agency.
   </>,
   <>
-    Entrypoint Labs does not currently charge a fee to hold a Balance, add
-    money, or send to another PRYDD user. A minimal network fee, typically a
-    fraction of a cent, is charged by the Solana network itself. Any Entrypoint
-    Labs fee introduced later will be disclosed in the app before you complete
-    an affected transaction.
+    Entrypoint Labs does not currently charge a fee to hold a balance or send to
+    another Prydd account, and covers Solana network fees on sends, swaps and
+    Earn. Bank top-ups and bank sends carry the payment partner&apos;s fee and
+    exchange rate, shown before you confirm. Any Entrypoint Labs fee introduced
+    later will be disclosed in the app before you complete an affected
+    transaction.
   </>,
   <>
-    Transfers between PRYDD Accounts settle on the Solana blockchain. Settlement
+    Transfers between Prydd Accounts settle on the Solana blockchain. Settlement
     times are not guaranteed, and a completed transfer is generally
     irreversible: it cannot be reversed, cancelled or recovered once it has
-    settled on-chain.
+    settled.
   </>,
   <>
     Services are available only to eligible people in supported jurisdictions.
-    PRYDD does not currently require identity verification to open an Account.
-    Entrypoint Labs may require verification at any time, and may limit, suspend
-    or close an Account to comply with applicable law, including sanctions
-    administered by the U.S. Office of Foreign Assets Control (OFAC), or to
-    prevent fraud.
+    Prydd does not require identity verification to open an Account. Adding or
+    sending local currency above a daily limit requires an identity check
+    through our payment partner. Entrypoint Labs may require further
+    verification at any time, and may limit, suspend or close an Account to
+    comply with applicable law, including sanctions administered by the U.S.
+    Office of Foreign Assets Control (OFAC), or to prevent fraud.
   </>,
   <>
-    PRYDD is in early access and certain features are not yet generally
+    Prydd is in public beta on iPhone and certain features are not yet generally
     available. Product screens on this site are illustrative. Nothing on this
     site is financial, investment, legal or tax advice, and any figures or
-    timelines, including those in the litepaper, may change without notice.
+    timelines may change without notice.
+  </>,
+  <>
+    Earn places dollars with third-party lending providers. Rates change and are
+    not guaranteed. Earn balances are not bank deposits and are not insured.
+  </>,
+  <>
+    Tokenized stocks and ETFs are issued by third parties and track the price of
+    a share or fund. They are not shares, carry no voting or shareholder rights,
+    and may not be available in your country. Capital at risk.
   </>,
   <>
     For more information, see the {termsLink}, the {privacyLink}, and the terms
@@ -135,7 +149,7 @@ export function SiteFooter() {
     <footer className={styles.footerShell}>
       <div className={styles.inner}>
         <div className={styles.top}>
-          <a className={styles.brand} href="/" aria-label="PRYDD home">
+          <a className={styles.brand} href="/" aria-label="Prydd home">
             <PryddWordmark variant="footer" />
           </a>
 
@@ -168,11 +182,11 @@ export function SiteFooter() {
                 </a>
                 <a
                   className={`${styles.cta} ${styles.ctaSecondary}`}
-                  href="/litepaper.pdf"
+                  href="https://merchant.prydd.co"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Read the litepaper
+                  For businesses
                 </a>
               </div>
             </div>
@@ -225,8 +239,8 @@ export function SiteFooter() {
           <div className={styles.disclaimers}>
             <h2 className={styles.disclaimersHeader}>Disclaimers</h2>
             <div className={styles.disclaimersGrid}>
-              <DisclaimerList start={1} items={disclaimers.slice(0, 5)} />
-              <DisclaimerList start={6} items={disclaimers.slice(5)} />
+              <DisclaimerList start={1} items={disclaimers.slice(0, 6)} />
+              <DisclaimerList start={7} items={disclaimers.slice(6)} />
             </div>
           </div>
         </div>
