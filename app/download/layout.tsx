@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 
 const SITE_URL = "https://prydd.co"
-const OG_IMAGE = `${SITE_URL}/prydd/og-image.png`
+const OG_IMAGE = `${SITE_URL}/prydd/og-image.png?v=2`
 const OG_ALT = "Prydd: Money, but faster"
 const DESCRIPTION =
   "Prydd is in public beta on iPhone through TestFlight. Hold dollars, add money in local currency and send to anyone in seconds. Android is coming soon."
