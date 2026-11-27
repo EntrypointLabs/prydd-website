@@ -19,7 +19,7 @@ const pryddBody = localFont({
 });
 
 const SITE_URL = "https://prydd.co";
-const OG_IMAGE = `${SITE_URL}/prydd/og-image.png`;
+const OG_IMAGE = `${SITE_URL}/prydd/og-image.png?v=2`;
 
 export const viewport: Viewport = {
   width: "device-width",
