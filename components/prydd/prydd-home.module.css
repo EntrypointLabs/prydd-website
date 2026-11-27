@@ -57,7 +57,9 @@
 .skip:focus { transform: none; }
 .page a:focus-visible, .page button:focus-visible { outline: 3px solid var(--prydd-accent); outline-offset: 5px; }
 .header { position: fixed; inset: 0 0 auto; z-index: 30; color: var(--prydd-ink); background: var(--prydd-bg); border-bottom: 1px solid var(--prydd-line); }
-.header[data-on-hero="true"] { background: transparent; border-bottom-color: transparent; }
+.header[data-on-hero="true"] { background: transparent; border-bottom-color: transparent; color: #fff; }
+.header[data-on-hero="true"] .navCta { --pill-fill: #fff; --pill-fill-hover: #f0f0f0; color: #000; }
+.header[data-on-hero="true"] a:focus-visible, .heroCopy a:focus-visible { outline-color: #fff; }
 .header nav { max-width: 1440px; height: 80px; padding: 0 64px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; }
 .navActions { grid-column: 3; grid-row: 1; display: flex; align-items: center; gap: 22px; }
 .chapterNav { grid-column: 2; grid-row: 1; display: flex; justify-content: center; align-items: center; gap: 24px; font-size: 13px; }
@@ -67,17 +69,19 @@
 .header[data-on-hero="false"] .howLink { display: none; }
 .howLink { font-size: 14px; font-weight: 500; white-space: nowrap; }
 .navCta { composes: pill sm filled from "./pill.module.css"; font-weight: 500; --pill-fill: var(--prydd-accent); color: var(--prydd-accent-ink); }
-.heroCta { composes: pill lg filled from "./pill.module.css"; font-weight: 500; --pill-fill: var(--prydd-accent); color: var(--prydd-accent-ink); }
+.heroCta { composes: pill lg filled from "./pill.module.css"; font-weight: 500; --pill-fill: #fff; --pill-fill-hover: #f0f0f0; color: #000; }
 .sequence { height: 240svh; position: relative; }
 .sticky { position: sticky; top: 0; height: 100svh; min-height: 600px; overflow: hidden; }
-.sky { position: absolute; top: 0; right: 0; width: 50%; bottom: var(--hero-stream-height); overflow: hidden; border-bottom-left-radius: 28px; background: var(--hero-sky) url("/prydd/landscape-sky.jpg") center 35% / cover no-repeat; transform-origin: 100% 0; box-shadow: 0 30px 60px -40px rgb(40 90 130 / 0.45); }
-.sky::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 80% at 70% 15%, rgb(255 255 255 / 0.35), transparent 60%); pointer-events: none; }
-.heroRule { position: absolute; z-index: 2; left: max(64px, calc((100% - 1440px) / 2 + 64px)); right: calc(50% + 48px); bottom: var(--hero-stream-height); height: 1px; background: var(--prydd-line); }
+.sky { position: absolute; inset: 0 0 var(--hero-stream-height); overflow: hidden; border-radius: 0 0 28px 28px; background: var(--hero-sky) url("/prydd/landscape-sky.jpg") center 40% / cover no-repeat; }
+.sky::after { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 55% at 50% 48%, rgb(5 8 12 / 0.42), rgb(5 8 12 / 0.12) 70%, transparent), linear-gradient(rgb(0 0 0 / 0.22), transparent 22%, transparent 70%, rgb(0 0 0 / 0.28)); pointer-events: none; }
+
+
 .globeLayer { position: absolute; inset: 0; z-index: 2; will-change: transform; }
-.heroCopy { position: absolute; z-index: 3; top: 0; bottom: var(--hero-stream-height); left: max(64px, calc((100% - 1440px) / 2 + 64px)); width: min(560px, calc(50% - 112px)); padding-top: 80px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; color: var(--prydd-ink); }
-.heroCopy h1 { font-size: clamp(46px, 5.4vw, 88px); line-height: .98; font-weight: 500; letter-spacing: -.04em; margin: 0; text-wrap: balance; }
-.heroCopy p { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.45; letter-spacing: -.012em; color: rgb(0 0 0 / 0.62); margin: 26px 0 34px; max-width: 440px; text-wrap: pretty; }
-.heroNote { display: block; margin-top: 14px; font-size: 13px; color: rgb(0 0 0 / 0.56); letter-spacing: -.005em; }
+.heroCopy { position: absolute; z-index: 3; inset: 0 0 var(--hero-stream-height); padding: 80px 24px 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: #fff; }
+.heroCopy h1 { font-family: var(--font-prydd), sans-serif; font-size: clamp(42px, 5vw, 80px); line-height: .96; font-weight: 900; letter-spacing: -.05em; text-transform: uppercase; margin: 0 0 32px; max-width: 780px; text-shadow: 0 2px 30px rgb(0 0 0 / 0.25); }
+.heroCopy h1 span { display: block; }
+.heroCopy p { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.45; letter-spacing: -.012em; color: rgb(255 255 255 / 0.88); margin: 24px 0 32px; max-width: 480px; text-wrap: balance; text-shadow: 0 1px 14px rgb(0 0 0 / 0.45); }
+.heroNote { display: block; margin-top: 14px; font-size: 13px; color: rgb(255 255 255 / 0.82); letter-spacing: -.005em; text-shadow: 0 1px 12px rgb(0 0 0 / 0.45); }
 .heroStream { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: var(--hero-stream-height); display: flex; flex-direction: column; justify-content: center; }
 .products { position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column; justify-content: center; padding: 110px 5vw 95px; }
 .productHeading { text-align: center; margin: 0 auto 36px; }
@@ -123,9 +127,9 @@
   .header[data-on-hero="true"] .chapterNav { display: none; }
   .chapterNav { grid-column: 1 / -1; grid-row: 2; overflow-x: auto; justify-content: flex-start; scrollbar-width: none; padding-inline: 2px; }
   .chapterNav::-webkit-scrollbar { display: none; }
-  .sky { width: auto; left: 52%; }
-  .heroCopy { width: calc(52% - 96px); }
-  .heroRule { right: 48%; }
+
+
+
 }
 
 @media (max-width: 760px) {
@@ -140,13 +144,13 @@
   .howLink { display: none; }
   .sequence { height: 250svh; }
   .sticky { min-height: 640px; }
-  .heroCopy { left: 20px; right: 20px; width: auto; top: 0; bottom: auto; padding-top: 104px; justify-content: flex-start; }
-  .heroCopy h1 { font-size: clamp(40px, 11.5vw, 56px); }
+  .heroCopy { padding: 73px 20px 0; }
+  .heroCopy h1 { font-size: clamp(32px, 9.6vw, 59px); line-height: .98; margin-bottom: 24px; }
   .heroCopy p { font-size: 15px; margin: 16px 0 22px; }
   .heroCta { --btn-height: 46px; --btn-pad-h: 20px; --btn-font: 15px; }
   .heroNote { margin-top: 10px; font-size: 12px; }
-  .heroRule { display: none; }
-  .sky { left: 16px; right: 16px; width: auto; top: max(430px, 58svh); border-radius: 24px; }
+
+
   .products { padding: 85px 20px 90px; }
   .productHeading { margin-bottom: 60px; }
   .productHeading > span { font-size: 8px; margin-bottom: 12px; }
