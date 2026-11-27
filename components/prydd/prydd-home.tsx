@@ -11,6 +11,8 @@ import { CurrencyStream } from "./currency-stream"
 import { useHeroHandoff } from "./use-hero-handoff"
 import styles from "./prydd-home.module.css"
 
+const HERO_THEME_COLOR = "#17191d"
+const PAGE_THEME_COLOR = "#ffffff"
 const clamp = (value: number) => Math.max(0, Math.min(1, value))
 const portion = (value: number, start: number, end: number) => clamp((value - start) / (end - start))
 const chapters = [
@@ -218,6 +220,14 @@ export function PryddHome() {
   const staticHeroRef = useRef<HTMLElement>(null)
   const reduced = systemReducedMotion || shortViewport
   const onHeroChange = useCallback((visible: boolean) => setOnHero((current) => current === visible ? current : visible), [])
+
+  useEffect(() => {
+    // Safari re-samples the status bar from the page once it scrolls and does
+    // not return to the initial theme-color on its own, so keep the tag in step
+    // with whatever sits under the bar.
+    const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')
+    if (meta) meta.content = onHero ? HERO_THEME_COLOR : PAGE_THEME_COLOR
+  }, [onHero])
 
   useEffect(() => {
     const query = window.matchMedia("(max-height: 600px)")

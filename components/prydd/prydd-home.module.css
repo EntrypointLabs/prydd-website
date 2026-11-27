@@ -57,7 +57,7 @@
 .skip:focus { transform: none; }
 .page a:focus-visible, .page button:focus-visible { outline: 3px solid var(--prydd-accent); outline-offset: 5px; }
 .header { position: fixed; inset: 0 0 auto; z-index: 30; color: var(--prydd-ink); background: var(--prydd-bg); border-bottom: 1px solid var(--prydd-line); }
-.header[data-on-hero="true"] { background: transparent; border-bottom-color: transparent; color: #fff; }
+.header[data-on-hero="true"] { background: var(--hero-bg); border-bottom-color: transparent; color: #fff; }
 .header[data-on-hero="true"] .navCta { --pill-fill: #fff; --pill-fill-hover: #f0f0f0; color: #000; }
 .header[data-on-hero="true"] a:focus-visible, .heroCopy a:focus-visible { outline-color: #fff; }
 .header nav { max-width: 1440px; height: 80px; padding: 0 64px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; }
